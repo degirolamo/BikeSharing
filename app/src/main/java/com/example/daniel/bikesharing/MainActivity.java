@@ -3,6 +3,7 @@ package com.example.daniel.bikesharing;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.daniel.bikesharing.ActivityDB.CantonDB;
 import com.example.daniel.bikesharing.DB.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,6 +17,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         db = new DatabaseHelper(getApplicationContext());
+
+        CantonDB canton = new CantonDB(db);
+        canton.insertCanton("Schaffhouse", "sh.png");
+        canton.selectCanton();
     }
 
 

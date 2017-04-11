@@ -1,6 +1,11 @@
 package com.example.daniel.bikesharing.ObjectDB;
 
+import android.graphics.Picture;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
+import android.widget.ImageView;
+
+import com.example.daniel.bikesharing.R;
 
 /**
  * Created by Daniel on 11.04.2017.
