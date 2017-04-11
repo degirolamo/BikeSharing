@@ -7,7 +7,7 @@ import com.example.daniel.bikesharing.DB.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Database Helper
+    // Database Helper pour Ped
     DatabaseHelper db;
 
     @Override
