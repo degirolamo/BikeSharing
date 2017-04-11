@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">BikeSharing</string>
+    <string name="neuch_tel">Neuchâtel</string>
+    <string name="berne">Berne</string>
+    <string name="button">Button</string>
+    <string name="string_button" />
+    <string name="b_le">Bâle</string>
+    <string name="cantons">Cantons</string>
+    <string name="fribourg">Fribourg</string>
+    <string name="gen_ve">Genève</string>
+    <string name="grisons">Grisons</string>
+    <string name="places">Places</string>
+    <string name="schaffhouse">Schaffhouse</string>
+    <string name="valais">Valais</string>
+    <string name="vaud">Vaud</string>
+    <string name="villes">Villes</string>
 </resources>
