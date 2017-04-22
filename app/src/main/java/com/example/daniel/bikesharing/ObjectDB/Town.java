@@ -1,5 +1,7 @@
 package com.example.daniel.bikesharing.ObjectDB;
 
+import com.example.daniel.bikesharing.DB.DatabaseHelper;
+
 /**
  * Created by Daniel on 11.04.2017.
  */

@@ -12,6 +12,10 @@ public class Place {
 
     // contructors
 
+    public Place() {
+
+    }
+
     public  Place(String name, String picture, int idTown) {
         this.name = name;
         this.picture = picture;
@@ -44,6 +48,8 @@ public class Place {
     }
 
     // setters
+
+    public void setId(int id) { this.id = id; }
 
     public void setName(String name) {
         this.name = name;

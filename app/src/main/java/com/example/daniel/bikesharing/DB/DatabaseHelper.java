@@ -20,12 +20,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "dbBikeSharing";
 
     // Table Names
-    private final String TABLE_CANTON = "cantons";
-    private final String TABLE_TOWN = "towns";
-    private final String TABLE_PERSON = "persons";
-    private final String TABLE_PLACE = "places";
-    private final String TABLE_BIKE = "bikes";
-    private final String TABLE_RENT = "rents";
+    private final String TABLE_CANTON = "canton";
+    private final String TABLE_TOWN = "town";
+    private final String TABLE_PERSON = "person";
+    private final String TABLE_PLACE = "place";
+    private final String TABLE_BIKE = "bike";
+    private final String TABLE_RENT = "rent";
 
     // Common column names
     private final String KEY_ID = "id";
@@ -35,14 +35,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private final String KEY_CANTON_PICTURE = "picture";
 
     // Towns Table - column names
-    private final String KEY_TOWN_NAME= "name";
+    private final String KEY_TOWN_NAME = "name";
     private final String KEY_NPA = "npa";
     private final String KEY_CANTONID = "idCanton";
 
     // Place Table - column names
-    private final String KEY_PLACE_TOWNID = "idTown";
     private final String KEY_PLACE_NAME = "name";
     private final String KEY_PLACE_PICTURE = "picture";
+    private final String KEY_PLACE_TOWNID = "idTown";
 
     //Bike Table - column names
     private final String KEY_PLACEID = "idPlace";
@@ -76,7 +76,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + KEY_TOWN_NAME + " TEXT NOT NULL,"
             + KEY_NPA + " INTEGER NOT NULL,"
-            + KEY_CANTONID + "INTEGER NOT NULL, "
+            + KEY_CANTONID + " INTEGER NOT NULL, "
             + "FOREIGN KEY ("+KEY_CANTONID+") REFERENCES "+TABLE_CANTON+"("+KEY_ID+ "))";
 
     // Person table create statement
@@ -86,10 +86,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + KEY_EMAIL + " TEXT NOT NULL,"
                     + KEY_PASSWORD + " TEXT NOT NULL,"
                     + KEY_FIRSTNAME + " TEXT NOT NULL,"
-                    + KEY_LASTNAME + "TEXT NOT NULL, "
+                    + KEY_LASTNAME + " TEXT NOT NULL, "
                     + KEY_ADRESS + " TEXT NOT NULL,"
                     + KEY_ISADMIN + " BOOLEAN NOT NULL,"
-                    + KEY_PERSON_TOWNID + "INTEGER NOT NULL, "
+                    + KEY_PERSON_TOWNID + " INTEGER NOT NULL, "
                     + "FOREIGN KEY ("+KEY_PERSON_TOWNID+") REFERENCES "+TABLE_TOWN+"("+KEY_ID+ "))";
 
 
@@ -97,28 +97,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private final String CREATE_TABLE_PLACE =
             "CREATE TABLE " + TABLE_PLACE
                     + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                    + KEY_PLACE_NAME + "TEXT NOT NULL,"
-                    + KEY_PLACE_PICTURE + "TEXT NOT NULL,"
-                    + KEY_PLACE_TOWNID + "INTEGER NOT NULL, "
+                    + KEY_PLACE_NAME + " TEXT NOT NULL,"
+                    + KEY_PLACE_PICTURE + " TEXT,"
+                    + KEY_PLACE_TOWNID + " INTEGER NOT NULL, "
                     + "FOREIGN KEY ("+KEY_PLACE_TOWNID+") REFERENCES "+TABLE_TOWN+"("+KEY_ID+ "))";
 
     // Bike table create statement
     private final String CREATE_TABLE_BIKE =
             "CREATE TABLE " + TABLE_BIKE
                     + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                    + KEY_PLACEID + "INTEGER NOT NULL, "
+                    + KEY_PLACEID + " INTEGER NOT NULL, "
                     + "FOREIGN KEY ("+KEY_PLACEID+") REFERENCES "+TABLE_PLACE+"("+KEY_ID+ "))";
 
     // Rent table create statement
     private final String CREATE_TABLE_RENT =
             "CREATE TABLE " + TABLE_RENT
                     + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                    + KEY_BEGINDATE + "DATETIME NOT NULL,"
-                    + KEY_ENDDATE + "DATETIME,"
-                    + KEY_PERSONID + "INTEGER NOT NULL, "
+                    + KEY_BEGINDATE + " DATETIME NOT NULL,"
+                    + KEY_ENDDATE + " DATETIME,"
+                    + KEY_PERSONID + " INTEGER NOT NULL, "
+                    + KEY_BIKEID + " INTEGER NOT NULL, "
                     + "FOREIGN KEY ("+KEY_PERSONID+") REFERENCES "+TABLE_PERSON+"("+KEY_ID+ "),"
-                    + KEY_BIKEID + "INTEGER NOT NULL, "
-                    + "FOREIGN KEY ("+KEY_BIKEID+") REFERENCES "+ TABLE_BIKE+"("+KEY_ID+"),";
+                    + "FOREIGN KEY ("+KEY_BIKEID+") REFERENCES "+ TABLE_BIKE+"("+KEY_ID+"))";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -180,9 +180,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return KEY_ID;
     }
 
-    public String getKEY_CANTON_NAME() {
-        return KEY_CANTON_NAME;
-    }
+    public String getKEY_CANTON_NAME() { return KEY_CANTON_NAME; }
 
     public String getKEY_CANTON_PICTURE() {
         return KEY_CANTON_PICTURE;
@@ -258,5 +256,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public String getKEY_ENDDATE() {
         return KEY_ENDDATE;
+    }
+
+    public void reloadDatabase() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        if (db != null)
+            onUpgrade(db, 0, 0);
+    }
+
+    public void closeDB() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        if (db != null && db.isOpen())
+            db.close();
     }
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:id="@+id/linearLayoutCantons">
+
+    <ImageView
+        android:id="@+id/imgCanton"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:layout_width="32sp"
+        android:layout_height="match_parent"
+        android:layout_marginRight="8dp"
+        android:layout_gravity="center"
+        android:src="@drawable/vs"/>
+
+    <Button
+        android:id="@+id/btnCanton"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        style="?android:attr/borderlessButtonStyle"/>
+
+</LinearLayout>

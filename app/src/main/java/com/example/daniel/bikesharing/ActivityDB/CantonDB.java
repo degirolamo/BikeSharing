@@ -23,7 +23,7 @@ public class CantonDB  {
         this.db = db;
     }
 
-    public List<Canton> selectCanton (){
+    public List<Canton> getCantons (){
         List<Canton> cantons = new ArrayList<Canton>();
 
         String selectQuery = "SELECT * FROM " + db.getTABLE_CANTON();
@@ -34,9 +34,10 @@ public class CantonDB  {
         // looping through all rows and adding to list
         if (c.moveToFirst()) {
             do {
-                String name = (c.getString(c.getColumnIndex(db.getKEY_CANTON_NAME())));
-                String picture =  (c.getString(c.getColumnIndex(db.getKEY_CANTON_PICTURE())));
-                Canton ct = new Canton(name, picture);
+                int id = c.getInt(c.getColumnIndex(db.getKEY_ID()));
+                String name = c.getString(c.getColumnIndex(db.getKEY_CANTON_NAME()));
+                String picture =  c.getString(c.getColumnIndex(db.getKEY_CANTON_PICTURE()));
+                Canton ct = new Canton(id, name, picture);
 
                 // adding to canton list
                 cantons.add(ct);
