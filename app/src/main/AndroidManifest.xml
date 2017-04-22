@@ -26,6 +26,9 @@
         <activity android:name=".CantonActivity" />
         <activity android:name=".TownActivity" />
         <activity android:name=".PlaceActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".Search" />
+        <activity android:name=".Objects.ProfileActivity"></activity>
     </application>
 
 </manifest>
