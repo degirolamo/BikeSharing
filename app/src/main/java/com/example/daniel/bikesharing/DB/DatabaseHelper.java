@@ -42,6 +42,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Place Table - column names
     private final String KEY_PLACE_NAME = "name";
     private final String KEY_PLACE_PICTURE = "picture";
+    private final String KEY_PLACE_NBPLACES = "nbPlaces";
+    private final String KEY_PLACE_ADDRESS = "address";
     private final String KEY_PLACE_TOWNID = "idTown";
 
     //Bike Table - column names
@@ -99,6 +101,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + KEY_PLACE_NAME + " TEXT NOT NULL,"
                     + KEY_PLACE_PICTURE + " TEXT,"
+                    + KEY_PLACE_NBPLACES + " INTEGER NOT NULL,"
+                    + KEY_PLACE_ADDRESS + " TEXT NOT NULL,"
                     + KEY_PLACE_TOWNID + " INTEGER NOT NULL, "
                     + "FOREIGN KEY ("+KEY_PLACE_TOWNID+") REFERENCES "+TABLE_TOWN+"("+KEY_ID+ "))";
 
@@ -106,7 +110,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private final String CREATE_TABLE_BIKE =
             "CREATE TABLE " + TABLE_BIKE
                     + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                    + KEY_PLACEID + " INTEGER NOT NULL, "
+                    + KEY_PLACEID + " INTEGER, "
                     + "FOREIGN KEY ("+KEY_PLACEID+") REFERENCES "+TABLE_PLACE+"("+KEY_ID+ "))";
 
     // Rent table create statement
@@ -208,6 +212,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public String getKEY_PLACE_PICTURE() {
         return KEY_PLACE_PICTURE;
     }
+
+    public String getKEY_PLACE_NBPLACES() {
+        return KEY_PLACE_NBPLACES;
+    }
+
+    public String getKEY_PLACE_ADDRESS() { return KEY_PLACE_ADDRESS; }
 
     public String getKEY_PLACEID() {
         return KEY_PLACEID;

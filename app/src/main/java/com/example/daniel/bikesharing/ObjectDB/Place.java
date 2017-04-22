@@ -8,6 +8,8 @@ public class Place {
     private int id;
     private String name;
     private String picture;
+    private int nbPlaces;
+    private String address;
     private int idTown;
 
     // contructors
@@ -16,17 +18,21 @@ public class Place {
 
     }
 
-    public  Place(String name, String picture, int idTown) {
+    public  Place(String name, String picture, int nbPlaces, String address, int idTown) {
         this.name = name;
         this.picture = picture;
+        this.nbPlaces = nbPlaces;
+        this.address = address;
         this.idTown = idTown;
     }
 
-    public  Place(int id, String name, String picture, int idTown){
+    public  Place(int id, String name, String picture, int nbPlaces, String address, int idTown){
         this.id = id;
         this.name = name;
         this.picture = picture;
+        this.nbPlaces = nbPlaces;
         this.idTown = idTown;
+        this.address = address;
     }
 
     // getters
@@ -43,6 +49,10 @@ public class Place {
         return picture;
     }
 
+    public int getNbPlaces() { return nbPlaces; }
+
+    public String getAddress() { return address; }
+
     public int getIdTown() {
         return idTown;
     }
@@ -58,6 +68,12 @@ public class Place {
     public void setPicture(String picture) {
         this.picture = picture;
     }
+
+    public void setNbPlaces(int nbPlaces) {
+        this.nbPlaces = nbPlaces;
+    }
+
+    public void setAddress(String address) { this.address = address; }
 
     public void setIdTown(int idTown) {
         this.idTown = idTown;

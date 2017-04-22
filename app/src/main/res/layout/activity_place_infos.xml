@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="com.example.daniel.bikesharing.InfosPlaceActivity">
 
     <TextView
+        android:id="@+id/txtPlaceName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ici le nom du lieu"
@@ -13,6 +16,7 @@
         android:textStyle="bold"/>
 
     <ImageView
+        android:id="@+id/imgPlacePicture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/monthey_gare_cff"
@@ -40,6 +44,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/txtPlaceAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="L'adresse ici"
@@ -62,6 +67,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/txtPlaceDispoBikes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
@@ -84,6 +90,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/txtPlaceDispoSlots"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Ici le nombre de places libres"

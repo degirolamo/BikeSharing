@@ -1,4 +1,4 @@
-package com.example.daniel.bikesharing.Objects;
+package com.example.daniel.bikesharing;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

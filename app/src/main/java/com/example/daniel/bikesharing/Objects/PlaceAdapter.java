@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 
+import com.example.daniel.bikesharing.InfosPlaceActivity;
 import com.example.daniel.bikesharing.ObjectDB.Place;
 import com.example.daniel.bikesharing.ObjectDB.Town;
 import com.example.daniel.bikesharing.PlaceActivity;
@@ -71,8 +72,8 @@ public class PlaceAdapter extends BaseAdapter implements AdapterView.OnItemClick
     }
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//        Intent i = new Intent(activity.getApplicationContext(), PlaceActivity.class);
-//        i.putExtra("idPlace", listPlaces.get(position).getId());
-//        activity.startActivity(i);
+        Intent i = new Intent(activity.getApplicationContext(), InfosPlaceActivity.class);
+        i.putExtra("idPlace", listPlaces.get(position).getId());
+        activity.startActivity(i);
     }
 }

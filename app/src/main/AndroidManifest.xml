@@ -27,8 +27,9 @@
         <activity android:name=".TownActivity" />
         <activity android:name=".PlaceActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".Search" />
-        <activity android:name=".Objects.ProfileActivity"></activity>
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".InfosPlaceActivity" />
     </application>
 
 </manifest>

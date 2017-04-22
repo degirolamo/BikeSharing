@@ -72,7 +72,7 @@ public class CantonAdapter extends BaseAdapter implements AdapterView.OnItemClic
         Button btnCanton = (Button) view.findViewById(R.id.btnCanton);
 
         //setting all values in listview
-        int id = activity.getResources().getIdentifier("com.example.daniel.bikesharing:drawable/" + listCantons.get(position).getPicture().substring(0, 2), null, null);
+        int id = activity.getResources().getIdentifier("com.example.daniel.bikesharing:drawable/" + listCantons.get(position).getPicture(), null, null);
         imgCanton.setImageResource(id);
         btnCanton.setText(listCantons.get(position).getName());
 

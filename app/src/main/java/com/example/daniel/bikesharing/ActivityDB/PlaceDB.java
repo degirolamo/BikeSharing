@@ -38,6 +38,8 @@ public class PlaceDB {
         place.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
         place.setName(c.getString(c.getColumnIndex(db.getKEY_PLACE_NAME())));
         place.setPicture(c.getString(c.getColumnIndex(db.getKEY_PLACE_PICTURE())));
+        place.setNbPlaces(c.getInt(c.getColumnIndex(db.getKEY_PLACE_NBPLACES())));
+        place.setAddress(c.getString(c.getColumnIndex(db.getKEY_PLACE_ADDRESS())));
         place.setIdTown(c.getInt(c.getColumnIndex(db.getKEY_PLACE_TOWNID())));
 
         return place;
@@ -58,9 +60,11 @@ public class PlaceDB {
                 int id = c.getInt(c.getColumnIndex(db.getKEY_ID()));
                 String name = c.getString(c.getColumnIndex(db.getKEY_PLACE_NAME()));
                 String picture =  c.getString(c.getColumnIndex(db.getKEY_PLACE_PICTURE()));
-                Place place = new Place(id, name, picture, idTown);
+                int nbPlaces = c.getInt(c.getColumnIndex(db.getKEY_PLACE_NBPLACES()));
+                String address =  c.getString(c.getColumnIndex(db.getKEY_PLACE_ADDRESS()));
+                Place place = new Place(id, name, picture, nbPlaces, address, idTown);
 
-                // adding to canton list
+                // adding to place list
                 places.add(place);
             } while (c.moveToNext());
         }
@@ -68,12 +72,14 @@ public class PlaceDB {
         return places;
     }
 
-    public void insertPlace(String name, String picture, int idTown) {
+    public void insertPlace(String name, String picture, int nbPlaces, String address, int idTown) {
         SQLiteDatabase sqlDB = db.getReadableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(db.getKEY_PLACE_NAME(), name);
         values.put(db.getKEY_PLACE_PICTURE(), picture);
+        values.put(db.getKEY_PLACE_NBPLACES(), nbPlaces);
+        values.put(db.getKEY_PLACE_ADDRESS(), address);
         values.put(db.getKEY_PLACE_TOWNID(), idTown);
 
         //insert row
