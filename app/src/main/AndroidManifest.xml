@@ -30,6 +30,7 @@
         <activity android:name=".SearchActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".InfosPlaceActivity" />
+        <activity android:name=".QRCodeActivity"></activity>
     </application>
 
 </manifest>

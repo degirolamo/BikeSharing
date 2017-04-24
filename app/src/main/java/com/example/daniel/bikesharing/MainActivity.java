@@ -150,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent i = new Intent(getApplicationContext(), SearchActivity.class);
 //        Intent i = new Intent(getApplicationContext(), CantonActivity.class);
+//        Intent i = new Intent(getApplicationContext(), QRCodeActivity.class);
         startActivity(i);
     }
 }

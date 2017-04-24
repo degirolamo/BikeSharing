@@ -7,4 +7,7 @@
     <string name="authors">Created by Daniel De Girolamo &#38; Pedro Gil Ferreira</string>
     <string name="imgLauncherDescription">icon launcher</string>
     <string name="search">Rechercher</string>
+    <string name="bike_sharing">Bike Sharing</string>
+    <string name="click_here_to_generate_qr_code">CLICK HERE TO generate qr code</string>
+    <string name="enter_text_here">Enter Text Here</string>
 </resources>
