@@ -30,7 +30,7 @@ public class PlaceAdapter extends BaseAdapter implements AdapterView.OnItemClick
     private static LayoutInflater inflater = null;
 
     //We pass the layout to obtain a LayoutInflater
-    //to use our list_cantons.xml
+    //to use our list_canton.xml
     public PlaceAdapter(Activity activity, List<Place> listPlaces) {
         this.listPlaces = listPlaces;
         this.activity = activity;

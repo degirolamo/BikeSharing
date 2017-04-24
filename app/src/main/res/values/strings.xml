@@ -6,4 +6,5 @@
     <string name="villes">Villes</string>
     <string name="authors">Created by Daniel De Girolamo &#38; Pedro Gil Ferreira</string>
     <string name="imgLauncherDescription">icon launcher</string>
+    <string name="search">Rechercher</string>
 </resources>

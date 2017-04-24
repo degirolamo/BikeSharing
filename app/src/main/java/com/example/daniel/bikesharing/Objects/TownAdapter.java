@@ -33,7 +33,7 @@ public class TownAdapter extends BaseAdapter implements AdapterView.OnItemClickL
         private static LayoutInflater inflater = null;
 
         //We pass the layout to obtain a LayoutInflater
-        //to use our list_cantons.xml
+        //to use our list_canton.xml
         public TownAdapter(Activity activity, List<Town> listTowns) {
             this.listTowns = listTowns;
             this.activity = activity;

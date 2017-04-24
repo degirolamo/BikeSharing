@@ -11,29 +11,29 @@ public class Person {
     private String password;
     private String firstname;
     private String lastname;
-    private String adress;
-    private boolean isAdmin;
+    private String address;
+    private int isAdmin;
 
     // contructors
 
-    public Person(int id, int idTown, String email, String password, String firstname, String lastname, String adress, boolean isAdmin) {
+    public Person(int id, int idTown, String email, String password, String firstname, String lastname, String address, int isAdmin) {
         this.id = id;
         this.idTown = idTown;
         this.email = email;
         this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.adress = adress;
+        this.address = address;
         this.isAdmin = isAdmin;
     }
 
-    public Person(int idTown, String email, String password, String firstname, String lastname, String adress, boolean isAdmin) {
+    public Person(int idTown, String email, String password, String firstname, String lastname, String address, int isAdmin) {
         this.idTown = idTown;
         this.email = email;
         this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.adress = adress;
+        this.address = address;
         this.isAdmin = isAdmin;
     }
 
@@ -63,11 +63,11 @@ public class Person {
         return lastname;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public boolean isAdmin() {
+    public int isAdmin() {
         return isAdmin;
     }
 
@@ -95,11 +95,11 @@ public class Person {
         this.lastname = lastname;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
+    public void setAdmin(int isAdmin) {
+        this.isAdmin = isAdmin;
     }
 }

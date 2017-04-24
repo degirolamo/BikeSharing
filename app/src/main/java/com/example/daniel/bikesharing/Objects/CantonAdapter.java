@@ -3,7 +3,6 @@ package com.example.daniel.bikesharing.Objects;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,19 +10,12 @@ import android.widget.BaseAdapter;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.daniel.bikesharing.CantonActivity;
 import com.example.daniel.bikesharing.ObjectDB.Canton;
 import com.example.daniel.bikesharing.R;
 import com.example.daniel.bikesharing.TownActivity;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
 /**
  * Created by pedro on 20.04.2017.
@@ -35,7 +27,7 @@ public class CantonAdapter extends BaseAdapter implements AdapterView.OnItemClic
     private static LayoutInflater inflater = null;
 
     //We pass the layout to obtain a LayoutInflater
-    //to use our list_cantons.xml
+    //to use our list_cantonxml
     public CantonAdapter(Activity activity, List<Canton> listCantons) {
         this.listCantons = listCantons;
         this.activity = activity;
@@ -66,7 +58,7 @@ public class CantonAdapter extends BaseAdapter implements AdapterView.OnItemClic
         View view = convertView;
 
         if(convertView == null)
-            view = inflater.inflate(R.layout.list_cantons, null);
+            view = inflater.inflate(R.layout.list_canton, null);
 
         ImageView imgCanton = (ImageView) view.findViewById(R.id.imgCanton);
         Button btnCanton = (Button) view.findViewById(R.id.btnCanton);

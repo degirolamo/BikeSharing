@@ -8,12 +8,16 @@ import android.util.Log;
 
 import com.example.daniel.bikesharing.ActivityDB.BikeDB;
 import com.example.daniel.bikesharing.ActivityDB.CantonDB;
+import com.example.daniel.bikesharing.ActivityDB.PersonDB;
 import com.example.daniel.bikesharing.ActivityDB.PlaceDB;
+import com.example.daniel.bikesharing.ActivityDB.RentDB;
 import com.example.daniel.bikesharing.ActivityDB.TownDB;
 import com.example.daniel.bikesharing.DB.DatabaseHelper;
 import com.example.daniel.bikesharing.ObjectDB.Bike;
 import com.example.daniel.bikesharing.ObjectDB.Canton;
+import com.example.daniel.bikesharing.ObjectDB.Person;
 import com.example.daniel.bikesharing.ObjectDB.Place;
+import com.example.daniel.bikesharing.ObjectDB.Rent;
 import com.example.daniel.bikesharing.ObjectDB.Town;
 
 import java.util.ArrayList;
@@ -74,21 +78,45 @@ public class MainActivity extends AppCompatActivity {
         townDB.insertTown(24, "Montreux", 1820);
         townDB.insertTown(8, "Genève", 1200);
 
+        PlaceDB placeDB = new PlaceDB(db);
+        placeDB.insertPlace("Gare CFF", "monthey_gare_cff", 8, "Gare CFF", 1);
+        placeDB.insertPlace("Gare AOMC", "", 8, "Gare AOMC", 1);
+        placeDB.insertPlace("Vieux-Pont", "", 8, "Route de la Cretta 2", 1);
+        placeDB.insertPlace("Piscine", "", 8, "Avenue de l'Europe 115", 1);
+
         BikeDB bikeDB = new BikeDB(db);
         bikeDB.insertBike(1);
         bikeDB.insertBike(1);
         bikeDB.insertBike(1);
         bikeDB.insertBike(1);
         bikeDB.insertBike(1);
-        bikeDB.insertBike(1);
-        bikeDB.insertBike(1);
-        bikeDB.insertBike(1);
+        bikeDB.insertBike(2);
+        bikeDB.insertBike(2);
+        bikeDB.insertBike(2);
+        bikeDB.insertBike(3);
+        bikeDB.insertBike(3);
+        bikeDB.insertBike(3);
+        bikeDB.insertBike(4);
+        bikeDB.insertBike(4);
+        bikeDB.insertBike(4);
 
-        PlaceDB placeDB = new PlaceDB(db);
-        placeDB.insertPlace("Gare CFF", "monthey_gare_cff", 8, "Gare CFF", 1);
-        placeDB.insertPlace("Gare AOMC", "", 8, "Gare AOMC", 1);
-        placeDB.insertPlace("Vieux-Pont", "", 8, "Route de la Cretta 2", 1);
-        placeDB.insertPlace("Piscine", "", 8, "Avenue de l'Europe 115", 1);
+        PersonDB personDB = new PersonDB(db);
+        personDB.insertPerson(1, "pedro@pedro.com", "pass", "Pedro", "Ferreira", "Chemin de Champerfou 2", 1);
+        personDB.insertPerson(2, "dan@dan.com", "pass", "Daniel", "De Girolamo", "Rue du Forum 22", 1);
+        personDB.insertPerson(1, "test@test.com", "pass", "Test", "Test", "Avenue du Crochetan 70B", 0);
+
+        RentDB rentDB = new RentDB(db);
+        rentDB.insertRent(1, 2, "16-04-2017 02:01:00", "16-04-2017 14:12:24");
+        rentDB.insertRent(2, 3, "17-04-2017 03:01:00", "18-04-2017 13:12:24");
+        rentDB.insertRent(3, 2, "17-04-2017 04:01:00", "18-04-2017 12:12:24");
+        rentDB.insertRent(4, 2, "18-04-2017 05:01:00", "18-04-2017 11:12:24");
+        rentDB.insertRent(5, 2, "18-04-2017 06:01:00", "19-04-2017 10:12:24");
+        rentDB.insertRent(6, 2, "20-04-2017 07:01:00", "20-04-2017 15:12:24");
+        rentDB.insertRent(7, 3, "21-04-2017 08:01:00", "21-04-2017 16:12:24");
+        rentDB.insertRent(8, 2, "22-04-2017 09:01:00", "22-04-2017 17:12:24");
+        rentDB.insertRent(9, 2, "22-04-2017 12:01:00", "22-04-2017 17:12:24");
+        rentDB.insertRent(11, 2, "23-04-2017 11:01:00", "23-04-2017 13:12:24");
+        rentDB.insertRent(13, 2, "23-04-2017 15:01:00", "23-04-2017 18:12:24");
 //
 //        List<Canton> cantons = canton.getCantons();
 //        for (Canton c : cantons) {
@@ -110,10 +138,18 @@ public class MainActivity extends AppCompatActivity {
 //            Log.e("BIKES", "id = " + bike.getId() + ", idPlace = " + bike.getIdPlace());
 //        }
 
-//        String can = cantons.get(1).getPicture().substring(0, 2);
-//        Log.e("PICTURE", can);
+//        List<Person> persons = personDB.getPersons();
+//        for (Person person : persons) {
+//            Log.e("PERSONS", "id = " + person.getId() + ", email = " + person.getEmail() + ", firstname = " + person.getFirstname() + ", address = " + person.getAddress());
+//        }
+//
+//        List<Rent> rents = rentDB.getRentsByPerson(3);
+//        for (Rent rent : rents) {
+//            Log.e("RENTS", "idBike = " + rent.getIdBike() + ", idPerson = " + rent.getIdPerson() + ", beginDate = " + rent.getBeginDate() + ", endDate = " + rent.getEndDate());
+//        }
 
-        Intent i = new Intent(getApplicationContext(), CantonActivity.class);
+        Intent i = new Intent(getApplicationContext(), SearchActivity.class);
+//        Intent i = new Intent(getApplicationContext(), CantonActivity.class);
         startActivity(i);
     }
 }

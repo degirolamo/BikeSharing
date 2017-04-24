@@ -3,6 +3,7 @@ package com.example.daniel.bikesharing.ActivityDB;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.daniel.bikesharing.DB.DatabaseHelper;
 import com.example.daniel.bikesharing.ObjectDB.Place;
@@ -85,4 +86,30 @@ public class PlaceDB {
         //insert row
         sqlDB.insert(db.getTABLE_PLACE(), null, values);
     }
+
+    public Place getPlaceByBike(int idBike) {
+        String selectQuery = "SELECT * FROM " + db.getTABLE_BIKE()
+                + " AS b INNER JOIN " + db.getTABLE_PLACE() + " AS p ON p." + db.getKEY_ID() + " = " + db.getKEY_PLACEID()
+                + " WHERE b." + db.getKEY_ID() + " = " + idBike;
+
+        SQLiteDatabase sqlDB = db.getReadableDatabase();
+        Cursor c = sqlDB.rawQuery(selectQuery, null);
+
+        if(c != null)
+            c.moveToFirst();
+
+        Place place = new Place();
+        place.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
+        place.setName(c.getString(c.getColumnIndex(db.getKEY_PLACE_NAME())));
+        place.setPicture(c.getString(c.getColumnIndex(db.getKEY_PLACE_PICTURE())));
+        place.setNbPlaces(c.getInt(c.getColumnIndex(db.getKEY_PLACE_NBPLACES())));
+        place.setAddress(c.getString(c.getColumnIndex(db.getKEY_PLACE_ADDRESS())));
+        place.setIdTown(c.getInt(c.getColumnIndex(db.getKEY_PLACE_TOWNID())));
+
+        return place;
+    }
+
+//    public List<Integer> countPlaces() {
+//
+//    }
 }

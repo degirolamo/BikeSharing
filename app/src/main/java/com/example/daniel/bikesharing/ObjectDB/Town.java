@@ -14,6 +14,10 @@ public class Town {
 
     // contructors
 
+    public Town() {
+
+    }
+
     public  Town(String name, int npa, int idCanton) {
         this.name = name;
         this.npa = npa;
@@ -44,7 +48,10 @@ public class Town {
     public int getIdCanton() {
         return idCanton;
     }
-// setters
+
+    // setters
+
+    public void setId(int id) { this.id = id; }
 
     public void setName(String name) {
         this.name = name;

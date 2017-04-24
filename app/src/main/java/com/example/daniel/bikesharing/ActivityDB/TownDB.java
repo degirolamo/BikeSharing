@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.example.daniel.bikesharing.DB.DatabaseHelper;
 import com.example.daniel.bikesharing.ObjectDB.Canton;
+import com.example.daniel.bikesharing.ObjectDB.Place;
 import com.example.daniel.bikesharing.ObjectDB.Town;
 
 import java.util.ArrayList;
@@ -89,5 +90,24 @@ public class TownDB {
         }
 
         return towns;
+    }
+
+    public Town getTown(int idTown) {
+        String selectQuery = "SELECT * FROM " + db.getTABLE_TOWN()
+                + " WHERE " + db.getKEY_ID() + " = " + idTown;
+
+        SQLiteDatabase sqlDB = db.getReadableDatabase();
+        Cursor c = sqlDB.rawQuery(selectQuery, null);
+
+        if(c != null)
+            c.moveToFirst();
+
+        Town town = new Town();
+        town.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
+        town.setName(c.getString(c.getColumnIndex(db.getKEY_TOWN_NAME())));
+        town.setNpa(c.getInt(c.getColumnIndex(db.getKEY_NPA())));
+        town.setIdCanton(c.getInt(c.getColumnIndex(db.getKEY_CANTONID())));
+
+        return town;
     }
 }

@@ -55,7 +55,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private final String KEY_PASSWORD = "password";
     private final String KEY_FIRSTNAME = "firstname";
     private final String KEY_LASTNAME = "lastname";
-    private final String KEY_ADRESS = "adress";
+    private final String KEY_ADDRESS = "adress";
     private final String KEY_ISADMIN = "isAdmin";
 
     //Rent Table - Column names
@@ -89,8 +89,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + KEY_PASSWORD + " TEXT NOT NULL,"
                     + KEY_FIRSTNAME + " TEXT NOT NULL,"
                     + KEY_LASTNAME + " TEXT NOT NULL, "
-                    + KEY_ADRESS + " TEXT NOT NULL,"
-                    + KEY_ISADMIN + " BOOLEAN NOT NULL,"
+                    + KEY_ADDRESS + " TEXT NOT NULL,"
+                    + KEY_ISADMIN + " TINYINT NOT NULL DEFAULT 0,"
                     + KEY_PERSON_TOWNID + " INTEGER NOT NULL, "
                     + "FOREIGN KEY ("+KEY_PERSON_TOWNID+") REFERENCES "+TABLE_TOWN+"("+KEY_ID+ "))";
 
@@ -116,11 +116,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Rent table create statement
     private final String CREATE_TABLE_RENT =
             "CREATE TABLE " + TABLE_RENT
-                    + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + "(" + KEY_PERSONID + " INTEGER NOT NULL, "
+                    + KEY_BIKEID + " INTEGER NOT NULL, "
                     + KEY_BEGINDATE + " DATETIME NOT NULL,"
                     + KEY_ENDDATE + " DATETIME,"
-                    + KEY_PERSONID + " INTEGER NOT NULL, "
-                    + KEY_BIKEID + " INTEGER NOT NULL, "
+                    + "PRIMARY KEY(" + KEY_BIKEID + ", " + KEY_PERSONID + "),"
                     + "FOREIGN KEY ("+KEY_PERSONID+") REFERENCES "+TABLE_PERSON+"("+KEY_ID+ "),"
                     + "FOREIGN KEY ("+KEY_BIKEID+") REFERENCES "+ TABLE_BIKE+"("+KEY_ID+"))";
 
@@ -243,8 +243,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return KEY_LASTNAME;
     }
 
-    public String getKEY_ADRESS() {
-        return KEY_ADRESS;
+    public String getKEY_ADDRESS() {
+        return KEY_ADDRESS;
     }
 
     public String getKEY_ISADMIN() {
