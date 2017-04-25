@@ -44,7 +44,7 @@ public class InfosPlaceActivity extends AppCompatActivity {
             imgPicture.setImageResource(id);
         }
         txtAddress.setText(place.getAddress());
-        long nbBikes = new BikeDB(db).getNbBikes();
+        int nbBikes = new BikeDB(db).getNbBikes(place.getId());
         txtDispoBikes.setText(String.valueOf(nbBikes));
         txtDispoSlots.setText(String.valueOf(place.getNbPlaces() - nbBikes));
     }

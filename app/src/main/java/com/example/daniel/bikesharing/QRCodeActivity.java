@@ -15,8 +15,8 @@ import com.google.zxing.common.BitMatrix;
 
 public class QRCodeActivity extends AppCompatActivity {
 
-    ImageView imageView;
-    Button button;
+    ImageView imgCode;
+    Button btnGenerate;
     EditText editText;
     String EditTextValue ;
     Thread thread ;
@@ -27,20 +27,17 @@ public class QRCodeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrcode);
 
-        imageView = (ImageView)findViewById(R.id.imageView);
-        editText = (EditText)findViewById(R.id.editText);
-        button = (Button)findViewById(R.id.button);
+        imgCode = (ImageView)findViewById(R.id.imgCode);
+        btnGenerate = (Button)findViewById(R.id.btnGenerateQR);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        btnGenerate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                EditTextValue = editText.getText().toString();
-
                 try {
-                    bitmap = TextToImageEncode(EditTextValue);
+                    bitmap = TextToImageEncode("ID User : 1");
 
-                    imageView.setImageBitmap(bitmap);
+                    imgCode.setImageBitmap(bitmap);
 
                 } catch (WriterException e) {
                     e.printStackTrace();

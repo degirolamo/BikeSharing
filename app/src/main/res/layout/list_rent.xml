@@ -7,54 +7,55 @@
     android:background="#fff"
     android:id="@+id/linearLayoutRents">
 
-    <TextView
-        android:id="@+id/txtPlace"
+    <Button
+        android:id="@+id/btnPlace"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:clickable="false"
         android:textSize="24sp"
-        android:layout_weight="1"
         android:text="Lieu"
+        android:background="#FFFFFF"
         style="?android:attr/borderlessButtonStyle"/>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#fff"
         android:id="@+id/linearLayoutPlace"
-        android:layout_below="@+id/txtPlace"
+        android:layout_below="@+id/btnPlace"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPlace">
+        app:layout_constraintTop_toBottomOf="@+id/btnPlace">
 
-        <!--<TextView-->
-            <!--android:id="@+id/txtTown"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:focusable="false"-->
-            <!--android:focusableInTouchMode="false"-->
-            <!--android:clickable="false"-->
-            <!--android:textSize="16sp"-->
-            <!--android:layout_weight="1"-->
-            <!--android:text="Ville"-->
-            <!--style="?android:attr/borderlessButtonStyle" />-->
-
-        <TextView
-            android:id="@+id/txtDate"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btnTown"
+            android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:clickable="false"
             android:textSize="16sp"
             android:layout_weight="1"
-            android:text="DateD à DateF"
-            style="?android:attr/borderlessButtonStyle"/>
+            android:text="Ville"
+            android:background="#FFFFFF"
+            style="?android:attr/borderlessButtonStyle" />
 
     </LinearLayout>
 </RelativeLayout>
+
+
+    <!--<TextView-->
+    <!--android:id="@+id/txtDate"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:focusable="false"-->
+    <!--android:focusableInTouchMode="false"-->
+    <!--android:clickable="false"-->
+    <!--android:textSize="16sp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="DateD à DateF"-->
+    <!--style="?android:attr/borderlessButtonStyle"/>-->

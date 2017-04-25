@@ -19,6 +19,7 @@ import com.example.daniel.bikesharing.Objects.CantonAdapter;
 import com.example.daniel.bikesharing.Objects.PlaceAdapter;
 import com.example.daniel.bikesharing.Objects.RentAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.daniel.bikesharing.R.id.listPlaces;
@@ -43,11 +44,15 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-        RentDB rentDB = new RentDB(db);
-        List<Rent> rents = rentDB.getRentsByPerson(/*getIntent().getIntExtra("idTown", 0)*/ 2);
+        PlaceDB placeDB = new PlaceDB(db);
+        List<Place> places = new ArrayList<>();
+        List<Integer> nbPlaces = placeDB.getNbRentsByPerson(2);
+        for (int nbPlace : nbPlaces) {
+            places.add(placeDB.getPlace(nbPlace));
+        }
         listViewRents = (ListView) findViewById(R.id.listRents);
 
-        RentAdapter adapter = new RentAdapter(this, rents);
+        RentAdapter adapter = new RentAdapter(this, places);
         listViewRents.setAdapter(adapter);
         listViewRents.setOnItemClickListener(adapter);
     }
