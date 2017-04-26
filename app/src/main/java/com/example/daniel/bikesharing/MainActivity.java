@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
 //        Intent i = new Intent(getApplicationContext(), SearchActivity.class);
         Intent i = new Intent(getApplicationContext(), CantonActivity.class);
 //        Intent i = new Intent(getApplicationContext(), QRCodeActivity.class);
-//        Intent i = new Intent(getApplicationContext(),AdminUsersActivity.class );
+//        Intent i = new Intent(getApplicationContext(), AdminUsersActivity.class );
         startActivity(i);
     }
 }

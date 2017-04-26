@@ -13,7 +13,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:text="Administration"
+        android:text="@string/administration"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintHorizontal_bias="0.428"
@@ -35,15 +35,21 @@
         android:weightSum="1">
 
         <Button
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rechercher" />
+
+        <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Utilisateurs" />
+            android:text="@string/utilisateurs" />
 
         <Button
             android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Statistiques" />
+            android:text="@string/statistiques" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
