@@ -148,9 +148,10 @@ public class MainActivity extends AppCompatActivity {
 //            Log.e("RENTS", "idBike = " + rent.getIdBike() + ", idPerson = " + rent.getIdPerson() + ", beginDate = " + rent.getBeginDate() + ", endDate = " + rent.getEndDate());
 //        }
 
-        Intent i = new Intent(getApplicationContext(), SearchActivity.class);
+//        Intent i = new Intent(getApplicationContext(), SearchActivity.class);
 //        Intent i = new Intent(getApplicationContext(), CantonActivity.class);
 //        Intent i = new Intent(getApplicationContext(), QRCodeActivity.class);
+        Intent i = new Intent(getApplicationContext(),AdminUsersActivity.class );
         startActivity(i);
     }
 }
