@@ -1,6 +1,7 @@
 package com.example.daniel.bikesharing.ActivityDB;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.R.attr.id;
+import static com.example.daniel.bikesharing.R.string.places;
 
 /**
  * Created by pedro on 19.04.2017.
@@ -109,7 +111,30 @@ public class PlaceDB {
         return place;
     }
 
-//    public List<Integer> countPlaces() {
-//
-//    }
+    public List<Integer> getNbRentsByPerson(int idPerson) {
+        //Returns for each places, the number of times they appears in bikeDB
+        List<Integer> listNbRents = new ArrayList<>();
+
+        String selectQuery = "SELECT COUNT(*) nb, idPlace FROM " + db.getTABLE_BIKE()
+                + " b INNER JOIN " + db.getTABLE_RENT() + " r ON b.id = " + db.getKEY_BIKEID()
+                + " WHERE " + db.getKEY_PERSONID() + " = " + idPerson
+                + " GROUP BY " + db.getKEY_PLACEID()
+                + " ORDER BY COUNT(*) DESC"
+                + " LIMIT 3";
+
+        SQLiteDatabase sqlDB = db.getReadableDatabase();
+        Cursor c = sqlDB.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                int idPlace = c.getInt(c.getColumnIndex(db.getKEY_PLACEID()));
+
+                // adding to place list
+                listNbRents.add(idPlace);
+            } while (c.moveToNext());
+        }
+
+        return listNbRents;
+    }
 }

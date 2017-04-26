@@ -3,6 +3,7 @@ package com.example.daniel.bikesharing.Objects;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,62 +31,62 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
+import static com.example.daniel.bikesharing.R.id.listRents;
+
 /**
  * Created by pedro on 23.04.2017.
  */
 
 public class RentAdapter  extends BaseAdapter implements AdapterView.OnItemClickListener {
     private DatabaseHelper db;
-    private List<Rent> listRents;
+    private List<Place> listPlaces;
     private Activity activity;
     private static LayoutInflater inflater = null;
-    private PlaceDB placeDB;
-    private Place place;
     private TownDB townDB;
     private Town town;
+    private Button btnPlace;
+    private Button btnTown;
 
     //We pass the layout to obtain a LayoutInflater
     //to use our list_cantonxml
-    public RentAdapter(Activity activity, List<Rent> listRents) {
-        this.listRents = listRents;
+    public RentAdapter(Activity activity, List<Place> listPlaces) {
+        this.listPlaces = listPlaces;
         this.activity = activity;
         inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         db = new DatabaseHelper(activity.getApplicationContext());
-        placeDB = new PlaceDB(db);
         townDB = new TownDB(db);
     }
 
     //returns the list's number of items
     @Override
     public int getCount() {
-        return listRents.size();
+        return listPlaces.size();
     }
 
     //returns an item depending on its position
     @Override
     public Object getItem(int position) {
-        return listRents.get(position);
+        return listPlaces.get(position);
     }
 
     //returns item's id depending on its position
     @Override
     public long getItemId(int position) {
-        return listRents.indexOf(getItem(position));
+        return listPlaces.indexOf(getItem(position));
     }
 
     //returns the view of an item of the list
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
-        place = placeDB.getPlaceByBike(listRents.get(position).getIdBike());
-        Log.e("PLACE", place.getId() + "");
-        town = townDB.getTown(place.getIdTown());
+        town = townDB.getTown(listPlaces.get(position).getIdTown());
 
         if(convertView == null)
             view = inflater.inflate(R.layout.list_rent, null);
 
-        TextView txtPlace = (TextView) view.findViewById(R.id.txtPlace);
-        TextView txtDate = (TextView) view.findViewById(R.id.txtDate);
+        btnPlace = (Button) view.findViewById(R.id.btnPlace);
+        btnTown = (Button) view.findViewById(R.id.btnTown);
+//        TextView txtDate = (TextView) view.findViewById(R.id.txtDate);
 
         //setting all values in listview
         Date dateD = new Date();
@@ -93,26 +94,25 @@ public class RentAdapter  extends BaseAdapter implements AdapterView.OnItemClick
         String strDateD;
         String strDateF;
         DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
-        try {
-            dateD = formatter.parse(listRents.get(position).getBeginDate());
-            dateF = formatter.parse(listRents.get(position).getEndDate());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            dateD = formatter.parse(listPlaces.get(position).getBeginDate());
+//            dateF = formatter.parse(listPlaces.get(position).getEndDate());
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
         formatter = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault());
         strDateD = formatter.format(dateD);
         strDateF = formatter.format(dateF);
 
-        txtPlace.setText(place.getName());
-        txtDate.setText(town.getNpa() + " " + town.getName() + " - " + strDateF);
+        btnPlace.setText(listPlaces.get(position).getName());
+        btnTown.setText(town.getNpa() + " " + town.getName());
 
         return view;
     }
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent i = new Intent(activity.getApplicationContext(), InfosPlaceActivity.class);
-        place = placeDB.getPlaceByBike(listRents.get(position).getIdBike());
-        i.putExtra("idPlace", place.getId());
+        i.putExtra("idPlace", listPlaces.get(position).getId());
         activity.startActivity(i);
     }
 }

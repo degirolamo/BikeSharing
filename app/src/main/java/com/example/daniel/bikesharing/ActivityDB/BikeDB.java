@@ -64,10 +64,21 @@ public class BikeDB {
         sqlDB.insert(db.getTABLE_BIKE(), null, values);
     }
 
-    public long getNbBikes() {
-        SQLiteDatabase sqlDB = db.getReadableDatabase();
+    public int getNbBikes(int idPlace) {
+        int nbBikes;
 
-        return DatabaseUtils.queryNumEntries(sqlDB, "Bike");
+        String selectQuery = "SELECT COUNT(*) nb FROM " + db.getTABLE_BIKE()
+                + " WHERE " + db.getKEY_PLACEID() + " = " + idPlace;
+
+        SQLiteDatabase sqlDB = db.getReadableDatabase();
+        Cursor c = sqlDB.rawQuery(selectQuery, null);
+
+        if(c != null)
+            c.moveToFirst();
+
+        nbBikes = c.getInt(c.getColumnIndex("nb"));
+
+        return nbBikes;
     }
 
     public int getIdTownByBike(int idBike) {

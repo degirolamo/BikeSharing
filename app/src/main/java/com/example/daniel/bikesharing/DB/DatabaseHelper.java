@@ -120,7 +120,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + KEY_BIKEID + " INTEGER NOT NULL, "
                     + KEY_BEGINDATE + " DATETIME NOT NULL,"
                     + KEY_ENDDATE + " DATETIME,"
-                    + "PRIMARY KEY(" + KEY_BIKEID + ", " + KEY_PERSONID + "),"
                     + "FOREIGN KEY ("+KEY_PERSONID+") REFERENCES "+TABLE_PERSON+"("+KEY_ID+ "),"
                     + "FOREIGN KEY ("+KEY_BIKEID+") REFERENCES "+ TABLE_BIKE+"("+KEY_ID+"))";
 

@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         canton.insertCanton("Lucerne", "lu");
         canton.insertCanton("Neuchâtel", "ne");
         canton.insertCanton("Nidwald", "nw");
-        canton.insertCanton("Obwald", "ow.");
+        canton.insertCanton("Obwald", "ow");
         canton.insertCanton("Saint-Gall", "sg");
         canton.insertCanton("Schaffhouse", "sh");
         canton.insertCanton("Soleure", "so");
@@ -86,18 +86,12 @@ public class MainActivity extends AppCompatActivity {
 
         BikeDB bikeDB = new BikeDB(db);
         bikeDB.insertBike(1);
-        bikeDB.insertBike(1);
-        bikeDB.insertBike(1);
-        bikeDB.insertBike(1);
-        bikeDB.insertBike(1);
         bikeDB.insertBike(2);
-        bikeDB.insertBike(2);
-        bikeDB.insertBike(2);
-        bikeDB.insertBike(3);
-        bikeDB.insertBike(3);
         bikeDB.insertBike(3);
         bikeDB.insertBike(4);
-        bikeDB.insertBike(4);
+        bikeDB.insertBike(1);
+        bikeDB.insertBike(2);
+        bikeDB.insertBike(3);
         bikeDB.insertBike(4);
 
         PersonDB personDB = new PersonDB(db);
@@ -107,16 +101,15 @@ public class MainActivity extends AppCompatActivity {
 
         RentDB rentDB = new RentDB(db);
         rentDB.insertRent(1, 2, "16-04-2017 02:01:00", "16-04-2017 14:12:24");
-        rentDB.insertRent(2, 3, "17-04-2017 03:01:00", "18-04-2017 13:12:24");
-        rentDB.insertRent(3, 2, "17-04-2017 04:01:00", "18-04-2017 12:12:24");
-        rentDB.insertRent(4, 2, "18-04-2017 05:01:00", "18-04-2017 11:12:24");
-        rentDB.insertRent(5, 2, "18-04-2017 06:01:00", "19-04-2017 10:12:24");
-        rentDB.insertRent(6, 2, "20-04-2017 07:01:00", "20-04-2017 15:12:24");
-        rentDB.insertRent(7, 3, "21-04-2017 08:01:00", "21-04-2017 16:12:24");
-        rentDB.insertRent(8, 2, "22-04-2017 09:01:00", "22-04-2017 17:12:24");
-        rentDB.insertRent(9, 2, "22-04-2017 12:01:00", "22-04-2017 17:12:24");
-        rentDB.insertRent(11, 2, "23-04-2017 11:01:00", "23-04-2017 13:12:24");
-        rentDB.insertRent(13, 2, "23-04-2017 15:01:00", "23-04-2017 18:12:24");
+        rentDB.insertRent(5, 2, "17-04-2017 03:01:00", "18-04-2017 13:12:24");
+        rentDB.insertRent(1, 2, "17-04-2017 04:01:00", "18-04-2017 12:12:24");
+        rentDB.insertRent(5, 2, "18-04-2017 05:01:00", "18-04-2017 11:12:24");
+        rentDB.insertRent(2, 2, "18-04-2017 06:01:00", "19-04-2017 10:12:24");
+        rentDB.insertRent(3, 2, "20-04-2017 07:01:00", "20-04-2017 15:12:24");
+        rentDB.insertRent(4, 2, "21-04-2017 08:01:00", "21-04-2017 16:12:24");
+        rentDB.insertRent(6, 2, "22-04-2017 09:01:00", "22-04-2017 17:12:24");
+        rentDB.insertRent(6, 2, "22-04-2017 09:01:00", "");
+        rentDB.insertRent(6, 2, "22-04-2017 09:01:00", "");
 //
 //        List<Canton> cantons = canton.getCantons();
 //        for (Canton c : cantons) {

@@ -3,34 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="8sp"
+    android:layout_marginLeft="8sp"
+    android:layout_marginRight="8sp"
+    android:background="#FFFFFF"
     tools:context="com.example.daniel.bikesharing.QRCodeActivity">
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:hint="@string/enter_text_here"
-        android:text="@string/bike_sharing" />
-
     <Button
+        android:id="@+id/btnGenerateQR"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/click_here_to_generate_qr_code"
-        android:id="@+id/button"
-        android:layout_below="@+id/editText"
         android:background="@color/colorBackground"
         android:layout_centerHorizontal="true" />
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:contentDescription=""
-        android:layout_marginTop="32sp"
-        android:layout_below="@+id/button" />
+        android:layout_height="match_parent"
+        android:id="@+id/imgCode"
+        android:layout_gravity="center"
+        android:layout_marginTop="8sp"
+        android:layout_below="@+id/btnGenerateQR" />
 
 </RelativeLayout>
