@@ -28,23 +28,15 @@ public class QRCodeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_qrcode);
 
         imgCode = (ImageView)findViewById(R.id.imgCode);
-        btnGenerate = (Button)findViewById(R.id.btnGenerateQR);
 
-        btnGenerate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        try {
+            bitmap = TextToImageEncode("ID User : 1");
 
-                try {
-                    bitmap = TextToImageEncode("ID User : 1");
+            imgCode.setImageBitmap(bitmap);
 
-                    imgCode.setImageBitmap(bitmap);
-
-                } catch (WriterException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
     }
 
 

@@ -5,7 +5,15 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorButton</item>
+        <!--<item name="android:buttonStyle">@style/button</item>-->
     </style>
+
+    <!--<style name="button" parent="@android:style/Widget.Button">-->
+        <!--<item name="android:gravity">center</item>-->
+        <!--<item name="android:background">@drawable/button</item>-->
+        <!--<item name="android:enabled">true</item>-->
+        <!--<item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Button</item>-->
+    <!--</style>-->
 
 </resources>

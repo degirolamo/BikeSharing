@@ -9,20 +9,11 @@
     android:background="#FFFFFF"
     tools:context="com.example.daniel.bikesharing.QRCodeActivity">
 
-    <Button
-        android:id="@+id/btnGenerateQR"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/click_here_to_generate_qr_code"
-        android:background="@color/colorBackground"
-        android:layout_centerHorizontal="true" />
-
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/imgCode"
         android:layout_gravity="center"
-        android:layout_marginTop="8sp"
-        android:layout_below="@+id/btnGenerateQR" />
+        android:layout_marginTop="8sp" />
 
 </RelativeLayout>
