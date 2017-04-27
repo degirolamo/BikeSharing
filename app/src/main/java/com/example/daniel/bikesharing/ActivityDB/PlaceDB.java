@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.daniel.bikesharing.DB.DatabaseHelper;
+import com.example.daniel.bikesharing.ObjectDB.Person;
 import com.example.daniel.bikesharing.ObjectDB.Place;
 import com.example.daniel.bikesharing.ObjectDB.Town;
 
@@ -136,5 +137,32 @@ public class PlaceDB {
         }
 
         return listNbRents;
+    }
+
+    public List<Place> getPlaces() {
+        List<Place> places = new ArrayList<Place>();
+
+        String selectQuery = "SELECT * FROM " + db.getTABLE_PLACE();
+
+        SQLiteDatabase sqlDB = db.getReadableDatabase();
+        Cursor c = sqlDB.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                int id = c.getInt(c.getColumnIndex(db.getKEY_ID()));
+                String picture = c.getString(c.getColumnIndex(db.getKEY_PLACE_PICTURE()));
+                String name = c.getString(c.getColumnIndex(db.getKEY_PLACE_NAME()));
+                int nbPlace = c.getInt (c.getColumnIndex(db.getKEY_PLACE_NBPLACES()));
+                String address=  c.getString(c.getColumnIndex(db.getKEY_PLACE_ADDRESS()));
+                int townId =  c.getInt(c.getColumnIndex(db.getKEY_PLACE_TOWNID()));
+                Place p = new Place(id, picture, name, nbPlace, address, townId);
+
+                // adding to canton list
+                places.add(p);
+            } while (c.moveToNext());
+        }
+
+        return places;
     }
 }
