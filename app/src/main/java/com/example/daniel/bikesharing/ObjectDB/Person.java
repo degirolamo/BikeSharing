@@ -6,7 +6,7 @@ package com.example.daniel.bikesharing.ObjectDB;
 
 public class Person {
     private int id;
-    private int idTown;
+    private int idCanton;
     private String email;
     private String password;
     private String firstname;
@@ -16,9 +16,13 @@ public class Person {
 
     // contructors
 
-    public Person(int id, int idTown, String email, String password, String firstname, String lastname, String address, int isAdmin) {
+    public Person() {
+
+    }
+
+    public Person(int id, int idCanton, String email, String password, String firstname, String lastname, String address, int isAdmin) {
         this.id = id;
-        this.idTown = idTown;
+        this.idCanton = idCanton;
         this.email = email;
         this.password = password;
         this.firstname = firstname;
@@ -27,8 +31,8 @@ public class Person {
         this.isAdmin = isAdmin;
     }
 
-    public Person(int idTown, String email, String password, String firstname, String lastname, String address, int isAdmin) {
-        this.idTown = idTown;
+    public Person(int idCanton, String email, String password, String firstname, String lastname, String address, int isAdmin) {
+        this.idCanton = idCanton;
         this.email = email;
         this.password = password;
         this.firstname = firstname;
@@ -43,8 +47,8 @@ public class Person {
         return id;
     }
 
-    public int getIdTown() {
-        return idTown;
+    public int getIdCanton() {
+        return idCanton;
     }
 
     public String getEmail() {
@@ -75,8 +79,8 @@ public class Person {
     // setters
 
 
-    public void setIdTown(int idTown) {
-        this.idTown = idTown;
+    public void setIdCanton(int idCanton) {
+        this.idCanton = idCanton;
     }
 
     public void setEmail(String email) {

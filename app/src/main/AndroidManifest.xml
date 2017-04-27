@@ -28,13 +28,14 @@
         <activity android:name=".PlaceActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".ProfileActivity" />
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".InfosPlaceActivity" />
         <activity
             android:name=".QRCodeActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".AdminHomeActivity" />
         <activity android:name=".AdminUsersActivity" />
+        <activity android:name=".HomeActivity" />
     </application>
 
 </manifest>

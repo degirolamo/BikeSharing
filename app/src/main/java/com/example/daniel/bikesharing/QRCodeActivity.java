@@ -20,7 +20,7 @@ public class QRCodeActivity extends AppCompatActivity {
     EditText editText;
     String EditTextValue ;
     Thread thread ;
-    public final static int QRcodeWidth = 500 ;
+    public final static int QRCodeWidth = 500 ;
     Bitmap bitmap ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +39,13 @@ public class QRCodeActivity extends AppCompatActivity {
         }
     }
 
-
     Bitmap TextToImageEncode(String Value) throws WriterException {
         BitMatrix bitMatrix;
         try {
             bitMatrix = new MultiFormatWriter().encode(
                     Value,
                     BarcodeFormat.DATA_MATRIX.QR_CODE,
-                    QRcodeWidth, QRcodeWidth, null
+                    QRCodeWidth, QRCodeWidth, null
             );
 
         } catch (IllegalArgumentException Illegalargumentexception) {

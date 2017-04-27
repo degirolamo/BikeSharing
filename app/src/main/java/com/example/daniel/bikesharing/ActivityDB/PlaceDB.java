@@ -90,8 +90,8 @@ public class PlaceDB {
     }
 
     public Place getPlaceByBike(int idBike) {
-        String selectQuery = "SELECT * FROM " + db.getTABLE_BIKE()
-                + " AS b INNER JOIN " + db.getTABLE_PLACE() + " AS p ON p." + db.getKEY_ID() + " = " + db.getKEY_PLACEID()
+        String selectQuery = "SELECT * FROM " + db.getTABLE_PLACE()
+                + " AS p INNER JOIN " + db.getTABLE_BIKE() + " AS b ON p." + db.getKEY_ID() + " = " + db.getKEY_PLACEID()
                 + " WHERE b." + db.getKEY_ID() + " = " + idBike;
 
         SQLiteDatabase sqlDB = db.getReadableDatabase();

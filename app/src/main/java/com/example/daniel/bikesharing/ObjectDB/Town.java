@@ -31,6 +31,11 @@ public class Town {
         this.idCanton = idCanton;
     }
 
+    @Override
+    public String toString() {
+        return getNpa() + " " + getName();
+    }
+
     // getters
 
     public int getId() {

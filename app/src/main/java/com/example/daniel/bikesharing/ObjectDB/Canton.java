@@ -29,6 +29,11 @@ public class Canton {
         this.picture = picture;
     }
 
+    @Override
+    public String toString() {
+        return getName();
+    }
+
     // getters
 
     public int getId() {

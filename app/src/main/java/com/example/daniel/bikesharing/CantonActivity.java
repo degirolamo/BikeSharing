@@ -2,6 +2,7 @@ package com.example.daniel.bikesharing;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ListView;
 
@@ -14,7 +15,7 @@ import java.util.List;
 
 import static android.media.CamcorderProfile.get;
 
-public class CantonActivity extends Activity {
+public class CantonActivity extends AppCompatActivity {
 
     DatabaseHelper db;
     ListView listViewCantons;

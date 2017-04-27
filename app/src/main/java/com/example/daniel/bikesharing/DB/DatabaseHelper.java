@@ -50,7 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private final String KEY_PLACEID = "idPlace";
 
     //Person Table - Column names
-    private final String KEY_PERSON_TOWNID= "idTown";
+    private final String KEY_PERSON_CANTONID= "idCanton";
     private final String KEY_EMAIL = "email";
     private final String KEY_PASSWORD = "password";
     private final String KEY_FIRSTNAME = "firstname";
@@ -91,8 +91,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + KEY_LASTNAME + " TEXT NOT NULL, "
                     + KEY_ADDRESS + " TEXT NOT NULL,"
                     + KEY_ISADMIN + " TINYINT NOT NULL DEFAULT 0,"
-                    + KEY_PERSON_TOWNID + " INTEGER NOT NULL, "
-                    + "FOREIGN KEY ("+KEY_PERSON_TOWNID+") REFERENCES "+TABLE_TOWN+"("+KEY_ID+ "))";
+                    + KEY_PERSON_CANTONID + " INTEGER NOT NULL, "
+                    + "FOREIGN KEY ("+KEY_PERSON_CANTONID+") REFERENCES "+TABLE_TOWN+"("+KEY_ID+ "))";
 
 
     // Places table create statement
@@ -222,8 +222,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return KEY_PLACEID;
     }
 
-    public String getKEY_PERSON_TOWNID() {
-        return KEY_PERSON_TOWNID;
+    public String getKEY_PERSON_CANTONID() {
+        return KEY_PERSON_CANTONID;
     }
 
     public String getKEY_EMAIL() {
