@@ -30,7 +30,9 @@
         <activity android:name=".SearchActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".InfosPlaceActivity" />
-        <activity android:name=".QRCodeActivity" android:screenOrientation="portrait" />
+        <activity
+            android:name=".QRCodeActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".AdminHomeActivity" />
         <activity android:name=".AdminUsersActivity" />
     </application>
