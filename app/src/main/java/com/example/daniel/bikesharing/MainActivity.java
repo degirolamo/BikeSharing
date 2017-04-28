@@ -1,9 +1,16 @@
 package com.example.daniel.bikesharing;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.ListView;
 
 import com.example.daniel.bikesharing.ActivityDB.BikeDB;
 import com.example.daniel.bikesharing.ActivityDB.CantonDB;
@@ -12,8 +19,19 @@ import com.example.daniel.bikesharing.ActivityDB.PlaceDB;
 import com.example.daniel.bikesharing.ActivityDB.RentDB;
 import com.example.daniel.bikesharing.ActivityDB.TownDB;
 import com.example.daniel.bikesharing.DB.DatabaseHelper;
+import com.example.daniel.bikesharing.ObjectDB.Bike;
+import com.example.daniel.bikesharing.ObjectDB.Canton;
+import com.example.daniel.bikesharing.ObjectDB.Person;
+import com.example.daniel.bikesharing.ObjectDB.Place;
+import com.example.daniel.bikesharing.ObjectDB.Rent;
+import com.example.daniel.bikesharing.ObjectDB.Town;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static android.media.CamcorderProfile.get;
+import static com.example.daniel.bikesharing.R.string.places;
+import static com.example.daniel.bikesharing.R.styleable.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolMain);
+        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 
         db = new DatabaseHelper(getApplicationContext());
@@ -132,12 +152,19 @@ public class MainActivity extends AppCompatActivity {
 //            Log.e("RENTS", "idBike = " + rent.getIdBike() + ", idPerson = " + rent.getIdPerson() + ", beginDate = " + rent.getBeginDate() + ", endDate = " + rent.getEndDate());
 //        }
 
-        Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-//        Intent i = new Intent(getApplicationContext(), SearchActivity.class);
-//        Intent i = new Intent(getApplicationContext(), CantonActivity.class);
-//        Intent i = new Intent(getApplicationContext(), QRCodeActivity.class);
-        Intent i = new Intent(getApplicationContext(), AdminPlacesActivity.class );
-        startActivity(i);
-        finish();
+        if (getIntent().getBooleanExtra("EXIT", false))
+            finish();
+        else {
+            Intent i = new Intent(getApplicationContext(), AdminPlacesActivity.class);
+            startActivity(i);
+            finish();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.settings, menu);
+        return true;
     }
 }

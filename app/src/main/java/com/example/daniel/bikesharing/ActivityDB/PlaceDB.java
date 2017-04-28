@@ -153,10 +153,15 @@ public class PlaceDB {
                 int id = c.getInt(c.getColumnIndex(db.getKEY_ID()));
                 String picture = c.getString(c.getColumnIndex(db.getKEY_PLACE_PICTURE()));
                 String name = c.getString(c.getColumnIndex(db.getKEY_PLACE_NAME()));
-                int nbPlace = c.getInt (c.getColumnIndex(db.getKEY_PLACE_NBPLACES()));
+                int nbPlace = c.getInt(c.getColumnIndex(db.getKEY_PLACE_NBPLACES()));
                 String address=  c.getString(c.getColumnIndex(db.getKEY_PLACE_ADDRESS()));
                 int townId =  c.getInt(c.getColumnIndex(db.getKEY_PLACE_TOWNID()));
-                Place p = new Place(id, picture, name, nbPlace, address, townId);
+                Place p = new Place(id, name, picture, nbPlace, address, townId);
+
+                for (Place place : places) {
+                    Log.e("PLACE", "djsjwjqj");
+                    Log.e("PLACE", place.getName());
+                }
 
                 // adding to canton list
                 places.add(p);

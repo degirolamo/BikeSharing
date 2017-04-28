@@ -7,47 +7,45 @@
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/txtuser"
+        android:id="@+id/txtUserName"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_width="238dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_weight="316.52"
+        android:gravity="start|center"
         android:text="@string/user"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="-12dp" />
+        android:background="#fff"
+        app:layout_constraintRight_toLeftOf="@+id/imgList"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <ImageButton
-        android:id="@+id/imglist"
+        android:id="@+id/imgList"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_weight="61.75"
+        android:background="#fff"
         app:srcCompat="@drawable/list"
-        app:layout_constraintRight_toLeftOf="@+id/imgadmin"
-        android:layout_marginRight="0dp"
-        tools:layout_editor_absoluteY="0dp"
+        app:layout_constraintRight_toLeftOf="@+id/imgAdmin"
         tools:ignore="ContentDescription,RtlHardcoded"
-        android:contentDescription="" />
+        style="@style/Base.Widget.AppCompat.Button" />
 
     <ImageButton
-        android:id="@+id/imgadmin"
+        android:id="@+id/imgAdmin"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_weight="63.21"
+        android:background="#fff"
         app:srcCompat="@drawable/admin"
         tools:layout_editor_absoluteY="0dp"
-        app:layout_constraintRight_toLeftOf="@+id/imgdelete"
-        android:layout_marginRight="0dp"
-        tools:ignore="ContentDescription,RtlHardcoded" />
+        app:layout_constraintRight_toLeftOf="@+id/imgDelete"
+        tools:ignore="ContentDescription,RtlHardcoded"
+        style="@style/Base.Widget.AppCompat.Button" />
 
     <ImageButton
-        android:id="@+id/imgdelete"
+        android:id="@+id/imgDelete"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_weight="73.32"
+        android:background="#fff"
         app:srcCompat="@drawable/delete"
-        tools:layout_editor_absoluteY="0dp"
-        android:layout_marginRight="0dp"
         app:layout_constraintRight_toRightOf="parent"
-        tools:ignore="ContentDescription,RtlHardcoded" />
+        tools:ignore="ContentDescription,RtlHardcoded"
+        style="@style/Base.Widget.AppCompat.Button" />
 
 </android.support.constraint.ConstraintLayout>

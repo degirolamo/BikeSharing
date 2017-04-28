@@ -20,8 +20,7 @@ import com.example.daniel.bikesharing.TownActivity;
 
 import java.util.List;
 
-import static com.example.daniel.bikesharing.R.id.listUsers;
-import static com.example.daniel.bikesharing.R.id.textView;
+import static com.example.daniel.bikesharing.R.id.txtUserName;
 
 /**
  * Created by Daniel on 25.04.2017.
@@ -61,10 +60,10 @@ public class PersonAdapter extends BaseAdapter implements AdapterView.OnItemClic
         if(convertView == null)
             view = inflater.inflate(R.layout.list_user, null);
 
-        TextView txtuser = (TextView) view.findViewById(R.id.txtuser);
+        TextView txtUserName = (TextView) view.findViewById(R.id.txtUserName);
 
         //setting all values in listview
-        txtuser.setText(listPersons.get(position).getFirstname() + " " + listPersons.get(position).getLastname());
+        txtUserName.setText(listPersons.get(position).getFirstname() + " " + listPersons.get(position).getLastname());
         return view;
     }
 
