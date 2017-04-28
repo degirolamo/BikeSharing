@@ -35,8 +35,11 @@
             android:screenOrientation="portrait" />
         <activity android:name=".AdminHomeActivity" />
         <activity android:name=".AdminUsersActivity" />
-        <activity android:name=".AdminPlacesActivity"></activity>
+        <activity android:name=".AdminPlacesActivity" />
         <activity android:name=".HomeActivity" />
+        <activity android:name=".Objects.ProfileActivity" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".LanguageActivity"></activity>
     </application>
 
 </manifest>

@@ -46,7 +46,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
             android:background="@color/colorBackground"
-            android:text="Places" />
+            android:text="@string/placesAdmin" />
 
         <Button
             android:id="@+id/btnAdminStats"

@@ -17,4 +17,9 @@
     <string name="utilisateurs">Utilisateurs</string>
     <string name="action_settings">Paramètres</string>
     <string name="action_logout">Se déconnecter</string>
+    <string name="adresse_mail">Adresse mail</string>
+    <string name="mot_de_passe_oubli">Mot de passe oublié ?</string>
+    <string name="mot_de_passe">Mot de passe</string>
+    <string name="valider">Valider</string>
+    <string name="placesAdmin">Places</string>
 </resources>
