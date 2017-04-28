@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
         if (getIntent().getBooleanExtra("EXIT", false))
             finish();
         else {
-            Intent i = new Intent(getApplicationContext(), AdminPlacesActivity.class);
+            Intent i = new Intent(getApplicationContext(), AdminHomeActivity.class);
             startActivity(i);
             finish();
         }
