@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#64dd17</color>
-    <color name="colorPrimaryDark">#1faa00</color>
-    <color name="colorBackground">#F8FEF2</color>
-    <color name="colorButton">#98FB98</color>
-    <color name="colorAccent">#9cff57</color>
+    <color name="colorPrimary">#00BF9A</color>
+    <color name="colorPrimaryDark">#009875</color>
+    <color name="colorBackground">#C8E6C9</color>
+    <color name="colorButton">#81C784</color>
+    <color name="colorAccent">#00C853</color>
     <color name="QRCodeBlackColor">#000000</color>
     <color name="QRCodeWhiteColor">#FFFFFF</color>
 </resources>
