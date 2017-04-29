@@ -11,6 +11,8 @@ import com.example.daniel.bikesharing.ObjectDB.Canton;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.attr.id;
+
 /**
  * Created by Daniel on 11.04.2017.
  */
@@ -57,5 +59,23 @@ public class CantonDB  {
 
         //insert row
         sqlDB.insert(db.getTABLE_CANTON(), null, values);
+    }
+
+    public Canton getCanton(int idCanton) {
+        String selectQuery = "SELECT * FROM " + db.getTABLE_CANTON()
+                + " WHERE " + db.getKEY_ID()  + " = " + idCanton;
+
+        SQLiteDatabase sqlDB = db.getReadableDatabase();
+        Cursor c = sqlDB.rawQuery(selectQuery, null);
+
+        if(c != null)
+            c.moveToFirst();
+
+        Canton canton = new Canton();
+        canton.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
+        canton.setName(c.getString(c.getColumnIndex(db.getKEY_CANTON_NAME())));
+        canton.setPicture(c.getString(c.getColumnIndex(db.getKEY_CANTON_PICTURE())));
+
+        return canton;
     }
 }

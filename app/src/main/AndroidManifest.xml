@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:allowBackup="true"
@@ -37,7 +38,7 @@
         <activity android:name=".AdminUsersActivity" />
         <activity android:name=".AdminPlacesActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".Objects.ProfileActivity" />
+        <activity android:name=".ProfileActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".LanguageActivity"></activity>
     </application>

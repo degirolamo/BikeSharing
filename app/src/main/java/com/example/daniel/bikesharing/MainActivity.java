@@ -106,9 +106,9 @@ public class MainActivity extends AppCompatActivity {
         bikeDB.insertBike(4);
 
         PersonDB personDB = new PersonDB(db);
-        personDB.insertPerson(1, "pedro@pedro.com", "pass", "Pedro", "Ferreira", "Chemin de Champerfou 2", 1);
-        personDB.insertPerson(2, "dan@dan.com", "pass", "Daniel", "De Girolamo", "Rue du Forum 22", 1);
-        personDB.insertPerson(1, "test@test.com", "pass", "Test", "Test", "Avenue du Crochetan 70B", 0);
+        personDB.insertPerson(23, "pedro@pedro.com", "pass", "Pedro", "Ferreira", 1);
+        personDB.insertPerson(22, "dan@dan.com", "pass", "Daniel", "De Girolamo", 1);
+        personDB.insertPerson(1, "test@test.com", "pass", "Test", "Test", 0);
 
         RentDB rentDB = new RentDB(db);
         rentDB.insertRent(1, 2, "16-04-2017 02:01:00", "16-04-2017 14:12:24");
@@ -142,10 +142,10 @@ public class MainActivity extends AppCompatActivity {
 //            Log.e("BIKES", "id = " + bike.getId() + ", idPlace = " + bike.getIdPlace());
 //        }
 
-//        List<Person> persons = personDB.getPersons();
-//        for (Person person : persons) {
-//            Log.e("PERSONS", "id = " + person.getId() + ", email = " + person.getEmail() + ", firstname = " + person.getFirstname() + ", address = " + person.getAddress());
-//        }
+        List<Person> persons = personDB.getPersons();
+        for (Person person : persons) {
+            Log.e("PERSONS", "id = " + person.getId() + ", email = " + person.getEmail() + ", firstname = " + person.getFirstname());
+        }
 //
 //        List<Rent> rents = rentDB.getRentsByPerson(3);
 //        for (Rent rent : rents) {

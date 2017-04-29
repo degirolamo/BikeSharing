@@ -25,7 +25,7 @@
             android:id="@+id/btnAdminSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/rechercher"
+            android:text="Louer un vélo"
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
             android:background="@color/colorBackground"/>
@@ -46,7 +46,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
             android:background="@color/colorBackground"
-            android:text="@string/placesAdmin" />
+            android:text="Places" />
 
         <Button
             android:id="@+id/btnAdminStats"

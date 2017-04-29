@@ -11,7 +11,6 @@ public class Person {
     private String password;
     private String firstname;
     private String lastname;
-    private String address;
     private int isAdmin;
 
     // contructors
@@ -20,24 +19,22 @@ public class Person {
 
     }
 
-    public Person(int id, int idCanton, String email, String password, String firstname, String lastname, String address, int isAdmin) {
+    public Person(int id, int idCanton, String email, String password, String firstname, String lastname, int isAdmin) {
         this.id = id;
         this.idCanton = idCanton;
         this.email = email;
         this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.address = address;
         this.isAdmin = isAdmin;
     }
 
-    public Person(int idCanton, String email, String password, String firstname, String lastname, String address, int isAdmin) {
+    public Person(int idCanton, String email, String password, String firstname, String lastname, int isAdmin) {
         this.idCanton = idCanton;
         this.email = email;
         this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.address = address;
         this.isAdmin = isAdmin;
     }
 
@@ -67,10 +64,6 @@ public class Person {
         return lastname;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
     public int isAdmin() {
         return isAdmin;
     }
@@ -78,6 +71,7 @@ public class Person {
 
     // setters
 
+    public void setId(int id) { this.id = id; }
 
     public void setIdCanton(int idCanton) {
         this.idCanton = idCanton;
@@ -97,10 +91,6 @@ public class Person {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public void setAdmin(int isAdmin) {

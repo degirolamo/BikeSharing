@@ -18,14 +18,14 @@ import java.util.List;
  */
 
 public class PersonDB {
-    DatabaseHelper db;
+    private DatabaseHelper db;
 
     public PersonDB(DatabaseHelper db) {
         this.db = db;
     }
 
     public List<Person> getPersons() {
-        List<Person> persons = new ArrayList<Person>();
+        List<Person> persons = new ArrayList<>();
 
         String selectQuery = "SELECT * FROM " + db.getTABLE_PERSON();
 
@@ -41,19 +41,19 @@ public class PersonDB {
                 String password =  c.getString(c.getColumnIndex(db.getKEY_PASSWORD()));
                 String firstname =  c.getString(c.getColumnIndex(db.getKEY_FIRSTNAME()));
                 String lastname =  c.getString(c.getColumnIndex(db.getKEY_LASTNAME()));
-                String address =  c.getString(c.getColumnIndex(db.getKEY_ADDRESS()));
                 int isAdmin = c.getInt(c.getColumnIndex(db.getKEY_ISADMIN()));
-                Person p = new Person(id, idCanton, email, password, firstname, lastname, address, isAdmin);
+                Person p = new Person(id, idCanton, email, password, firstname, lastname, isAdmin);
 
                 // adding to canton list
                 persons.add(p);
             } while (c.moveToNext());
         }
 
+        c.close();
         return persons;
     }
 
-    public void insertPerson(int idCanton, String email, String password, String firstname, String lastname, String address, int isAdmin) {
+    public void insertPerson(int idCanton, String email, String password, String firstname, String lastname, int isAdmin) {
         SQLiteDatabase sqlDB = db.getReadableDatabase();
 
         ContentValues values = new ContentValues();
@@ -62,11 +62,47 @@ public class PersonDB {
         values.put(db.getKEY_PASSWORD(), password);
         values.put(db.getKEY_FIRSTNAME(), firstname);
         values.put(db.getKEY_LASTNAME(), lastname);
-        values.put(db.getKEY_ADDRESS(), address);
         values.put(db.getKEY_ISADMIN(), isAdmin);
 
         //insert row
         sqlDB.insert(db.getTABLE_PERSON(), null, values);
+    }
+
+    public Person getPerson(int idPerson) {
+        String selectQuery = "SELECT * FROM " + db.getTABLE_PERSON()
+                + " WHERE " + db.getKEY_ID() + " = " + idPerson;
+
+        SQLiteDatabase sqlDB = db.getReadableDatabase();
+        Cursor c = sqlDB.rawQuery(selectQuery, null);
+
+        if(c != null)
+            c.moveToFirst();
+
+        Person person = new Person();
+        person.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
+        person.setIdCanton(c.getInt(c.getColumnIndex(db.getKEY_CANTONID())));
+        person.setEmail(c.getString(c.getColumnIndex(db.getKEY_EMAIL())));
+        person.setPassword(c.getString(c.getColumnIndex(db.getKEY_PASSWORD())));
+        person.setFirstname(c.getString(c.getColumnIndex(db.getKEY_FIRSTNAME())));
+        person.setLastname(c.getString(c.getColumnIndex(db.getKEY_LASTNAME())));
+        person.setAdmin(c.getInt(c.getColumnIndex(db.getKEY_ISADMIN())));
+
+        return person;
+    }
+
+    public void setAdminRights(int idPerson, int isAdmin) {
+        SQLiteDatabase sqlDB = db.getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(db.getKEY_ISADMIN(), isAdmin);
+
+
+        sqlDB.update(db.getTABLE_PERSON(), values, db.getKEY_ID() + " = " + idPerson, null);
+    }
+
+    public void deletePerson(int idPerson) {
+        SQLiteDatabase sqlDB = db.getWritableDatabase();
+        sqlDB.delete(db.getTABLE_PERSON(), db.getKEY_ID() + " = " + idPerson, null);
     }
 
     public String getPassword(String email) {

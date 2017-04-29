@@ -55,7 +55,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private final String KEY_PASSWORD = "password";
     private final String KEY_FIRSTNAME = "firstname";
     private final String KEY_LASTNAME = "lastname";
-    private final String KEY_ADDRESS = "adress";
     private final String KEY_ISADMIN = "isAdmin";
 
     //Rent Table - Column names
@@ -89,7 +88,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + KEY_PASSWORD + " TEXT NOT NULL,"
                     + KEY_FIRSTNAME + " TEXT NOT NULL,"
                     + KEY_LASTNAME + " TEXT NOT NULL, "
-                    + KEY_ADDRESS + " TEXT NOT NULL,"
                     + KEY_ISADMIN + " TINYINT NOT NULL DEFAULT 0,"
                     + KEY_PERSON_CANTONID + " INTEGER NOT NULL, "
                     + "FOREIGN KEY ("+KEY_PERSON_CANTONID+") REFERENCES "+TABLE_TOWN+"("+KEY_ID+ "))";
@@ -240,10 +238,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public String getKEY_LASTNAME() {
         return KEY_LASTNAME;
-    }
-
-    public String getKEY_ADDRESS() {
-        return KEY_ADDRESS;
     }
 
     public String getKEY_ISADMIN() {

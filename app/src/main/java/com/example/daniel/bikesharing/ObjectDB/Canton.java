@@ -18,6 +18,10 @@ public class Canton {
 
     // contructors
 
+    public Canton() {
+
+    }
+
     public  Canton(String name, String picture) {
         this.name = name;
         this.picture = picture;
@@ -49,6 +53,8 @@ public class Canton {
     }
 
     // setters
+
+    public void setId(int id) {this.id = id;}
 
     public void setName(String name) {
         this.name = name;

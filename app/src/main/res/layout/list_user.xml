@@ -14,11 +14,11 @@
         android:gravity="start|center"
         android:text="@string/user"
         android:background="#fff"
-        app:layout_constraintRight_toLeftOf="@+id/imgList"
+        app:layout_constraintRight_toLeftOf="@+id/imgProfile"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <ImageButton
-        android:id="@+id/imgList"
+        android:id="@+id/imgProfile"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="#fff"

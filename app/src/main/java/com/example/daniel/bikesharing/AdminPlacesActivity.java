@@ -27,6 +27,8 @@ public class AdminPlacesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_places);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolAdminPlaces);
+        if(toolbar == null)
+            Log.e("TOOLBAR", "La toolbar est null");
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 

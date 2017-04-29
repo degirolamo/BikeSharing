@@ -86,24 +86,8 @@ public class RentAdapter  extends BaseAdapter implements AdapterView.OnItemClick
 
         btnPlace = (Button) view.findViewById(R.id.btnPlace);
         btnTown = (Button) view.findViewById(R.id.btnTown);
-//        TextView txtDate = (TextView) view.findViewById(R.id.txtDate);
 
         //setting all values in listview
-        Date dateD = new Date();
-        Date dateF = new Date();
-        String strDateD;
-        String strDateF;
-        DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
-//        try {
-//            dateD = formatter.parse(listPlaces.get(position).getBeginDate());
-//            dateF = formatter.parse(listPlaces.get(position).getEndDate());
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-        formatter = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault());
-        strDateD = formatter.format(dateD);
-        strDateF = formatter.format(dateF);
-
         btnPlace.setText(listPlaces.get(position).getName());
         btnTown.setText(town.getNpa() + " " + town.getName());
 

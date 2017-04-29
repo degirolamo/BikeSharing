@@ -43,7 +43,6 @@ public class AdminUsersActivity extends AppCompatActivity {
 
         PersonAdapter adapter = new PersonAdapter(this, persons);
         listViewPersons.setAdapter(adapter);
-        listViewPersons.setOnItemClickListener(adapter);
     }
 
     @Override
