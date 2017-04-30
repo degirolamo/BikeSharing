@@ -1,9 +1,13 @@
 package com.example.daniel.bikesharing;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.ListView;
 
 import com.example.daniel.bikesharing.ActivityDB.CantonDB;
@@ -25,6 +29,10 @@ public class CantonActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_canton);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolCantons);
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+
         db = new DatabaseHelper(getApplicationContext());
         CantonDB cantonDB = new CantonDB(db);
         List<Canton> cantons = cantonDB.getCantons();
@@ -33,5 +41,12 @@ public class CantonActivity extends AppCompatActivity {
         CantonAdapter adapter = new CantonAdapter(this, cantons);
         listViewCantons.setAdapter(adapter);
         listViewCantons.setOnItemClickListener(adapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.settings, menu);
+        return true;
     }
 }

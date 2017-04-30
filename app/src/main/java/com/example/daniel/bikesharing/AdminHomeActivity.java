@@ -10,6 +10,8 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 
+import static com.example.daniel.bikesharing.MainActivity.IS_CONNECTED;
+
 public class AdminHomeActivity extends AppCompatActivity {
 
     Button btnSearch;
@@ -67,10 +69,9 @@ public class AdminHomeActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        Intent i = new Intent(getApplicationContext(), HomeActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         i.putExtra("EXIT", true);
-        startActivity(i);
         finish();
     }
 

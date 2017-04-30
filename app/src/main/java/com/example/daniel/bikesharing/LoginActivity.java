@@ -11,7 +11,10 @@ import android.widget.Toast;
 
 import com.example.daniel.bikesharing.ActivityDB.PersonDB;
 import com.example.daniel.bikesharing.DB.DatabaseHelper;
+import com.example.daniel.bikesharing.ObjectDB.Person;
 
+import static com.example.daniel.bikesharing.MainActivity.IS_CONNECTED;
+import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
 import static com.example.daniel.bikesharing.R.id.btnLogin;
 
 public class LoginActivity extends AppCompatActivity {
@@ -30,6 +33,16 @@ public class LoginActivity extends AppCompatActivity {
         db = new DatabaseHelper(getApplicationContext());
         personDB = new PersonDB(db);
 
+        if(IS_CONNECTED == 1) {
+            Intent i;
+            if(USER_CONNECTED.isAdmin() == 1)
+                i = new Intent(getApplicationContext(), AdminHomeActivity.class);
+            else
+                i = new Intent(getApplicationContext(), SearchActivity.class);
+            startActivity(i);
+            finish();
+        }
+
         txtEmail = (EditText) findViewById(R.id.txtEmail);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
         btnValidate = (Button) findViewById(R.id.btnValidate);
@@ -40,16 +53,21 @@ public class LoginActivity extends AppCompatActivity {
                 String email = txtEmail.getText().toString();
                 String password = txtPassword.getText().toString();
 
-                if(personDB.getPassword(email).equals(password)) {
-                    if (personDB.isAdmin(email) == 1) {
+                Person person = personDB.getPerson(email);
+
+                if(person.getPassword().equals(password)) {
+                    Intent i;
+                    if (person.isAdmin() == 1) {
                         //The user is administrator
-                        Intent i = new Intent(getApplicationContext(), AdminHomeActivity.class);
-                        startActivity(i);
+                        i = new Intent(getApplicationContext(), AdminHomeActivity.class);
                     }
                     else {
-                        Intent i = new Intent(getApplicationContext(), SearchActivity.class);
-                        startActivity(i);
+                        i = new Intent(getApplicationContext(), SearchActivity.class);
                     }
+                    startActivity(i);
+                    finish();
+                    IS_CONNECTED = 1;
+                    USER_CONNECTED = person;
                 }
                 else
                     Toast.makeText(getApplicationContext(), "Email et/ou mot de passe incorrect(s) !", Toast.LENGTH_LONG).show();

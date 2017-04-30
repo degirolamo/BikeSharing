@@ -35,8 +35,8 @@ import static com.example.daniel.bikesharing.R.styleable.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Database Helper
-    DatabaseHelper db;
+    public static int IS_CONNECTED = 0;
+    public static Person USER_CONNECTED;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 
+        DatabaseHelper db;
         db = new DatabaseHelper(getApplicationContext());
         db.reloadDatabase();
 
@@ -142,21 +143,23 @@ public class MainActivity extends AppCompatActivity {
 //            Log.e("BIKES", "id = " + bike.getId() + ", idPlace = " + bike.getIdPlace());
 //        }
 
-        List<Person> persons = personDB.getPersons();
-        for (Person person : persons) {
-            Log.e("PERSONS", "id = " + person.getId() + ", email = " + person.getEmail() + ", firstname = " + person.getFirstname());
-        }
+//        List<Person> persons = personDB.getPersons();
+//        for (Person person : persons) {
+//            Log.e("PERSONS", "id = " + person.getId() + ", email = " + person.getEmail() + ", firstname = " + person.getFirstname());
+//        }
 //
 //        List<Rent> rents = rentDB.getRentsByPerson(3);
 //        for (Rent rent : rents) {
 //            Log.e("RENTS", "idBike = " + rent.getIdBike() + ", idPerson = " + rent.getIdPerson() + ", beginDate = " + rent.getBeginDate() + ", endDate = " + rent.getEndDate());
 //        }
 
-        if (getIntent().getBooleanExtra("EXIT", false))
-            finish();
-        else {
-            Intent i = new Intent(getApplicationContext(), AdminHomeActivity.class);
+        if (!getIntent().getBooleanExtra("EXIT", false)) {
+            Intent i = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(i);
+            finish();
+        }
+        else {
+            Log.e("EXIT", getIntent().getBooleanExtra("EXIT", false) + "");
             finish();
         }
     }

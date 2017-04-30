@@ -90,6 +90,25 @@ public class PlaceDB {
         sqlDB.insert(db.getTABLE_PLACE(), null, values);
     }
 
+    public void updatePlace(int id, String name, String picture, int nbPlaces, String address, int idTown) {
+
+        SQLiteDatabase sqlDB = db.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(db.getKEY_PLACE_NAME(), name);
+        values.put(db.getKEY_PLACE_PICTURE(), picture);
+        values.put(db.getKEY_PLACE_NBPLACES(), nbPlaces);
+        values.put(db.getKEY_PLACE_ADDRESS(), address);
+
+
+        sqlDB.update(db.getTABLE_PLACE(), values, db.getKEY_ID() + " = " + id, null);
+    }
+
+    public void deletePlace(int idPlace) {
+        SQLiteDatabase sqlDB = db.getWritableDatabase();
+        sqlDB.delete(db.getTABLE_PLACE(), db.getKEY_ID() + " = " + idPlace, null);
+    }
+
     public Place getPlaceByBike(int idBike) {
         String selectQuery = "SELECT * FROM " + db.getTABLE_PLACE()
                 + " AS p INNER JOIN " + db.getTABLE_BIKE() + " AS b ON p." + db.getKEY_ID() + " = " + db.getKEY_PLACEID()

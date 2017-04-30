@@ -90,8 +90,32 @@ public class PersonDB {
         return person;
     }
 
-    public void setAdminRights(int idPerson, int isAdmin) {
+    public Person getPerson(String email) {
+        String password = "";
+
+        String selectQuery = "SELECT * FROM " + db.getTABLE_PERSON()
+                + " WHERE " + db.getKEY_EMAIL() + " = '" + email + "'";
+
         SQLiteDatabase sqlDB = db.getReadableDatabase();
+        Cursor c = sqlDB.rawQuery(selectQuery, null);
+
+        if(c != null && c.getCount() >= 1)
+            c.moveToFirst();
+
+        Person person = new Person();
+        person.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
+        person.setIdCanton(c.getInt(c.getColumnIndex(db.getKEY_CANTONID())));
+        person.setEmail(c.getString(c.getColumnIndex(db.getKEY_EMAIL())));
+        person.setPassword(c.getString(c.getColumnIndex(db.getKEY_PASSWORD())));
+        person.setFirstname(c.getString(c.getColumnIndex(db.getKEY_FIRSTNAME())));
+        person.setLastname(c.getString(c.getColumnIndex(db.getKEY_LASTNAME())));
+        person.setAdmin(c.getInt(c.getColumnIndex(db.getKEY_ISADMIN())));
+
+        return person;
+    }
+
+    public void setAdminRights(int idPerson, int isAdmin) {
+        SQLiteDatabase sqlDB = db.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(db.getKEY_ISADMIN(), isAdmin);
@@ -103,35 +127,5 @@ public class PersonDB {
     public void deletePerson(int idPerson) {
         SQLiteDatabase sqlDB = db.getWritableDatabase();
         sqlDB.delete(db.getTABLE_PERSON(), db.getKEY_ID() + " = " + idPerson, null);
-    }
-
-    public String getPassword(String email) {
-        String password = "";
-
-        String selectQuery = "SELECT " + db.getKEY_PASSWORD() + " FROM " + db.getTABLE_PERSON()
-                + " WHERE " + db.getKEY_EMAIL() + " = '" + email + "'";
-
-        SQLiteDatabase sqlDB = db.getReadableDatabase();
-        Cursor c = sqlDB.rawQuery(selectQuery, null);
-
-        if(c != null && c.getCount() >= 1) {
-            c.moveToFirst();
-
-            password = c.getString(c.getColumnIndex(db.getKEY_PASSWORD()));
-            return password;
-        }
-        return "";
-    }
-
-    public int isAdmin(String email) {
-        String selectQuery = "SELECT " + db.getKEY_ISADMIN() + " FROM " + db.getTABLE_PERSON()
-                + " WHERE " + db.getKEY_EMAIL() + " = '" + email + "'";
-
-        SQLiteDatabase sqlDB = db.getReadableDatabase();
-        Cursor c = sqlDB.rawQuery(selectQuery, null);
-
-        if(c != null)
-            c.moveToFirst();
-        return c.getInt(c.getColumnIndex(db.getKEY_ISADMIN()));
     }
 }

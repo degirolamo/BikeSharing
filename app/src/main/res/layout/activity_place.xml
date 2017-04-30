@@ -7,6 +7,27 @@
     android:orientation="vertical"
     tools:context="com.example.daniel.bikesharing.PlaceActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolPlaces"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:title="@string/bike_sharing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabPlaceAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:tint="#fff"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:src="@android:drawable/ic_input_add"
+        android:scaleType="center"/>
+
     <LinearLayout
         android:id="@+id/linearLayoutHeader"
         android:layout_width="match_parent"
@@ -15,8 +36,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_below="@+id/toolPlaces"
         tools:ignore="RtlHardcoded">
 
         <Button

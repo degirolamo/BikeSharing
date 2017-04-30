@@ -3,17 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="8dp"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginBottom="8dp"
     android:background="#FFFFFF"
     tools:context="com.example.daniel.bikesharing.QRCodeActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolQRCode"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:title="@string/bike_sharing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.Toolbar>
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/imgCode"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_below="@+id/toolQRCode"
         android:layout_gravity="center" />
 
 </RelativeLayout>
