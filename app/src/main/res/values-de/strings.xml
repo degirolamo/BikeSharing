@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bike Sharing</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="action_logout">Ausloggen</string>
+    <string name="administration">Verwaltung</string>
+    <string name="adresse_exacte">Exakte Adresse</string>
+    <string name="adresse_mail">E-mail</string>
+    <string name="authors">Autoren</string>
+    <string name="bike_sharing">Bike Sharing</string>
+    <string name="cantons">Kantone</string>
+    <string name="click_here_to_generate_qr_code">KLICKEN SIE HIER, qr Code zu generieren</string>
+    <string name="delete">Entferner</string>
+    <string name="edit">Veränderung</string>
+    <string name="enter_text_here">Geben Sie den Text hier</string>
+    <string name="ici_le_nom_du_lieu">Hier der Name des Ortes</string>
+    <string name="ici_c_est_le_texte_du_spinner">Hier der Text des Spinners</string>
+    <string name="ici_le_nombre_de_places_libres">Hier die Anzahl der freien Plätze</string>
+    <string name="ici_le_nombre_de_v_los">Hier die Anzahl der Fahrräder</string>
+    <string name="l_adresse_ici">Die Adresse hier</string>
+    <string name="language">Sprache</string>
+    <string name="login">Anmeldung</string>
+    <string name="louer_un_v_lo">Ein Fahrrad ausleihen</string>
+    <string name="mot_de_passe">Passwort</string>
+    <string name="mot_de_passe_oubli">Haben Sie Ihr Passwort vergessen</string>
+    <string name="nombre_de_v_los_disponibles">Anzahl Fahrräder vorhanden</string>
+    <string name="nombre_de_places_libres">Anzahl freier Plätze</string>
+    <string name="places">Plätze</string>
+    <string name="rechercher">Suche</string>
+    <string name="s_enregistrer">Registrieren</string>
+    <string name="search">Suche</string>
+    <string name="statistiques">Statistiken</string>
+    <string name="user">Benutzer</string>
+    <string name="utilisateurs">Benutzer</string>
+    <string name="valider">Bestätigen</string>
+    <string name="villes">Städte</string>
+    <string name="bike_sharingTitle">Bike Sharing</string>
+    <string name="english">ENGLISCH</string>
+    <string name="francais">FRANZÖSISCH</string>
+    <string name="german">DEUTSCH</string>
+</resources>

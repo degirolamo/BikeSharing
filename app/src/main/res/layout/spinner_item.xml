@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/txtSpinnerItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -8,4 +9,5 @@
     android:paddingTop="4dp"
     android:paddingBottom="4dp"
     android:gravity="start"
-    android:text="Ici c'est le texte du spinner"/>
+    android:text="@string/ici_c_est_le_texte_du_spinner"
+    tools:ignore="RtlSymmetry" />

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bike Sharing</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_settings">Settings</string>
+    <string name="administration">Administration</string>
+    <string name="adresse_mail">E-mail</string>
+    <string name="authors">authors</string>
+    <string name="cantons">Cantons</string>
+    <string name="login">Login</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="adresse_exacte">Exact address</string>
+    <string name="bike_sharing">Bike Sharing</string>
+    <string name="click_here_to_generate_qr_code">CLICK HERE TO generate qr code</string>
+    <string name="enter_text_here">Enter Text Here</string>
+    <string name="ici_le_nom_du_lieu">Here the text of the spinner</string>
+    <string name="ici_c_est_le_texte_du_spinner">" Here the text of the spinner"</string>
+    <string name="ici_le_nombre_de_places_libres">"Here the number of free places "</string>
+    <string name="ici_le_nombre_de_v_los">Here the number of bikes</string>
+    <string name="l_adresse_ici">The address here</string>
+    <string name="language">Language</string>
+    <string name="louer_un_v_lo">Rent a bike</string>
+    <string name="mot_de_passe">Password</string>
+    <string name="mot_de_passe_oubli">Forgot your password</string>
+    <string name="nombre_de_places_libres">Number of free places</string>
+    <string name="nombre_de_v_los_disponibles">Number of bikes available</string>
+    <string name="places">Places</string>
+    <string name="rechercher">Search</string>
+    <string name="s_enregistrer">Register</string>
+    <string name="search">Search</string>
+    <string name="statistiques">Statistics</string>
+    <string name="user">User</string>
+    <string name="utilisateurs">Users</string>
+    <string name="valider">Confirm</string>
+    <string name="villes">Towns</string>
+    <string name="bike_sharingTitle">Bike Sharing</string>
+    <string name="english">ENGLISH</string>
+    <string name="german">GERMAN</string>
+    <string name="francais">FRENCH</string>
+</resources>

@@ -22,4 +22,22 @@
     <string name="mot_de_passe">Mot de passe</string>
     <string name="valider">Valider</string>
     <string name="placesAdmin">Places</string>
+    <string name="login">Login</string>
+    <string name="s_enregistrer">S\'enregistrer</string>
+    <string name="adresse_exacte">Adresse exacte</string>
+    <string name="ici_le_nom_du_lieu">Ici le nom du lieu</string>
+    <string name="ici_le_nombre_de_places_libres">Ici le nombre de places libres</string>
+    <string name="ici_le_nombre_de_v_los">Ici le nombre de vélos</string>
+    <string name="l_adresse_ici">L\'adresse ici</string>
+    <string name="louer_un_v_lo">Louer un vélo</string>
+    <string name="nombre_de_places_libres">Nombre de places libres</string>
+    <string name="nombre_de_v_los_disponibles">Nombre de vélos disponibles</string>
+    <string name="language">Language</string>
+    <string name="ici_c_est_le_texte_du_spinner">Ici c\'est le texte du spinner</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="bike_sharingTitle">Bike Sharing</string>
+    <string name="english">ENGLISH</string>
+    <string name="francais">FRANCAIS</string>
+    <string name="german">GERMAN</string>
 </resources>

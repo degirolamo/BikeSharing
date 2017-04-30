@@ -18,7 +18,7 @@
         android:id="@+id/txtPlaceName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ici le nom du lieu"
+        android:text="@string/ici_le_nom_du_lieu"
         android:textSize="24sp"
         android:layout_marginTop="24dp"
         android:layout_gravity="center"
@@ -30,7 +30,9 @@
         android:layout_height="wrap_content"
         android:src="@drawable/monthey_gare_cff"
         android:layout_marginTop="24dp"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:contentDescription=""
+        tools:ignore="ContentDescription" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -48,7 +50,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Adresse exacte"
+                android:text="@string/adresse_exacte"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -56,7 +58,7 @@
                 android:id="@+id/txtPlaceAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="L'adresse ici"
+                android:text="@string/l_adresse_ici"
                 android:gravity="end"/>
         </LinearLayout>
 
@@ -71,7 +73,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nombre de vélos disponibles"
+                android:text="@string/nombre_de_v_los_disponibles"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -80,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                android:text="Ici le nombre de vélos" />
+                android:text="@string/ici_le_nombre_de_v_los" />
         </LinearLayout>
 
         <LinearLayout
@@ -94,15 +96,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nombre de places libres"
-                android:textSize="16dp"
+                android:text="@string/nombre_de_places_libres"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txtPlaceDispoSlots"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ici le nombre de places libres"
+                android:text="@string/ici_le_nombre_de_places_libres"
                 android:gravity="end" />
         </LinearLayout>
     </LinearLayout>
@@ -116,6 +118,6 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:layout_gravity="center"
-        android:text="Louer un vélo"
+        android:text="@string/louer_un_v_lo"
         android:background="@color/colorButton"/>
 </LinearLayout>
