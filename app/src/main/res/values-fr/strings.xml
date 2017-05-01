@@ -26,7 +26,7 @@
     <string name="login">S\'identifier</string>
     <string name="mot_de_passe">Mot de passe</string>
     <string name="mot_de_passe_oubli">Mot de passe oublié</string>
-    <string name="places">Lieus</string>
+    <string name="places">Lieux</string>
     <string name="rechercher">Rechercher</string>
     <string name="search">Rechercher</string>
     <string name="statistiques">Statistiques</string>
@@ -36,6 +36,6 @@
     <string name="villes">Villes</string>
     <string name="bike_sharingTitle">Bike Sharing</string>
     <string name="francais">FRANCAIS</string>
-    <string name="english">ENGLAIS</string>
+    <string name="english">ANGLAIS</string>
     <string name="german">ALLEMAND</string>
 </resources>

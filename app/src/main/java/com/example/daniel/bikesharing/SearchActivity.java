@@ -26,6 +26,7 @@ import com.example.daniel.bikesharing.Objects.RentAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
 import static com.example.daniel.bikesharing.R.id.listPlaces;
 
 public class SearchActivity extends AppCompatActivity {
@@ -75,5 +76,16 @@ public class SearchActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.settings, menu);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(USER_CONNECTED.isAdmin() == 0) {
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            i.putExtra("EXIT", true);
+            finish();
+        } else
+            super.onBackPressed();
     }
 }

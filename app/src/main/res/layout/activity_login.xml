@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context="com.example.daniel.bikesharing.LoginActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolLogin"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:title="@string/bike_sharing"
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp">
+    </android.support.v7.widget.Toolbar>
+
     <EditText
         android:id="@+id/txtEmail"
         android:layout_width="wrap_content"

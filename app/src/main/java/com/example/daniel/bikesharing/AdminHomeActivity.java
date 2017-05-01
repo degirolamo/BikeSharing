@@ -30,8 +30,8 @@ public class AdminHomeActivity extends AppCompatActivity {
 
         btnSearch = (Button) findViewById(R.id.btnAdminSearch);
         btnUsers = (Button) findViewById(R.id.btnAdminUsers);
-        btnPlaces = (Button) findViewById(R.id.btnAdminPlaces);
-        btnStats = (Button) findViewById(R.id.btnAdminStats);
+//        btnPlaces = (Button) findViewById(R.id.btnAdminPlaces);
+//        btnStats = (Button) findViewById(R.id.btnAdminStats);
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,27 +49,27 @@ public class AdminHomeActivity extends AppCompatActivity {
             }
         });
 
-        btnPlaces.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), AdminPlacesActivity.class);
-                startActivity(i);
-            }
-        });
-
-        btnStats.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+//        btnPlaces.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(getApplicationContext(), AdminPlacesActivity.class);
+//                startActivity(i);
+//            }
+//        });
+//
+//        btnStats.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
 //                Intent i = new Intent(getApplicationContext(), SearchActivity.class);
 //                startActivity(i);
-            }
-        });
+//            }
+//        });
 
     }
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         i.putExtra("EXIT", true);
         finish();

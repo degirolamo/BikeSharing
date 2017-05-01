@@ -114,6 +114,24 @@ public class PersonDB {
         return person;
     }
 
+    public boolean isEmailExisting(String email) {
+        boolean existing = false;
+        String selectQuery = "SELECT " + db.getKEY_EMAIL() + " FROM " + db.getTABLE_PERSON();
+
+        SQLiteDatabase sqlDB = db.getReadableDatabase();
+        Cursor c = sqlDB.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                if(c.getString(c.getColumnIndex(db.getKEY_EMAIL())).equals(email))
+                    existing = true;
+            } while (c.moveToNext());
+        }
+
+        return existing;
+    }
+
     public void setAdminRights(int idPerson, int isAdmin) {
         SQLiteDatabase sqlDB = db.getWritableDatabase();
 

@@ -143,10 +143,10 @@ public class MainActivity extends AppCompatActivity {
 //            Log.e("BIKES", "id = " + bike.getId() + ", idPlace = " + bike.getIdPlace());
 //        }
 
-//        List<Person> persons = personDB.getPersons();
-//        for (Person person : persons) {
-//            Log.e("PERSONS", "id = " + person.getId() + ", email = " + person.getEmail() + ", firstname = " + person.getFirstname());
-//        }
+        List<Person> persons = personDB.getPersons();
+        for (Person person : persons) {
+            Log.e("PERSONS", "id = " + person.getId() + ", email = " + person.getEmail() + ", firstname = " + person.getFirstname());
+        }
 //
 //        List<Rent> rents = rentDB.getRentsByPerson(3);
 //        for (Rent rent : rents) {

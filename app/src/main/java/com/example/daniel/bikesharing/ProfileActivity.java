@@ -57,18 +57,5 @@ public class ProfileActivity extends AppCompatActivity {
         else
             role = "Utilisateur";
         txtIsAdmin.setText(role);
-
-        //Places most rent
-//        PlaceDB placeDB = new PlaceDB(db);
-//        List<Place> places = new ArrayList<>();
-//        List<Integer> nbPlaces = placeDB.getNbRentsByPerson(person.getId());
-//        for (int nbPlace : nbPlaces) {
-//            places.add(placeDB.getPlace(nbPlace));
-//        }
-//        listViewRents = (ListView) findViewById(R.id.listProfileRents);
-//
-//        RentAdapter adapter = new RentAdapter(this, places);
-//        listViewRents.setAdapter(adapter);
-//        listViewRents.setOnItemClickListener(adapter);
     }
 }

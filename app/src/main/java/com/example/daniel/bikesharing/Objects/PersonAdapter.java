@@ -78,12 +78,12 @@ public class PersonAdapter extends BaseAdapter {
 
         btnAdmin = (ImageButton) view.findViewById(R.id.imgAdmin);
         if(listPersons.get(position).isAdmin() == 1) {
-            btnAdmin.setColorFilter(view.getResources().getColor(R.color.colorBackground));
+            btnAdmin.setColorFilter(view.getResources().getColor(R.color.colorBlack));
             message = "Voulez-vous vraiment retirer les droits d'administration à " +
                     listPersons.get(position).getFirstname() + " " + listPersons.get(position).getLastname();
             btnAdmin.setOnClickListener(new OpenConfirmDialog(message, position, 0));
         } else {
-            btnAdmin.setColorFilter(Color.BLACK);
+            btnAdmin.setColorFilter(view.getResources().getColor(R.color.colorGrey));
             message = "Voulez-vous vraiment donner les droits d'administration à " +
                     listPersons.get(position).getFirstname() + " " + listPersons.get(position).getLastname();
             btnAdmin.setOnClickListener(new OpenConfirmDialog(message, position, 1));

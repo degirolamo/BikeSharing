@@ -24,25 +24,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CantonActivity" />
-        <activity android:name=".TownActivity" />
-        <activity android:name=".PlaceActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SearchActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".InfosPlaceActivity" />
-        <activity
-            android:name=".QRCodeActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name=".AdminHomeActivity" />
-        <activity android:name=".AdminUsersActivity" />
-        <activity android:name=".AdminPlacesActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".LanguageActivity" />
-        <activity android:name=".AddPlaceActivity" />
-        <activity android:name=".EditPlaceActivity" />
+        <activity android:name=".CantonActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".TownActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".PlaceActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".LoginActivity" android:screenOrientation="portrait" />
+        <activity android:name=".SearchActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".RegisterActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".InfosPlaceActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".QRCodeActivity" android:screenOrientation="portrait" />
+        <activity android:name=".AdminHomeActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".AdminUsersActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".AdminPlacesActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".HomeActivity" android:screenOrientation="portrait" />
+        <activity android:name=".ProfileActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".SettingsActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".LanguageActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".AddPlaceActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".EditPlaceActivity" android:screenOrientation="portrait"  />
     </application>
 
 </manifest>
