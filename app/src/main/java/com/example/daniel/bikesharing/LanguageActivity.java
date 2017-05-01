@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 
 import java.util.Locale;
@@ -21,6 +22,7 @@ protected void onCreate(Bundle savedInstanceState) {
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setTitle(R.string.language);
         setSupportActionBar(toolbar);}
+
 
 //Button pour passer en FR
 
@@ -70,5 +72,15 @@ protected void onCreate(Bundle savedInstanceState) {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(i);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

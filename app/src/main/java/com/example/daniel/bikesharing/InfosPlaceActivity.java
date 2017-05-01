@@ -100,6 +100,10 @@ public class InfosPlaceActivity extends AppCompatActivity {
                 i.putExtra("idPlace", place.getId());
                 startActivity(i);
                 return true;
+            case R.id.action_settings:
+                i = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(i);
+                return true;
             case R.id.btnDelete:
                 AlertDialog.Builder builder = new AlertDialog.Builder(InfosPlaceActivity.this);
                 builder.setTitle(R.string.app_name);
@@ -124,6 +128,7 @@ public class InfosPlaceActivity extends AppCompatActivity {
                 });
                 AlertDialog alert = builder.create();
                 alert.show();
+
             default:
                 return super.onOptionsItemSelected(item);
         }
