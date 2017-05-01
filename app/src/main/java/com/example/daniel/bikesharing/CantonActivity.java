@@ -31,6 +31,7 @@ public class CantonActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolCantons);
         toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle(R.string.cantons);
         setSupportActionBar(toolbar);
 
         db = new DatabaseHelper(getApplicationContext());

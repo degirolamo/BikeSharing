@@ -34,6 +34,7 @@ public class AdminUsersActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolAdminUsers);
         toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle(R.string.utilisateurs);
         setSupportActionBar(toolbar);
 
         db = new DatabaseHelper(getApplicationContext());

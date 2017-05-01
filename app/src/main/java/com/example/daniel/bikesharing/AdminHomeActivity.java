@@ -26,6 +26,7 @@ public class AdminHomeActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolAdminHome);
         toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle(R.string.administration);
         setSupportActionBar(toolbar);
 
         btnSearch = (Button) findViewById(R.id.btnAdminSearch);

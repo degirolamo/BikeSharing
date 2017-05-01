@@ -33,6 +33,7 @@ public class QRCodeActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolQRCode);
         toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle(R.string.louer_un_v_lo);
         setSupportActionBar(toolbar);
 
         imgCode = (ImageView)findViewById(R.id.imgCode);

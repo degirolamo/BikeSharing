@@ -12,7 +12,7 @@
         android:minHeight="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         android:title="@string/bike_sharing"
-        android:layout_width="match_parent"
+        android:layout_width="368dp"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="8dp">
@@ -42,7 +42,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Prénom"
+                android:text="@string/pr_nom"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
 
@@ -50,7 +50,7 @@
                 android:id="@+id/txtProfileFirstname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Le prénom ici"
+                android:text="@string/le_pr_nom_ici"
                 android:gravity="end"/>
         </LinearLayout>
 
@@ -65,7 +65,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nom"
+                android:text="@string/nom"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -74,7 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                android:text="Le nom ici" />
+                android:text="@string/le_nom_ici" />
         </LinearLayout>
 
         <LinearLayout
@@ -88,7 +88,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Adresse e-mail"
+                android:text="@string/adresse_mail"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -96,7 +96,7 @@
                 android:id="@+id/txtProfileEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="L'adresse e-mail ici"
+                android:text="@string/mail_ici"
                 android:gravity="end" />
         </LinearLayout>
 
@@ -111,7 +111,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Canton"
+                android:text="@string/cantons"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -119,7 +119,7 @@
                 android:id="@+id/txtProfileCanton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Le canton ici"
+                android:text="@string/le_canton_ici"
                 android:gravity="end" />
         </LinearLayout>
 
@@ -134,7 +134,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Type d'utilisateur"
+                android:text="@string/type_d_utilisateur"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -142,7 +142,7 @@
                 android:id="@+id/txtProfileIsAdmin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Le type de user ici"
+                android:text="@string/le_type_de_user_ici"
                 android:gravity="end" />
         </LinearLayout>
     </LinearLayout>

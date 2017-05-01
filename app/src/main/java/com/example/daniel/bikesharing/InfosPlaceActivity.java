@@ -56,6 +56,7 @@ public class InfosPlaceActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolInfosPlace);
         toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle(R.string.InfoPlace);
         setSupportActionBar(toolbar);
 
         DatabaseHelper db = new DatabaseHelper(getApplicationContext());

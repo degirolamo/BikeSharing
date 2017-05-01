@@ -41,6 +41,7 @@ public class SearchActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolSearch);
         toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle(R.string.rechercher);
         setSupportActionBar(toolbar);
 
         db = new DatabaseHelper(getApplicationContext());

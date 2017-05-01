@@ -21,7 +21,6 @@
     <string name="mot_de_passe_oubli">Mot de passe oublié ?</string>
     <string name="mot_de_passe">Mot de passe</string>
     <string name="valider">Valider</string>
-    <string name="placesAdmin">Places</string>
     <string name="login">Login</string>
     <string name="s_enregistrer">S\'enregistrer</string>
     <string name="adresse_exacte">Adresse exacte</string>
@@ -40,4 +39,17 @@
     <string name="english">ENGLISH</string>
     <string name="francais">FRANCAIS</string>
     <string name="german">GERMAN</string>
+    <string name="Profile">Profile</string>
+    <string name="AddPlace">Add a place</string>
+    <string name="EditPlace">Edit a place</string>
+    <string name="InfoPlace">Information</string>
+    <string name="Language">Choose a language</string>
+    <string name="pr_nom">Prénom</string>
+    <string name="le_pr_nom_ici">Le prénom ici</string>
+    <string name="nom">nom</string>
+    <string name="le_nom_ici">Le nom ici</string>
+    <string name="mail_ici">L\'adresse e-mail ici</string>
+    <string name="le_canton_ici">Le canton ici</string>
+    <string name="type_d_utilisateur">Type d\'utilisateur</string>
+    <string name="le_type_de_user_ici">Le type de user ici</string>
 </resources>

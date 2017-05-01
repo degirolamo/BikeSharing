@@ -43,6 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolRegister);
         toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle(R.string.s_enregistrer);
         setSupportActionBar(toolbar);
 
         DatabaseHelper db = new DatabaseHelper(getApplicationContext());

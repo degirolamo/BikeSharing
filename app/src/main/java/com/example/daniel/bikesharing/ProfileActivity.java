@@ -1,10 +1,14 @@
 package com.example.daniel.bikesharing;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -36,6 +40,11 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolProfile);
+        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle(R.string.Profile);
+        setSupportActionBar(toolbar);
+
         db = new DatabaseHelper(getApplicationContext());
         PersonDB personDB = new PersonDB(db);
         Person person = personDB.getPerson(getIntent().getIntExtra("idPerson", 0));
@@ -57,5 +66,11 @@ public class ProfileActivity extends AppCompatActivity {
         else
             role = "Utilisateur";
         txtIsAdmin.setText(role);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.settings, menu);
+        return true;
     }
 }

@@ -38,6 +38,7 @@ public class PlaceActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolPlaces);
         toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle(R.string.places);
         setSupportActionBar(toolbar);
 
         DatabaseHelper db;

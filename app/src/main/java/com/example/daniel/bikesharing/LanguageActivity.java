@@ -2,8 +2,10 @@ package com.example.daniel.bikesharing;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import java.util.Locale;
@@ -13,7 +15,12 @@ public class LanguageActivity extends AppCompatActivity {
     @Override
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_language);}
+    setContentView(R.layout.activity_language);
+
+    Toolbar toolbar = (Toolbar) findViewById(R.id.toolLanguage);
+        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle(R.string.language);
+        setSupportActionBar(toolbar);}
 
 //Button pour passer en FR
 
@@ -23,7 +30,7 @@ protected void onCreate(Bundle savedInstanceState) {
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
-        config.locale = locale;
+        config.setLocale(locale);
         getResources().updateConfiguration(config,v.getResources().getDisplayMetrics());
 
         Intent intent = new Intent(this, LanguageActivity.class);
@@ -40,7 +47,7 @@ protected void onCreate(Bundle savedInstanceState) {
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
-        config.locale = locale;
+        config.setLocale(locale);
         getResources().updateConfiguration(config,v.getResources().getDisplayMetrics());
 
         Intent intent = new Intent(this, LanguageActivity.class);
@@ -56,7 +63,7 @@ protected void onCreate(Bundle savedInstanceState) {
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
-        config.locale = locale;
+        config.setLocale(locale);
         getResources().updateConfiguration(config,v.getResources().getDisplayMetrics());
 
         Intent intent = new Intent(this, LanguageActivity.class);

@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolMain);
         toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle(R.string.bike_sharing);
         setSupportActionBar(toolbar);
 
         DatabaseHelper db;

@@ -38,6 +38,7 @@ public class TownActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolTowns);
         toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle(R.string.villes);
         setSupportActionBar(toolbar);
 
         ListView listViewTowns;

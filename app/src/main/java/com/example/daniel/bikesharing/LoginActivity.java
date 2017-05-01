@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolLogin);
         toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle(R.string.login);
         setSupportActionBar(toolbar);
 
         db = new DatabaseHelper(getApplicationContext());

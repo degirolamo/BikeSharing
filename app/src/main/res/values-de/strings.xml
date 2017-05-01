@@ -9,7 +9,7 @@
     <string name="authors">Autoren</string>
     <string name="bike_sharing">Bike Sharing</string>
     <string name="cantons">Kantone</string>
-    <string name="click_here_to_generate_qr_code">KLICKEN SIE HIER, qr Code zu generieren</string>
+    <string name="click_here_to_generate_qr_code">Klicken Sie hier, qr Code zu generieren</string>
     <string name="delete">Entferner</string>
     <string name="edit">Veränderung</string>
     <string name="enter_text_here">Geben Sie den Text hier</string>
@@ -38,4 +38,17 @@
     <string name="english">ENGLISCH</string>
     <string name="francais">FRANZÖSISCH</string>
     <string name="german">DEUTSCH</string>
+    <string name="Profile">Profil</string>
+    <string name="nom">Name</string>
+    <string name="pr_nom">Vorname</string>
+    <string name="type_d_utilisateur">Benutzertyp</string>
+    <string name="mail_ici">Die E-Mail-Adresse hier</string>
+    <string name="le_canton_ici">Der Kanton hier</string>
+    <string name="le_nom_ici">Der Name hier</string>
+    <string name="le_pr_nom_ici">Der Vorname hier</string>
+    <string name="le_type_de_user_ici">Der Benutzertyp hier</string>
+    <string name="Language">Sprache wählen</string>
+    <string name="InfoPlace">Informationen</string>
+    <string name="EditPlace">Bearbeiten Platz</string>
+    <string name="AddPlace">Füge einen Platz hinzu</string>
 </resources>

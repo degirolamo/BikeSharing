@@ -34,6 +34,7 @@ public class EditPlaceActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolAddPlace);
         toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle(R.string.EditPlace);
         setSupportActionBar(toolbar);
 
         txtName = (EditText) findViewById(R.id.txtAddPlaceName);

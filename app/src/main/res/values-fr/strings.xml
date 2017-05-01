@@ -19,7 +19,7 @@
     <string name="ici_c_est_le_texte_du_spinner">Ici c\'est le texte du spinner</string>
     <string name="bike_sharing">Bike Sharing</string>
     <string name="cantons">Cantons</string>
-    <string name="click_here_to_generate_qr_code">CLIQUEZ ICI pour générer le qr code</string>
+    <string name="click_here_to_generate_qr_code">Cliquez ici pour générer le qr code</string>
     <string name="delete">Supprimer</string>
     <string name="edit">Modifier</string>
     <string name="enter_text_here">Entrez le texte ici</string>
@@ -38,4 +38,17 @@
     <string name="francais">FRANCAIS</string>
     <string name="english">ANGLAIS</string>
     <string name="german">ALLEMAND</string>
+    <string name="Profile">Profile</string>
+    <string name="pr_nom">Prénom</string>
+    <string name="le_pr_nom_ici">Le prénom ici</string>
+    <string name="nom">Nom</string>
+    <string name="le_nom_ici">Le nom ici</string>
+    <string name="mail_ici">L\'adresse e-mail ici</string>
+    <string name="le_canton_ici">Le canton ici</string>
+    <string name="type_d_utilisateur">Type d\'utilisateur</string>
+    <string name="le_type_de_user_ici">Le type de user ici</string>
+    <string name="AddPlace">Ajouter un lieu</string>
+    <string name="EditPlace">Modifier un lieu</string>
+    <string name="InfoPlace">Informations</string>
+    <string name="Language">Choisir une langue</string>
 </resources>
