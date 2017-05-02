@@ -1,30 +1,25 @@
 package com.example.daniel.bikesharing;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.daniel.bikesharing.ActivityDB.CantonDB;
 import com.example.daniel.bikesharing.ActivityDB.PersonDB;
-import com.example.daniel.bikesharing.ActivityDB.PlaceDB;
 import com.example.daniel.bikesharing.DB.DatabaseHelper;
 import com.example.daniel.bikesharing.ObjectDB.Person;
-import com.example.daniel.bikesharing.ObjectDB.Place;
-import com.example.daniel.bikesharing.Objects.RentAdapter;
-import com.example.daniel.bikesharing.R;
 
-import java.util.ArrayList;
-import java.util.List;
+import static com.example.daniel.bikesharing.MainActivity.IS_CONNECTED;
+import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -34,7 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
     TextView txtEmail;
     TextView txtCanton;
     TextView txtIsAdmin;
-    ListView listViewRents;
+    Person person;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +43,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         db = new DatabaseHelper(getApplicationContext());
         PersonDB personDB = new PersonDB(db);
-        Person person = personDB.getPerson(getIntent().getIntExtra("idPerson", 0));
+        person = personDB.getPerson(getIntent().getIntExtra("idPerson", 0));
 
         txtName = (TextView) findViewById(R.id.txtProfileLastname);
         txtFirstname = (TextView) findViewById(R.id.txtProfileFirstname);
@@ -68,21 +63,62 @@ public class ProfileActivity extends AppCompatActivity {
             role = "Utilisateur";
         txtIsAdmin.setText(role);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
+        if(USER_CONNECTED.getId() == person.getId())
+            inflater.inflate(R.menu.edit, menu);
         inflater.inflate(R.menu.settings, menu);
+        MenuItem itemProfile = menu.findItem(R.id.action_profile);
+        itemProfile.setVisible(false);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
-                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(i);
+            case R.id.btnEdit:
+                startActivity(new Intent(getApplicationContext(), EditProfileActivity.class));
                 return true;
+            case R.id.action_settings:
+                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+                return true;
+            case R.id.action_logout:
+                AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
+                builder.setTitle(R.string.action_logout);
+                builder.setMessage("Etes-vous sûr de vouloir vous déconnecter ?");
+                builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        USER_CONNECTED = null;
+                        IS_CONNECTED = 0;
+                        dialog.dismiss();
+                        finishAffinity();
+                        finish();
+                        overridePendingTransition(0, 0);
+                        Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(i);
+                        overridePendingTransition(0, 0);
+                    }
+                });
+                builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
+        if(USER_CONNECTED.isAdmin() == 1)
+            startActivity(new Intent(getApplicationContext(), AdminHomeActivity.class));
+        else
+            startActivity(new Intent(getApplicationContext(), SearchActivity.class));
     }
 }

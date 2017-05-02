@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    tools:context="com.example.daniel.bikesharing.RegisterActivity">
+    tools:context="com.example.daniel.bikesharing.ProfileActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolProfile"
         android:minHeight="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         android:title="@string/bike_sharing"
-        android:layout_width="368dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="8dp">

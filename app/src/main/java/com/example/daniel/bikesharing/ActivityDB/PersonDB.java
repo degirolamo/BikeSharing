@@ -13,6 +13,9 @@ import com.example.daniel.bikesharing.ObjectDB.Place;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.attr.id;
+import static android.R.attr.name;
+
 /**
  * Created by pedro on 23.04.2017.
  */
@@ -68,6 +71,20 @@ public class PersonDB {
         sqlDB.insert(db.getTABLE_PERSON(), null, values);
     }
 
+    public void updatePerson(int id, int idCanton, String email, String firstname, String lastname) {
+
+        SQLiteDatabase sqlDB = db.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(db.getKEY_CANTONID(), idCanton);
+        values.put(db.getKEY_EMAIL(), email);
+        values.put(db.getKEY_FIRSTNAME(), firstname);
+        values.put(db.getKEY_LASTNAME(), lastname);
+
+
+        sqlDB.update(db.getTABLE_PERSON(), values, db.getKEY_ID() + " = " + id, null);
+    }
+
     public Person getPerson(int idPerson) {
         String selectQuery = "SELECT * FROM " + db.getTABLE_PERSON()
                 + " WHERE " + db.getKEY_ID() + " = " + idPerson;
@@ -114,9 +131,10 @@ public class PersonDB {
         return person;
     }
 
-    public boolean isEmailExisting(String email) {
+    public boolean isEmailExisting(int id, String email) {
         boolean existing = false;
-        String selectQuery = "SELECT " + db.getKEY_EMAIL() + " FROM " + db.getTABLE_PERSON();
+        String selectQuery = "SELECT " + db.getKEY_EMAIL() + " FROM " + db.getTABLE_PERSON()
+                + " WHERE " + db.getKEY_ID() + " != " + id;
 
         SQLiteDatabase sqlDB = db.getReadableDatabase();
         Cursor c = sqlDB.rawQuery(selectQuery, null);

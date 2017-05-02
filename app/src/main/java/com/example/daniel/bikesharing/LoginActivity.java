@@ -55,42 +55,41 @@ public class LoginActivity extends AppCompatActivity {
         txtPassword = (EditText) findViewById(R.id.txtPassword);
         btnValidate = (Button) findViewById(R.id.btnValidate);
 
+        if(getIntent().getStringExtra("email") != null)
+            txtEmail.setText(getIntent().getStringExtra("email"));
+
         btnValidate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = txtEmail.getText().toString();
                 String password = txtPassword.getText().toString();
 
-                Person person = personDB.getPerson(email);
-
-                if(person.getPassword().equals(password)) {
-                    Intent i;
-                    if (person.isAdmin() == 1) {
-                        //The user is administrator
-                        i = new Intent(getApplicationContext(), AdminHomeActivity.class);
+                if(personDB.isEmailExisting(0, email)) {
+                    Person person = personDB.getPerson(email);
+                    if(person.getPassword().equals(password)) {
+                        Intent i;
+                        if (person.isAdmin() == 1)
+                            //The user is administrator
+                            i = new Intent(getApplicationContext(), AdminHomeActivity.class);
+                        else
+                            i = new Intent(getApplicationContext(), SearchActivity.class);
+                        finish();
+                        startActivity(i);
+                        IS_CONNECTED = 1;
+                        USER_CONNECTED = person;
                     }
-                    else {
-                        i = new Intent(getApplicationContext(), SearchActivity.class);
-                    }
-                    startActivity(i);
-                    finish();
-                    IS_CONNECTED = 1;
-                    USER_CONNECTED = person;
+                    else
+                        Toast.makeText(getApplicationContext(), "Email et/ou mot de passe incorrect(s) !", Toast.LENGTH_LONG).show();
                 }
                 else
                     Toast.makeText(getApplicationContext(), "Email et/ou mot de passe incorrect(s) !", Toast.LENGTH_LONG).show();
             }
         });
     }
+
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(i);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+        finish();
     }
 }

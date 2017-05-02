@@ -5,75 +5,78 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF"
-    tools:context="com.example.daniel.bikesharing.RegisterActivity">
+    tools:context="com.example.daniel.bikesharing.EditProfileActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolAddPlace"
+        android:id="@+id/toolEditProfile"
         android:minHeight="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         android:title="@string/bike_sharing"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp">
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
-        android:id="@+id/linearLayoutAddPlace"
+        android:id="@+id/linearLayoutRegister"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolAddPlace"
+        app:layout_constraintTop_toBottomOf="@+id/toolEditProfile"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp">
 
         <EditText
-            android:id="@+id/txtAddPlaceName"
+            android:id="@+id/txtEditProfileLastname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Nom de la place" />
+            android:inputType="textPersonName"
+            android:hint="@string/nom" />
 
         <EditText
-            android:id="@+id/txtAddPlacePicture"
+            android:id="@+id/txtEditProfileFirstname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Nom de l'image (sans extension)" />
+            android:inputType="textPersonName"
+            android:hint="@string/pr_nom" />
 
         <EditText
-            android:id="@+id/txtAddPlaceNbPlaces"
+            android:id="@+id/txtEditProfileEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="number"
-            android:hint="Nombre de places" />
+            android:inputType="textEmailAddress"
+            android:hint="@string/adresse_mail" />
 
-        <EditText
-            android:id="@+id/txtAddPlaceAddress"
+        <Spinner
+            android:id="@+id/spinEditProfileCanton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:fontFamily="none"
-            android:hint="Adresse" />
+            android:textSize="18sp"
+            android:spinnerMode="dialog"
+            style="spinner"/>
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnAddPlaceValidate"
+        android:id="@+id/btnEditProfileValidate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/colorButton"
         android:layout_marginTop="32dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Valider"
+        android:layout_marginBottom="8dp"
+        android:text="@string/valider"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutAddPlace" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutRegister" />
 
 </android.support.constraint.ConstraintLayout>

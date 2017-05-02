@@ -1,10 +1,13 @@
 package com.example.daniel.bikesharing;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 
 import static com.example.daniel.bikesharing.MainActivity.IS_CONNECTED;
+import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
 
 public class AdminHomeActivity extends AppCompatActivity {
 
@@ -72,9 +76,9 @@ public class AdminHomeActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
-        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         i.putExtra("EXIT", true);
-        finish();
+        startActivity(i);
     }
 
     @Override
@@ -89,7 +93,38 @@ public class AdminHomeActivity extends AppCompatActivity {
             case R.id.action_settings:
                 Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivity(i);
+                finish();
                 return true;
+            case R.id.action_profile:
+                i = new Intent(getApplicationContext(), ProfileActivity.class);
+                i.putExtra("idPerson", USER_CONNECTED.getId());
+                startActivity(i);
+                finish();
+                return true;
+            case R.id.action_logout:
+                AlertDialog.Builder builder = new AlertDialog.Builder(AdminHomeActivity.this);
+                builder.setTitle(R.string.action_logout);
+                builder.setMessage("Etes-vous sûr de vouloir vous déconnecter ?");
+                builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        USER_CONNECTED = null;
+                        IS_CONNECTED = 0;
+                        dialog.dismiss();
+                        finishAffinity();
+                        finish();
+                        overridePendingTransition(0, 0);
+                        Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(i);
+                        overridePendingTransition(0, 0);
+                    }
+                });
+                builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
             default:
                 return super.onOptionsItemSelected(item);
         }

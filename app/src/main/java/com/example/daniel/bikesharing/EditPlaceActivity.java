@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.daniel.bikesharing.ActivityDB.PlaceDB;
 import com.example.daniel.bikesharing.DB.DatabaseHelper;
@@ -57,26 +58,49 @@ public class EditPlaceActivity extends AppCompatActivity {
         btnValidate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                placeDB.updatePlace(idPlace, txtName.getText().toString(), txtPicture.getText().toString(),
-                        Integer.parseInt(txtNbPlaces.getText().toString()), txtAddress.getText().toString(), place.getIdTown());
-                finish();
-                overridePendingTransition(0, 0);
-                Intent i = new Intent(getApplicationContext(), InfosPlaceActivity.class);
-                i.putExtra("idPlace", idPlace);
-                startActivity(i);
-                overridePendingTransition(0, 0);
+                if(!txtName.getText().toString().equals("") && !txtNbPlaces.getText().toString().equals("")
+                        && !txtAddress.getText().toString().equals("")) {
+                    if (!placeDB.isExistingPlace(place.getId(), txtName.getText().toString(), txtAddress.getText().toString())) {
+                        placeDB.updatePlace(idPlace, txtName.getText().toString(), txtPicture.getText().toString(),
+                                Integer.parseInt(txtNbPlaces.getText().toString()), txtAddress.getText().toString(), place.getIdTown());
+                        finish();
+                        overridePendingTransition(0, 0);
+                        Intent i = new Intent(getApplicationContext(), InfosPlaceActivity.class);
+                        i.putExtra("idPlace", idPlace);
+                        i.putExtra("parentClass", getIntent().getStringExtra("parentClass"));
+                        startActivity(i);
+                        overridePendingTransition(0, 0);
+                    }
+                    else
+                        Toast.makeText(getApplicationContext(), "Une place avec ce nom ou cette adresse existe déjà.", Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(getApplicationContext(), "Le nom, le nombre de place et l'adresse ne peuvent pas être vides",
+                            Toast.LENGTH_SHORT).show();
             }
         });
     }
+
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(i);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(), InfosPlaceActivity.class);
+        i.putExtra("idPlace", idPlace);
+        i.putExtra("parentClass", getIntent().getStringExtra("parentClass"));
+        startActivity(i);
+        finish();
+    }
+
+    public boolean canContinue(String name, String address) {
+        boolean nameExists = false;
+        boolean addressExists = false;
+        boolean canContinue = true;
+
+        if(place.getName().equals(name))
+            nameExists = true;
+        if(place.getAddress().equals(address))
+            addressExists = true;
+        if(nameExists && addressExists)
+            canContinue = true;
+
+        return canContinue;
     }
 }

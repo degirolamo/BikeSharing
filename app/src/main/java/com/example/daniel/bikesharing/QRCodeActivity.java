@@ -1,5 +1,7 @@
 package com.example.daniel.bikesharing;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -18,6 +20,9 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+
+import static com.example.daniel.bikesharing.MainActivity.IS_CONNECTED;
+import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
 
 public class QRCodeActivity extends AppCompatActivity {
 
@@ -90,6 +95,7 @@ public class QRCodeActivity extends AppCompatActivity {
         inflater.inflate(R.menu.settings, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -97,6 +103,36 @@ public class QRCodeActivity extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivity(i);
                 return true;
+            case R.id.action_profile:
+                i = new Intent(getApplicationContext(), ProfileActivity.class);
+                i.putExtra("idPerson", USER_CONNECTED.getId());
+                startActivity(i);
+                finish();
+                return true;
+            case R.id.action_logout:
+                AlertDialog.Builder builder = new AlertDialog.Builder(QRCodeActivity.this);
+                builder.setTitle(R.string.action_logout);
+                builder.setMessage("Etes-vous sûr de vouloir vous déconnecter ?");
+                builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        USER_CONNECTED = null;
+                        IS_CONNECTED = 0;
+                        dialog.dismiss();
+                        finishAffinity();
+                        finish();
+                        overridePendingTransition(0, 0);
+                        Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(i);
+                        overridePendingTransition(0, 0);
+                    }
+                });
+                builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
             default:
                 return super.onOptionsItemSelected(item);
         }

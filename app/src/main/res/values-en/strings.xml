@@ -51,4 +51,6 @@
     <string name="le_nom_ici">The firstname here</string>
     <string name="le_pr_nom_ici">The lastname here</string>
     <string name="le_type_de_user_ici">The type of user here</string>
+    <string name="confirmer_le_mot_de_passe">Password Confirmation</string>
+    <string name="icone_de_l_application">App icon</string>
 </resources>

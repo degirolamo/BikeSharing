@@ -104,6 +104,26 @@ public class PlaceDB {
         sqlDB.update(db.getTABLE_PLACE(), values, db.getKEY_ID() + " = " + id, null);
     }
 
+    public boolean isExistingPlace(int id, String name, String address) {
+        boolean existing = false;
+        String selectQuery = "SELECT " + db.getKEY_PLACE_NAME() + ", " + db.getKEY_PLACE_ADDRESS()
+                + " FROM " + db.getTABLE_PLACE() + " WHERE id != " + id;
+
+        SQLiteDatabase sqlDB = db.getReadableDatabase();
+        Cursor c = sqlDB.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                if(c.getString(c.getColumnIndex(db.getKEY_PLACE_NAME())).equals(name)
+                        || c.getString(c.getColumnIndex(db.getKEY_PLACE_ADDRESS())).equals(address))
+                    existing = true;
+            } while (c.moveToNext());
+        }
+
+        return existing;
+    }
+
     public void deletePlace(int idPlace) {
         SQLiteDatabase sqlDB = db.getWritableDatabase();
         sqlDB.delete(db.getTABLE_PLACE(), db.getKEY_ID() + " = " + idPlace, null);

@@ -1,5 +1,7 @@
 package com.example.daniel.bikesharing;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +29,7 @@ import com.example.daniel.bikesharing.Objects.RentAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.daniel.bikesharing.MainActivity.IS_CONNECTED;
 import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
 import static com.example.daniel.bikesharing.R.id.listPlaces;
 
@@ -71,6 +74,7 @@ public class SearchActivity extends AppCompatActivity {
     public void displayCantons(View v) {
         Intent i = new Intent(getApplicationContext(), CantonActivity.class);
         startActivity(i);
+        finish();
     }
 
     @Override
@@ -84,12 +88,15 @@ public class SearchActivity extends AppCompatActivity {
     public void onBackPressed() {
         if(USER_CONNECTED.isAdmin() == 0) {
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             i.putExtra("EXIT", true);
-            finish();
-        } else
-            super.onBackPressed();
+            startActivity(i);
+        } else {
+            finishAffinity();
+            startActivity(new Intent(getApplicationContext(), AdminHomeActivity.class));
+        }
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -97,6 +104,36 @@ public class SearchActivity extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivity(i);
                 return true;
+            case R.id.action_profile:
+                i = new Intent(getApplicationContext(), ProfileActivity.class);
+                i.putExtra("idPerson", USER_CONNECTED.getId());
+                startActivity(i);
+                finish();
+                return true;
+            case R.id.action_logout:
+                AlertDialog.Builder builder = new AlertDialog.Builder(SearchActivity.this);
+                builder.setTitle(R.string.action_logout);
+                builder.setMessage("Etes-vous sûr de vouloir vous déconnecter ?");
+                builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        USER_CONNECTED = null;
+                        IS_CONNECTED = 0;
+                        dialog.dismiss();
+                        finishAffinity();
+                        finish();
+                        overridePendingTransition(0, 0);
+                        Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(i);
+                        overridePendingTransition(0, 0);
+                    }
+                });
+                builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
             default:
                 return super.onOptionsItemSelected(item);
         }

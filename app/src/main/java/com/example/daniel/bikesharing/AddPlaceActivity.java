@@ -11,14 +11,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.daniel.bikesharing.ActivityDB.PlaceDB;
 import com.example.daniel.bikesharing.DB.DatabaseHelper;
 import com.example.daniel.bikesharing.ObjectDB.Place;
+import com.example.daniel.bikesharing.ObjectDB.Town;
 
 import static com.example.daniel.bikesharing.MainActivity.IS_CONNECTED;
 import static com.example.daniel.bikesharing.R.id.btnSearch;
 import static com.example.daniel.bikesharing.R.id.btnValidate;
+import static com.example.daniel.bikesharing.R.id.txtName;
 
 /**
  * Created by pedro on 29.04.2017.
@@ -56,26 +59,24 @@ public class AddPlaceActivity extends AppCompatActivity {
         btnValidate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                placeDB.insertPlace(txtName.getText().toString(), txtPicture.getText().toString(),
-                        Integer.parseInt(txtNbPlaces.getText().toString()), txtAddress.getText().toString(), idTown);
-                finish();
-                overridePendingTransition(0, 0);
-                Intent i = new Intent(getApplicationContext(), PlaceActivity.class);
-                i.putExtra("idTown", idTown);
-                startActivity(i);
-                overridePendingTransition(0, 0);
+            if(!txtName.getText().toString().equals("") && !txtNbPlaces.getText().toString().equals("")
+                    && !txtAddress.getText().toString().equals("")) {
+                if(!placeDB.isExistingPlace(0, txtName.getText().toString(), txtAddress.getText().toString())) {
+                    placeDB.insertPlace(txtName.getText().toString(), txtPicture.getText().toString(),
+                            Integer.parseInt(txtNbPlaces.getText().toString()), txtAddress.getText().toString(), idTown);
+                    finish();
+                    overridePendingTransition(0, 0);
+                    Intent i = new Intent(getApplicationContext(), PlaceActivity.class);
+                    i.putExtra("idTown", idTown);
+                    startActivity(i);
+                    overridePendingTransition(0, 0);
+                }
+                else
+                    Toast.makeText(getApplicationContext(), "Une place avec ce nom ou cette adresse existe déjà.", Toast.LENGTH_SHORT).show();
+            } else
+                Toast.makeText(getApplicationContext(), "Le nom, le nombre de place et l'adresse ne peuvent pas être vides",
+                        Toast.LENGTH_SHORT).show();
             }
         });
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(i);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 }

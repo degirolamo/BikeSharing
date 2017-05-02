@@ -97,6 +97,8 @@ public class RentAdapter  extends BaseAdapter implements AdapterView.OnItemClick
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent i = new Intent(activity.getApplicationContext(), InfosPlaceActivity.class);
         i.putExtra("idPlace", listPlaces.get(position).getId());
+        i.putExtra("parentClass", "SearchActivity");
         activity.startActivity(i);
+        activity.finish();
     }
 }

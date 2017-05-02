@@ -67,7 +67,7 @@ public class TownAdapter extends BaseAdapter implements AdapterView.OnItemClickL
         View view = convertView;
 
         if(convertView == null)
-        view = inflater.inflate(R.layout.list_simple, null);
+            view = inflater.inflate(R.layout.list_simple, null);
 
         Button btnText = (Button) view.findViewById(R.id.btnText);
 

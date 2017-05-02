@@ -3,7 +3,6 @@ package com.example.daniel.bikesharing;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,10 +21,8 @@ import com.example.daniel.bikesharing.ActivityDB.PlaceDB;
 import com.example.daniel.bikesharing.DB.DatabaseHelper;
 import com.example.daniel.bikesharing.ObjectDB.Place;
 
-import static android.R.attr.id;
 import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
-import static com.example.daniel.bikesharing.R.id.btnEdit;
-import static com.example.daniel.bikesharing.R.id.listCantons;
+import static com.example.daniel.bikesharing.MainActivity.IS_CONNECTED;
 
 /**
  * Created by pedro on 22.04.2017.
@@ -36,18 +33,6 @@ public class InfosPlaceActivity extends AppCompatActivity {
     private PlaceDB placeDB;
     private Place place;
     private Menu menu;
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        this.menu = menu;
-        MenuInflater inflater = getMenuInflater();
-        if(USER_CONNECTED.isAdmin() == 1) {
-            inflater.inflate(R.menu.edit, menu);
-            inflater.inflate(R.menu.delete, menu);
-        }
-        inflater.inflate(R.menu.settings, menu);
-        return true;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,16 +78,32 @@ public class InfosPlaceActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
+        MenuInflater inflater = getMenuInflater();
+        if(USER_CONNECTED.isAdmin() == 1) {
+            inflater.inflate(R.menu.edit, menu);
+            inflater.inflate(R.menu.delete, menu);
+        }
+        inflater.inflate(R.menu.settings, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.btnEdit:
                 Intent i = new Intent(getApplicationContext(), EditPlaceActivity.class);
                 i.putExtra("idPlace", place.getId());
+                i.putExtra("parentClass", getIntent().getStringExtra("parentClass"));
                 startActivity(i);
+                finish();
                 return true;
-            case R.id.action_settings:
-                i = new Intent(getApplicationContext(), SettingsActivity.class);
+            case R.id.action_profile:
+                i = new Intent(getApplicationContext(), ProfileActivity.class);
+                i.putExtra("idPerson", USER_CONNECTED.getId());
                 startActivity(i);
+                finish();
                 return true;
             case R.id.btnDelete:
                 AlertDialog.Builder builder = new AlertDialog.Builder(InfosPlaceActivity.this);
@@ -112,6 +113,7 @@ public class InfosPlaceActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         placeDB.deletePlace(place.getId());
                         dialog.dismiss();
+                        finishAffinity();
                         finish();
                         overridePendingTransition(0, 0);
                         PlaceActivity placeActivity = new PlaceActivity();
@@ -128,9 +130,49 @@ public class InfosPlaceActivity extends AppCompatActivity {
                 });
                 AlertDialog alert = builder.create();
                 alert.show();
-
+            case R.id.action_settings:
+                i = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(i);
+                finish();
+                return true;
+            case R.id.action_logout:
+                builder = new AlertDialog.Builder(InfosPlaceActivity.this);
+                builder.setTitle(R.string.action_logout);
+                builder.setMessage("Etes-vous sûr de vouloir vous déconnecter ?");
+                builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        USER_CONNECTED = null;
+                        IS_CONNECTED = 0;
+                        dialog.dismiss();
+                        finish();
+                        overridePendingTransition(0, 0);
+                        Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(i);
+                        overridePendingTransition(0, 0);
+                    }
+                });
+                builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+                alert = builder.create();
+                alert.show();
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i;
+        if(getIntent().getStringExtra("parentClass").equals("SearchActivity"))
+            i = new Intent(getApplicationContext(), SearchActivity.class);
+        else {
+            i = new Intent(getApplicationContext(), PlaceActivity.class);
+            i.putExtra("idTown", place.getIdTown());
+        }
+        startActivity(i);
+        finish();
     }
 }

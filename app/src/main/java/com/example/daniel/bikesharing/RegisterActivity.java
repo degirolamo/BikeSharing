@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.daniel.bikesharing.R.id.btnValidate;
+import static com.example.daniel.bikesharing.R.id.txtEmail;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -35,7 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText txtPasswordConfirm;
     EditText txtFirstname;
     EditText txtLastname;
-    Spinner spinner;
+    Spinner spinCanton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +57,8 @@ public class RegisterActivity extends AppCompatActivity {
             cantonsNames.add(canton.getName());
         }
 
-        spinner = (Spinner) findViewById(R.id.spinRegisterTown);
-        spinner.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_item, cantonsNames));
+        spinCanton = (Spinner) findViewById(R.id.spinRegisterCanton);
+        spinCanton.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_item, cantonsNames));
 
         txtEmail = (EditText) findViewById(R.id.txtRegisterEmail);
         txtPassword = (EditText) findViewById(R.id.txtRegisterPassword);
@@ -71,32 +72,22 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(!txtLastname.getText().toString().equals("") && !txtFirstname.getText().toString().equals("") &&
                         !txtEmail.getText().toString().equals("") && !txtPassword.getText().toString().equals("")) {
-                    if(!personDB.isEmailExisting(txtEmail.getText().toString())) {
+                    if(!personDB.isEmailExisting(0, txtEmail.getText().toString())) {
                         if (txtPassword.getText().toString().equals(txtPasswordConfirm.getText().toString())) {
-                            personDB.insertPerson(spinner.getSelectedItemPosition(), txtEmail.getText().toString(),
+                            personDB.insertPerson(spinCanton.getSelectedItemPosition() + 1, txtEmail.getText().toString(),
                                     txtPassword.getText().toString(), txtFirstname.getText().toString(), txtLastname.getText().toString(), 0);
 
                             Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                            i.putExtra("email", txtEmail.getText().toString());
                             startActivity(i);
                         } else
-                            Toast.makeText(getApplicationContext(), "La confirmation de mot de passe ne correspond pas.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "La confirmation de mot de passe ne correspond pas", Toast.LENGTH_SHORT).show();
                     } else
                         Toast.makeText(getApplicationContext(), "Compte déjà existant", Toast.LENGTH_SHORT).show();
                 } else
-                    Toast.makeText(getApplicationContext(), "Certains champs sont vides.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Certains champs sont vides", Toast.LENGTH_SHORT).show();
 
             }
         });
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(i);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 }

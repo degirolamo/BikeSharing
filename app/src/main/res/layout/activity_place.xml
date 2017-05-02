@@ -40,7 +40,7 @@
         tools:ignore="RtlHardcoded">
 
         <Button
-            android:id="@+id/btnCanton"
+            android:id="@+id/btnPlaceCanton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp"
@@ -51,7 +51,7 @@
             style="?android:attr/borderlessButtonStyle" />
 
         <Button
-            android:id="@+id/btnTown"
+            android:id="@+id/btnPlaceTown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
@@ -63,7 +63,7 @@
             style="?android:attr/borderlessButtonStyle" />
 
         <Button
-            android:id="@+id/btnPlace"
+            android:id="@+id/btnPlacePlace"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"

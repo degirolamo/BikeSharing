@@ -24,6 +24,8 @@ import com.example.daniel.bikesharing.R;
 
 import java.util.List;
 
+import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
+
 /**
  * Created by Daniel on 25.04.2017.
  */
@@ -77,17 +79,19 @@ public class PersonAdapter extends BaseAdapter {
         btnProfile.setOnClickListener(new StartActivity(ProfileActivity.class, position));
 
         btnAdmin = (ImageButton) view.findViewById(R.id.imgAdmin);
-        if(listPersons.get(position).isAdmin() == 1) {
+        int isAdmin = 0;
+        if (listPersons.get(position).isAdmin() == 1) {
             btnAdmin.setColorFilter(view.getResources().getColor(R.color.colorBlack));
             message = "Voulez-vous vraiment retirer les droits d'administration à " +
                     listPersons.get(position).getFirstname() + " " + listPersons.get(position).getLastname();
-            btnAdmin.setOnClickListener(new OpenConfirmDialog(message, position, 0));
         } else {
             btnAdmin.setColorFilter(view.getResources().getColor(R.color.colorGrey));
             message = "Voulez-vous vraiment donner les droits d'administration à " +
                     listPersons.get(position).getFirstname() + " " + listPersons.get(position).getLastname();
-            btnAdmin.setOnClickListener(new OpenConfirmDialog(message, position, 1));
+            isAdmin = 1;
         }
+        btnAdmin.setOnClickListener(new SetAdminRights(message, position, isAdmin));
+
 
         btnDelete = (ImageButton) view.findViewById(R.id.imgDelete);
         btnDelete.setOnClickListener(new DeletePerson(position));
@@ -111,12 +115,12 @@ public class PersonAdapter extends BaseAdapter {
         }
     }
 
-    public class OpenConfirmDialog implements View.OnClickListener {
+    public class SetAdminRights implements View.OnClickListener {
         String message;
         int position;
         int isAdmin;
 
-        public OpenConfirmDialog(String message, int position, int isAdmin) {
+        public SetAdminRights(String message, int position, int isAdmin) {
             this.message = message;
             this.position = position;
             this.isAdmin = isAdmin;
@@ -159,7 +163,7 @@ public class PersonAdapter extends BaseAdapter {
             AlertDialog.Builder builder = new AlertDialog.Builder(activity);
             builder.setTitle(R.string.app_name);
             builder.setMessage("Etes-vous sûr de vouloir supprimer l'utilisateur " +
-                    listPersons.get(position).getFirstname() + " " + listPersons.get(position).getLastname());
+                listPersons.get(position).getFirstname() + " " + listPersons.get(position).getLastname());
             builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     personDB.deletePerson(listPersons.get(position).getId());

@@ -2,10 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.daniel.bikesharing">
 
-    <uses-sdk
-        android:minSdkVersion="19"
-        android:targetSdkVersion="25" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -41,6 +37,7 @@
         <activity android:name=".LanguageActivity" android:screenOrientation="portrait"  />
         <activity android:name=".AddPlaceActivity" android:screenOrientation="portrait"  />
         <activity android:name=".EditPlaceActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".EditProfileActivity" android:screenOrientation="portrait"  />
     </application>
 
 </manifest>
