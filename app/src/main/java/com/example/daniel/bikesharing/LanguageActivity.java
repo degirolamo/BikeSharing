@@ -3,6 +3,7 @@ package com.example.daniel.bikesharing;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -50,6 +51,7 @@ protected void onCreate(Bundle savedInstanceState) {
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.setLocale(locale);
+        //noinspection deprecation
         getResources().updateConfiguration(config,v.getResources().getDisplayMetrics());
 
         Intent intent = new Intent(this, LanguageActivity.class);
@@ -67,6 +69,7 @@ protected void onCreate(Bundle savedInstanceState) {
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.setLocale(locale);
+        //noinspection deprecation
         getResources().updateConfiguration(config,v.getResources().getDisplayMetrics());
 
         Intent intent = new Intent(this, LanguageActivity.class);
@@ -83,6 +86,7 @@ protected void onCreate(Bundle savedInstanceState) {
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.setLocale(locale);
+        //noinspection deprecation
         getResources().updateConfiguration(config,v.getResources().getDisplayMetrics());
 
         Intent intent = new Intent(this, LanguageActivity.class);

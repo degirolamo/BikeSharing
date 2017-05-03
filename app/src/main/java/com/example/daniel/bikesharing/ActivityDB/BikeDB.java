@@ -33,32 +33,10 @@ public class BikeDB {
         this.db = db;
     }
 
-    public List<Bike> getBikesByPlace (int idPlace){
-        List<Bike> bikes = new ArrayList<Bike>();
-
-        String selectQuery = "SELECT * FROM " + db.getTABLE_BIKE()
-                + " WHERE " + db.getKEY_PLACEID() + " = " + idPlace;
-
-        SQLiteDatabase sqlDB = db.getReadableDatabase();
-        Cursor c = sqlDB.rawQuery(selectQuery, null);
-
-        // looping through all rows and adding to list
-        if (c.moveToFirst()) {
-            do {
-                int id = c.getInt(c.getColumnIndex(db.getKEY_ID()));
-                int placeId = c.getInt(c.getColumnIndex(db.getKEY_PLACEID()));
-
-                Bike b = new Bike(id, placeId);
-
-                // adding to bike list
-                bikes.add(b);
-            } while (c.moveToNext());
-        }
-
-        return bikes;
-
-    }
-
+    /**
+     * Inserts a bike into a place
+     * @param idPlace Id of the place
+     */
     public void insertBike(int idPlace) {
         SQLiteDatabase sqlDB = db.getReadableDatabase();
 
@@ -69,8 +47,13 @@ public class BikeDB {
         sqlDB.insert(db.getTABLE_BIKE(), null, values);
     }
 
+    /**
+     * Gets the number of bikes per place
+     * @param idPlace : Id of the place
+     * @return int : The number of bikes
+     */
     public int getNbBikes(int idPlace) {
-        int nbBikes;
+        int nbBikes = 0;
 
         String selectQuery = "SELECT COUNT(*) nb FROM " + db.getTABLE_BIKE()
                 + " WHERE " + db.getKEY_PLACEID() + " = " + idPlace;
@@ -78,29 +61,12 @@ public class BikeDB {
         SQLiteDatabase sqlDB = db.getReadableDatabase();
         Cursor c = sqlDB.rawQuery(selectQuery, null);
 
-        if(c != null)
-            c.moveToFirst();
+        if(c != null) {
+            nbBikes = c.getInt(c.getColumnIndex("nb"));
 
-        nbBikes = c.getInt(c.getColumnIndex("nb"));
+            c.close();
+        }
 
         return nbBikes;
-    }
-
-    public int getIdTownByBike(int idBike) {
-        int idTown;
-
-        String selectQuery = "SELECT " + db.getKEY_PLACE_TOWNID() + " FROM " + db.getTABLE_BIKE()
-                + "AS b INNER JOIN " + db.getTABLE_PLACE() + " AS p ON p." + db.getKEY_ID() + " = " + db.getKEY_BIKEID()
-                + " WHERE b." + db.getKEY_ID() + " = " + idBike;
-
-        SQLiteDatabase sqlDB = db.getReadableDatabase();
-        Cursor c = sqlDB.rawQuery(selectQuery, null);
-
-        if(c != null)
-            c.moveToFirst();
-
-        idTown = c.getInt(c.getColumnIndex(db.getKEY_PLACE_TOWNID()));
-
-        return idTown;
     }
 }

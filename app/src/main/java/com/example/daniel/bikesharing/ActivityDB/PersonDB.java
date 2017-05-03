@@ -32,7 +32,11 @@ public class PersonDB {
         this.db = db;
     }
 
-    public List<Person> getPersons() {
+    /**
+     * Gets the list of the people
+     * @return List<Person> : The list of the people
+     */
+    public List<Person> getPeople() {
         List<Person> persons = new ArrayList<>();
 
         String selectQuery = "SELECT * FROM " + db.getTABLE_PERSON();
@@ -61,6 +65,15 @@ public class PersonDB {
         return persons;
     }
 
+    /**
+     * Inserts a new person in the database
+     * @param idCanton : The canton id
+     * @param email : The email address
+     * @param password : The password of the person
+     * @param firstname : The firstname of the person
+     * @param lastname : The lastname of the person
+     * @param isAdmin : If the person is admin or not
+     */
     public void insertPerson(int idCanton, String email, String password, String firstname, String lastname, int isAdmin) {
         SQLiteDatabase sqlDB = db.getReadableDatabase();
 
@@ -76,6 +89,14 @@ public class PersonDB {
         sqlDB.insert(db.getTABLE_PERSON(), null, values);
     }
 
+    /**
+     * Updates a Person
+     * @param id : id of the person to update
+     * @param idCanton : id of the canton
+     * @param email : new email address
+     * @param firstname : new firstname
+     * @param lastname : new lastname
+     */
     public void updatePerson(int id, int idCanton, String email, String firstname, String lastname) {
 
         SQLiteDatabase sqlDB = db.getWritableDatabase();
@@ -90,6 +111,11 @@ public class PersonDB {
         sqlDB.update(db.getTABLE_PERSON(), values, db.getKEY_ID() + " = " + id, null);
     }
 
+    /**
+     * Gets a person by its id
+     * @param idPerson : The id of the person
+     * @return Person : The person found
+     */
     public Person getPerson(int idPerson) {
         String selectQuery = "SELECT * FROM " + db.getTABLE_PERSON()
                 + " WHERE " + db.getKEY_ID() + " = " + idPerson;
@@ -97,17 +123,20 @@ public class PersonDB {
         SQLiteDatabase sqlDB = db.getReadableDatabase();
         Cursor c = sqlDB.rawQuery(selectQuery, null);
 
-        if(c != null)
-            c.moveToFirst();
+        Person person = null;
 
-        Person person = new Person();
-        person.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
-        person.setIdCanton(c.getInt(c.getColumnIndex(db.getKEY_CANTONID())));
-        person.setEmail(c.getString(c.getColumnIndex(db.getKEY_EMAIL())));
-        person.setPassword(c.getString(c.getColumnIndex(db.getKEY_PASSWORD())));
-        person.setFirstname(c.getString(c.getColumnIndex(db.getKEY_FIRSTNAME())));
-        person.setLastname(c.getString(c.getColumnIndex(db.getKEY_LASTNAME())));
-        person.setAdmin(c.getInt(c.getColumnIndex(db.getKEY_ISADMIN())));
+        if(c != null) {
+            person = new Person();
+            person.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
+            person.setIdCanton(c.getInt(c.getColumnIndex(db.getKEY_CANTONID())));
+            person.setEmail(c.getString(c.getColumnIndex(db.getKEY_EMAIL())));
+            person.setPassword(c.getString(c.getColumnIndex(db.getKEY_PASSWORD())));
+            person.setFirstname(c.getString(c.getColumnIndex(db.getKEY_FIRSTNAME())));
+            person.setLastname(c.getString(c.getColumnIndex(db.getKEY_LASTNAME())));
+            person.setAdmin(c.getInt(c.getColumnIndex(db.getKEY_ISADMIN())));
+
+            c.close();
+        }
 
         return person;
     }
@@ -121,17 +150,20 @@ public class PersonDB {
         SQLiteDatabase sqlDB = db.getReadableDatabase();
         Cursor c = sqlDB.rawQuery(selectQuery, null);
 
-        if(c != null && c.getCount() >= 1)
-            c.moveToFirst();
+        Person person = null;
 
-        Person person = new Person();
-        person.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
-        person.setIdCanton(c.getInt(c.getColumnIndex(db.getKEY_CANTONID())));
-        person.setEmail(c.getString(c.getColumnIndex(db.getKEY_EMAIL())));
-        person.setPassword(c.getString(c.getColumnIndex(db.getKEY_PASSWORD())));
-        person.setFirstname(c.getString(c.getColumnIndex(db.getKEY_FIRSTNAME())));
-        person.setLastname(c.getString(c.getColumnIndex(db.getKEY_LASTNAME())));
-        person.setAdmin(c.getInt(c.getColumnIndex(db.getKEY_ISADMIN())));
+        if(c != null && c.getCount() >= 1) {
+            person = new Person();
+            person.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
+            person.setIdCanton(c.getInt(c.getColumnIndex(db.getKEY_CANTONID())));
+            person.setEmail(c.getString(c.getColumnIndex(db.getKEY_EMAIL())));
+            person.setPassword(c.getString(c.getColumnIndex(db.getKEY_PASSWORD())));
+            person.setFirstname(c.getString(c.getColumnIndex(db.getKEY_FIRSTNAME())));
+            person.setLastname(c.getString(c.getColumnIndex(db.getKEY_LASTNAME())));
+            person.setAdmin(c.getInt(c.getColumnIndex(db.getKEY_ISADMIN())));
+
+            c.close();
+        }
 
         return person;
     }
@@ -151,6 +183,8 @@ public class PersonDB {
                     existing = true;
             } while (c.moveToNext());
         }
+
+        c.close();
 
         return existing;
     }

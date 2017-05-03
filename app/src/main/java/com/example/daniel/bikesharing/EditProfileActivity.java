@@ -22,6 +22,7 @@ import com.example.daniel.bikesharing.ObjectDB.Canton;
 import com.example.daniel.bikesharing.ObjectDB.Person;
 import com.example.daniel.bikesharing.ObjectDB.Place;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +42,7 @@ import static com.example.daniel.bikesharing.R.string.cantons;
  * Description Activity used to edit the profile
  */
 
-public class EditProfileActivity extends AppCompatActivity {
+public class EditProfileActivity extends AppCompatActivity implements Serializable {
 
     PersonDB personDB;
     EditText txtEmail;
@@ -69,7 +70,7 @@ public class EditProfileActivity extends AppCompatActivity {
         }
 
         spinCanton = (Spinner) findViewById(R.id.spinEditProfileCanton);
-        spinCanton.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_item, cantonsNames));
+        spinCanton.setAdapter(new ArrayAdapter<>(getApplicationContext(), R.layout.spinner_item, cantonsNames));
         spinCanton.setSelection(USER_CONNECTED.getIdCanton() - 1);
 
         txtEmail = (EditText) findViewById(R.id.txtEditProfileEmail);

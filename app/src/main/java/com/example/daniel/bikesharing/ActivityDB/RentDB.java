@@ -23,12 +23,19 @@ import static android.R.attr.id;
  */
 
 public class RentDB {
-    DatabaseHelper db;
+    private DatabaseHelper db;
 
     public RentDB(DatabaseHelper db) {
         this.db = db;
     }
 
+    /**
+     * Inserts a rent
+     * @param idBike : The id of the rent
+     * @param idPerson : The id of the person
+     * @param beginDate : The date of beginning of the rent
+     * @param endDate : The date of ending of the rent
+     */
     public void insertRent(int idBike, int idPerson, String beginDate, String endDate) {
         SQLiteDatabase sqlDB = db.getReadableDatabase();
 
@@ -40,32 +47,6 @@ public class RentDB {
 
         //insert row
         sqlDB.insert(db.getTABLE_RENT(), null, values);
-    }
-
-    public List<Rent> getRentsByPerson(int idPerson) {
-        List<Rent> rents = new ArrayList<>();
-
-        String selectQuery = "SELECT * FROM " + db.getTABLE_RENT()
-                + " WHERE " + db.getKEY_PERSONID() + " = " + idPerson
-                + " ORDER BY " + db.getKEY_ENDDATE() + " DESC LIMIT 5";
-
-        SQLiteDatabase sqlDB = db.getReadableDatabase();
-        Cursor c = sqlDB.rawQuery(selectQuery, null);
-
-        // looping through all rows and adding to list
-        if (c.moveToFirst()) {
-            do {
-                int idBike = c.getInt(c.getColumnIndex(db.getKEY_BIKEID()));
-                String beginDate = c.getString(c.getColumnIndex(db.getKEY_BEGINDATE()));
-                String endDate =  c.getString(c.getColumnIndex(db.getKEY_ENDDATE()));
-                Rent r = new Rent(idBike, idPerson, beginDate, endDate);
-
-                // adding to canton list
-                rents.add(r);
-            } while (c.moveToNext());
-        }
-
-        return rents;
     }
 
 

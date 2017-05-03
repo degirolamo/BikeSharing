@@ -53,7 +53,7 @@ public class AdminUsersActivity extends AppCompatActivity {
 
         db = new DatabaseHelper(getApplicationContext());
         PersonDB personDB = new PersonDB(db);
-        List<Person> persons = personDB.getPersons();
+        List<Person> persons = personDB.getPeople();
         persons.remove(USER_CONNECTED.getId() - 1);
         listViewPersons = (ListView) findViewById(R.id.listUsers);
 

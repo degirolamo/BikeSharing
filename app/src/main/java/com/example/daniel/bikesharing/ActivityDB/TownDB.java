@@ -34,32 +34,12 @@ public class TownDB {
         this.db = db;
     }
 
-    public List<Town> getTowns (){
-        List<Town> towns = new ArrayList<Town>();
-
-        String selectQuery = "SELECT * FROM " + db.getTABLE_TOWN();
-
-        SQLiteDatabase sqlDB = db.getReadableDatabase();
-        Cursor c = sqlDB.rawQuery(selectQuery, null);
-
-        // looping through all rows and adding to list
-        if (c.moveToFirst()) {
-            do {
-                int id = c.getInt(c.getColumnIndex(db.getKEY_ID()));
-                String name = c.getString(c.getColumnIndex(db.getKEY_TOWN_NAME()));
-                int npa =  c.getInt(c.getColumnIndex(db.getKEY_NPA()));
-                int idCanton = c.getInt(c.getColumnIndex(db.getKEY_CANTONID()));
-                Town t = new Town(id, name, npa, idCanton);
-
-                // adding to canton list
-                towns.add(t);
-            } while (c.moveToNext());
-        }
-
-        return towns;
-
-    }
-
+    /**
+     * Inserts a new town
+     * @param idCanton : the id of the canton
+     * @param name : the name of the town
+     * @param npa : the npa of the town
+     */
     public void insertTown(int idCanton, String name, int npa) {
         SQLiteDatabase sqlDB = db.getReadableDatabase();
 
@@ -72,8 +52,13 @@ public class TownDB {
         sqlDB.insert(db.getTABLE_TOWN(), null, values);
     }
 
+    /**
+     * Gets the towns by canton id
+     * @param idCanton : The id of the canton
+     * @return List<Town> : The list of towns
+     */
     public List<Town> getTownsByCanton(int idCanton) {
-        List<Town> towns = new ArrayList<Town>();
+        List<Town> towns = new ArrayList<>();
 
         String selectQuery = "SELECT * FROM " + db.getTABLE_TOWN()
                 + " WHERE " + db.getKEY_CANTONID() + " = " + idCanton;
@@ -94,9 +79,16 @@ public class TownDB {
             } while (c.moveToNext());
         }
 
+        c.close();
+
         return towns;
     }
 
+    /**
+     * Gets a town by its id
+     * @param idTown : The id of the town
+     * @return Town : The town found
+     */
     public Town getTown(int idTown) {
         String selectQuery = "SELECT * FROM " + db.getTABLE_TOWN()
                 + " WHERE " + db.getKEY_ID() + " = " + idTown;
@@ -104,14 +96,16 @@ public class TownDB {
         SQLiteDatabase sqlDB = db.getReadableDatabase();
         Cursor c = sqlDB.rawQuery(selectQuery, null);
 
-        if(c != null)
-            c.moveToFirst();
+        Town town = null;
+        if(c != null) {
+            town = new Town();
+            town.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
+            town.setName(c.getString(c.getColumnIndex(db.getKEY_TOWN_NAME())));
+            town.setNpa(c.getInt(c.getColumnIndex(db.getKEY_NPA())));
+            town.setIdCanton(c.getInt(c.getColumnIndex(db.getKEY_CANTONID())));
 
-        Town town = new Town();
-        town.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
-        town.setName(c.getString(c.getColumnIndex(db.getKEY_TOWN_NAME())));
-        town.setNpa(c.getInt(c.getColumnIndex(db.getKEY_NPA())));
-        town.setIdCanton(c.getInt(c.getColumnIndex(db.getKEY_CANTONID())));
+            c.close();
+        }
 
         return town;
     }

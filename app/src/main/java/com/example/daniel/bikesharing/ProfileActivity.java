@@ -130,4 +130,9 @@ public class ProfileActivity extends AppCompatActivity {
         else
             startActivity(new Intent(getApplicationContext(), SearchActivity.class));
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 }

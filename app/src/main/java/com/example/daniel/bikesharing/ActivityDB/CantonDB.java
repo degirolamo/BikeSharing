@@ -30,8 +30,12 @@ public class CantonDB  {
         this.db = db;
     }
 
+    /**
+     * Gets the list of the cantons
+     * @return List<Canton> : The list of cantons
+     */
     public List<Canton> getCantons (){
-        List<Canton> cantons = new ArrayList<Canton>();
+        List<Canton> cantons = new ArrayList<>();
 
         String selectQuery = "SELECT * FROM " + db.getTABLE_CANTON();
 
@@ -51,10 +55,17 @@ public class CantonDB  {
             } while (c.moveToNext());
         }
 
+        c.close();
+
         return cantons;
 
     }
 
+    /**
+     * Inserts a new canton in the database
+     * @param name : The name of the canton
+     * @param picture : The picture of the canton
+     */
     public void insertCanton(String name, String picture) {
         SQLiteDatabase sqlDB = db.getReadableDatabase();
 
@@ -66,6 +77,11 @@ public class CantonDB  {
         sqlDB.insert(db.getTABLE_CANTON(), null, values);
     }
 
+    /**
+     * Gets a canton by its id
+     * @param idCanton : The id of the canton
+     * @return Canton : The canton found
+     */
     public Canton getCanton(int idCanton) {
         String selectQuery = "SELECT * FROM " + db.getTABLE_CANTON()
                 + " WHERE " + db.getKEY_ID()  + " = " + idCanton;
@@ -73,13 +89,15 @@ public class CantonDB  {
         SQLiteDatabase sqlDB = db.getReadableDatabase();
         Cursor c = sqlDB.rawQuery(selectQuery, null);
 
-        if(c != null)
-            c.moveToFirst();
+        Canton canton = null;
+        if(c != null) {
+            canton = new Canton();
+            canton.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
+            canton.setName(c.getString(c.getColumnIndex(db.getKEY_CANTON_NAME())));
+            canton.setPicture(c.getString(c.getColumnIndex(db.getKEY_CANTON_PICTURE())));
 
-        Canton canton = new Canton();
-        canton.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
-        canton.setName(c.getString(c.getColumnIndex(db.getKEY_CANTON_NAME())));
-        canton.setPicture(c.getString(c.getColumnIndex(db.getKEY_CANTON_PICTURE())));
+            c.close();
+        }
 
         return canton;
     }

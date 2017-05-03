@@ -33,6 +33,11 @@ public class PlaceDB {
         this.db = db;
     }
 
+    /**
+     * Gets a place by its id
+     * @param idPlace id of the place
+     * @return  The place found
+     */
     public Place getPlace(int idPlace){
         String selectQuery = "SELECT * FROM " + db.getTABLE_PLACE()
                 + " WHERE " + db.getKEY_ID() + " = " + idPlace;
@@ -40,22 +45,30 @@ public class PlaceDB {
         SQLiteDatabase sqlDB = db.getReadableDatabase();
         Cursor c = sqlDB.rawQuery(selectQuery, null);
 
-        if(c != null)
-            c.moveToFirst();
+        Place place = null;
 
-        Place place = new Place();
-        place.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
-        place.setName(c.getString(c.getColumnIndex(db.getKEY_PLACE_NAME())));
-        place.setPicture(c.getString(c.getColumnIndex(db.getKEY_PLACE_PICTURE())));
-        place.setNbPlaces(c.getInt(c.getColumnIndex(db.getKEY_PLACE_NBPLACES())));
-        place.setAddress(c.getString(c.getColumnIndex(db.getKEY_PLACE_ADDRESS())));
-        place.setIdTown(c.getInt(c.getColumnIndex(db.getKEY_PLACE_TOWNID())));
+        if(c != null) {
+            place = new Place();
+            place.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
+            place.setName(c.getString(c.getColumnIndex(db.getKEY_PLACE_NAME())));
+            place.setPicture(c.getString(c.getColumnIndex(db.getKEY_PLACE_PICTURE())));
+            place.setNbPlaces(c.getInt(c.getColumnIndex(db.getKEY_PLACE_NBPLACES())));
+            place.setAddress(c.getString(c.getColumnIndex(db.getKEY_PLACE_ADDRESS())));
+            place.setIdTown(c.getInt(c.getColumnIndex(db.getKEY_PLACE_TOWNID())));
+
+            c.close();
+        }
 
         return place;
     }
 
+    /**
+     * Gets the places their town id
+     * @param idTown : The id of the town
+     * @return List<Place> : The list of the places
+     */
     public List<Place> getPlacesByTown (int idTown){
-        List<Place> places = new ArrayList<Place>();
+        List<Place> places = new ArrayList<>();
 
         String selectQuery = "SELECT * FROM " + db.getTABLE_PLACE()
                 + " WHERE " + db.getKEY_PLACE_TOWNID() + " = " + idTown;
@@ -78,9 +91,19 @@ public class PlaceDB {
             } while (c.moveToNext());
         }
 
+        c.close();
+
         return places;
     }
 
+    /**
+     * Inserts a new place
+     * @param name : Name of the place
+     * @param picture : Picture of the place
+     * @param nbPlaces : Total number of places
+     * @param address : Address of the place
+     * @param idTown : Town id of the place
+     */
     public void insertPlace(String name, String picture, int nbPlaces, String address, int idTown) {
         SQLiteDatabase sqlDB = db.getReadableDatabase();
 
@@ -95,6 +118,15 @@ public class PlaceDB {
         sqlDB.insert(db.getTABLE_PLACE(), null, values);
     }
 
+    /**
+     * Updates an existing place
+     * @param id : The id of the place to update
+     * @param name : The new name of the place
+     * @param picture : The new picture of the place
+     * @param nbPlaces : The new number of places
+     * @param address : The new address
+     * @param idTown : The id of the town
+     */
     public void updatePlace(int id, String name, String picture, int nbPlaces, String address, int idTown) {
 
         SQLiteDatabase sqlDB = db.getWritableDatabase();
@@ -109,6 +141,13 @@ public class PlaceDB {
         sqlDB.update(db.getTABLE_PLACE(), values, db.getKEY_ID() + " = " + id, null);
     }
 
+    /**
+     * Checks if the name or the address of place already exist
+     * @param id : id of the place
+     * @param name : The name of the place to check
+     * @param address : The addresse of the place to check
+     * @return boolean : True if the place already exists
+     */
     public boolean isExistingPlace(int id, String name, String address) {
         boolean existing = false;
         String selectQuery = "SELECT " + db.getKEY_PLACE_NAME() + ", " + db.getKEY_PLACE_ADDRESS()
@@ -126,36 +165,25 @@ public class PlaceDB {
             } while (c.moveToNext());
         }
 
+        c.close();
+
         return existing;
     }
 
+    /**
+     * Delete a place
+     * @param idPlace : the id of the place to delete
+     */
     public void deletePlace(int idPlace) {
         SQLiteDatabase sqlDB = db.getWritableDatabase();
         sqlDB.delete(db.getTABLE_PLACE(), db.getKEY_ID() + " = " + idPlace, null);
     }
 
-    public Place getPlaceByBike(int idBike) {
-        String selectQuery = "SELECT * FROM " + db.getTABLE_PLACE()
-                + " AS p INNER JOIN " + db.getTABLE_BIKE() + " AS b ON p." + db.getKEY_ID() + " = " + db.getKEY_PLACEID()
-                + " WHERE b." + db.getKEY_ID() + " = " + idBike;
-
-        SQLiteDatabase sqlDB = db.getReadableDatabase();
-        Cursor c = sqlDB.rawQuery(selectQuery, null);
-
-        if(c != null)
-            c.moveToFirst();
-
-        Place place = new Place();
-        place.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
-        place.setName(c.getString(c.getColumnIndex(db.getKEY_PLACE_NAME())));
-        place.setPicture(c.getString(c.getColumnIndex(db.getKEY_PLACE_PICTURE())));
-        place.setNbPlaces(c.getInt(c.getColumnIndex(db.getKEY_PLACE_NBPLACES())));
-        place.setAddress(c.getString(c.getColumnIndex(db.getKEY_PLACE_ADDRESS())));
-        place.setIdTown(c.getInt(c.getColumnIndex(db.getKEY_PLACE_TOWNID())));
-
-        return place;
-    }
-
+    /**
+     * Gets the number of rents by a person id
+     * @param idPerson : The id of the person
+     * @return List<Integer> : The list of rents for each id
+     */
     public List<Integer> getNbRentsByPerson(int idPerson) {
         //Returns for each places, the number of times they appears in bikeDB
         List<Integer> listNbRents = new ArrayList<>();
@@ -180,11 +208,17 @@ public class PlaceDB {
             } while (c.moveToNext());
         }
 
+        c.close();
+
         return listNbRents;
     }
 
+    /**
+     * Gets the places of the database
+     * @return List<Place> : The list of places
+     */
     public List<Place> getPlaces() {
-        List<Place> places = new ArrayList<Place>();
+        List<Place> places = new ArrayList<>();
 
         String selectQuery = "SELECT * FROM " + db.getTABLE_PLACE();
 
@@ -211,6 +245,8 @@ public class PlaceDB {
                 places.add(p);
             } while (c.moveToNext());
         }
+
+        c.close();
 
         return places;
     }
