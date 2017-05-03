@@ -21,7 +21,12 @@ import java.util.List;
 import static com.example.daniel.bikesharing.R.id.listTowns;
 
 /**
- * Created by pedro on 20.04.2017.
+ * Project BikeSharing
+ * Package Objects
+ * Class PlaceAdapter.java
+ * Date 20.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Adapter used to display a ListView of places
  */
 
 public class PlaceAdapter extends BaseAdapter implements AdapterView.OnItemClickListener {

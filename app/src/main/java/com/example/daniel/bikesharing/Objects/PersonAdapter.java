@@ -27,7 +27,12 @@ import java.util.List;
 import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
 
 /**
- * Created by Daniel on 25.04.2017.
+ * Project BikeSharing
+ * Package Objects
+ * Class PersonAdapter.java
+ * Date 25.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Adapter used to display a ListView of persons
  */
 
 public class PersonAdapter extends BaseAdapter {

@@ -33,6 +33,15 @@ import java.util.List;
 import static com.example.daniel.bikesharing.MainActivity.IS_CONNECTED;
 import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
 
+/**
+ * Project BikeSharing
+ * Package com.example.daniel.bikesharing
+ * Class AdminUsersActivity.java
+ * Date 22.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Activity used to display the list of the places
+ */
+
 public class PlaceActivity extends AppCompatActivity {
 
     DatabaseHelper db;

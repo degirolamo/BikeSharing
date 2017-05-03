@@ -31,7 +31,12 @@ import static com.example.daniel.bikesharing.MainActivity.IS_CONNECTED;
 import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
 
 /**
- * Created by pedro on 19.04.2017.
+ * Project BikeSharing
+ * Package com.example.daniel.bikesharing
+ * Class TownActivity.java
+ * Date 19.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Activity used to display the list of towns
  */
 
 public class TownActivity extends AppCompatActivity {

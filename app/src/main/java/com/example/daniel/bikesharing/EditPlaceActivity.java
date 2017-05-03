@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +15,12 @@ import com.example.daniel.bikesharing.DB.DatabaseHelper;
 import com.example.daniel.bikesharing.ObjectDB.Place;
 
 /**
- * Created by pedro on 29.04.2017.
+ * Project BikeSharing
+ * Package com.example.daniel.bikesharing
+ * Class EditPlaceActivity.java
+ * Date 29.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Activity used to edit places
  */
 
 public class EditPlaceActivity extends AppCompatActivity {

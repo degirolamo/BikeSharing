@@ -1,6 +1,5 @@
 package com.example.daniel.bikesharing;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,7 +7,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,6 +21,15 @@ import java.util.List;
 
 import static com.example.daniel.bikesharing.MainActivity.IS_CONNECTED;
 import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
+
+/**
+ * Project BikeSharing
+ * Package com.example.daniel.bikesharing
+ * Class AddPlaceActivity.java
+ * Date 14.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Activity used to display the list of the cantons
+ */
 
 public class CantonActivity extends AppCompatActivity {
 

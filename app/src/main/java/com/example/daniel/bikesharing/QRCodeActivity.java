@@ -24,6 +24,15 @@ import com.google.zxing.common.BitMatrix;
 import static com.example.daniel.bikesharing.MainActivity.IS_CONNECTED;
 import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
 
+/**
+ * Project BikeSharing
+ * Package com.example.daniel.bikesharing
+ * Class QRCodeActivity.java
+ * Date 15.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Activity used to display the QR Code
+ */
+
 public class QRCodeActivity extends AppCompatActivity {
 
     ImageView imgCode;

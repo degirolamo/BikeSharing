@@ -19,6 +19,15 @@ import com.example.daniel.bikesharing.ObjectDB.Person;
 import static com.example.daniel.bikesharing.MainActivity.IS_CONNECTED;
 import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
 
+/**
+ * Project BikeSharing
+ * Package com.example.daniel.bikesharing
+ * Class LoginActivity.java
+ * Date 20.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Activity used to display the login page
+ */
+
 public class LoginActivity extends AppCompatActivity {
 
     private DatabaseHelper db;

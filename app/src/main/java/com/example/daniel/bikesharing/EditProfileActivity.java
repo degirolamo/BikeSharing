@@ -33,7 +33,12 @@ import static com.example.daniel.bikesharing.R.id.txtPassword;
 import static com.example.daniel.bikesharing.R.string.cantons;
 
 /**
- * Created by pedro on 02.05.2017.
+ * Project BikeSharing
+ * Package com.example.daniel.bikesharing
+ * Class EditProfileActivity.java
+ * Date 02.05.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Activity used to edit the profile
  */
 
 public class EditProfileActivity extends AppCompatActivity {

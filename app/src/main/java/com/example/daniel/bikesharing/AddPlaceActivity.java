@@ -24,12 +24,12 @@ import static com.example.daniel.bikesharing.R.id.btnValidate;
 import static com.example.daniel.bikesharing.R.id.txtName;
 
 /**
- * @project BikeSharing
- * @package ObjectDB
- * @class AddPlaceActivity.java
- * @date 29.04.2017
- * @authors Daniel De Girolamo & Pedro Gil Ferreira
- * @description Activity used to add places
+ * Project BikeSharing
+ * Package com.example.daniel.bikesharing
+ * Class AddPlaceActivity.java
+ * Date 29.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Activity used to add places
  */
 
 public class AddPlaceActivity extends AppCompatActivity {

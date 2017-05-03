@@ -18,12 +18,12 @@ import static android.R.attr.name;
 import static com.example.daniel.bikesharing.R.string.cantons;
 
 /**
- * @project BikeSharing
- * @package ActivityDB
- * @class TownDB.java
- * @date 19.04.2017
- * @authors Daniel De Girolamo & Pedro Gil Ferreira
- * @description Class containing the methods related with the Town object
+ * Project BikeSharing
+ * Package ActivityDB
+ * Class TownDB.java
+ * Date 19.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Class containing the methods related with the Town object
  */
 
 public class TownDB {

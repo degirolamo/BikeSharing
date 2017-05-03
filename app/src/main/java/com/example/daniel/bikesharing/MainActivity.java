@@ -33,6 +33,15 @@ import static android.media.CamcorderProfile.get;
 import static com.example.daniel.bikesharing.R.string.places;
 import static com.example.daniel.bikesharing.R.styleable.MenuItem;
 
+/**
+ * Project BikeSharing
+ * Package com.example.daniel.bikesharing
+ * Class MainActivity.java
+ * Date 29.03.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Main Activity of the application
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     public static int IS_CONNECTED = 0;

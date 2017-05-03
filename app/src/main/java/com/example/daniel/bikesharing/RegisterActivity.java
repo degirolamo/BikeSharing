@@ -28,6 +28,15 @@ import java.util.List;
 import static com.example.daniel.bikesharing.R.id.btnValidate;
 import static com.example.daniel.bikesharing.R.id.txtEmail;
 
+/**
+ * Project BikeSharing
+ * Package com.example.daniel.bikesharing
+ * Class RegisterActivity.java
+ * Date 28.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Activity used to display register form
+ */
+
 public class RegisterActivity extends AppCompatActivity {
 
     PersonDB personDB;
