@@ -108,8 +108,8 @@ public class InfosPlaceActivity extends AppCompatActivity {
             case R.id.btnDelete:
                 AlertDialog.Builder builder = new AlertDialog.Builder(InfosPlaceActivity.this);
                 builder.setTitle(R.string.app_name);
-                builder.setMessage("Etes-vous sûr de vouloir supprimer la place " + place.getName());
-                builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                builder.setMessage(R.string.warningDeletePlace + place.getName());
+                builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         placeDB.deletePlace(place.getId());
                         dialog.dismiss();
@@ -123,7 +123,7 @@ public class InfosPlaceActivity extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                     }
                 });
-                builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                     }
@@ -138,8 +138,8 @@ public class InfosPlaceActivity extends AppCompatActivity {
             case R.id.action_logout:
                 builder = new AlertDialog.Builder(InfosPlaceActivity.this);
                 builder.setTitle(R.string.action_logout);
-                builder.setMessage("Etes-vous sûr de vouloir vous déconnecter ?");
-                builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                builder.setMessage(R.string.warningLogout);
+                builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         USER_CONNECTED = null;
                         IS_CONNECTED = 0;
@@ -151,7 +151,7 @@ public class InfosPlaceActivity extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                     }
                 });
-                builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                     }

@@ -92,9 +92,9 @@ public class EditProfileActivity extends AppCompatActivity {
                         startActivity(i);
                         overridePendingTransition(0, 0);
                     } else
-                        Toast.makeText(getApplicationContext(), "Un compte avec cette adresse e-mail existe déjà", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.errorMailExisting, Toast.LENGTH_SHORT).show();
                 } else
-                    Toast.makeText(getApplicationContext(), "Certains champs sont vides", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.errorProfilEmptyFields, Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -78,10 +78,10 @@ public class LoginActivity extends AppCompatActivity {
                         USER_CONNECTED = person;
                     }
                     else
-                        Toast.makeText(getApplicationContext(), "Email et/ou mot de passe incorrect(s) !", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), R.string.errorPassMail, Toast.LENGTH_LONG).show();
                 }
                 else
-                    Toast.makeText(getApplicationContext(), "Email et/ou mot de passe incorrect(s) !", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),  R.string.errorPassMail, Toast.LENGTH_LONG).show();
             }
         });
     }

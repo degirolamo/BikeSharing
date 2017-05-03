@@ -52,4 +52,14 @@
     <string name="le_type_de_user_ici">Le type de user ici</string>
     <string name="confirmer_le_mot_de_passe">Confirmer le mot de passe</string>
     <string name="icone_de_l_application">icone de l\'application</string>
+    <string name="errorPlaceExisting">Une place avec ce nom ou cette adresse existe déjà.</string>
+    <string name="errorMailExisting">Un compte avec cette adresse e-mail existe déjà</string>
+    <string name="errorProfilEmptyFields">Certains champs sont vides</string>
+    <string name="errorPassMail">Email et/ou mot de passe incorrect(s) !</string>
+    <string name="errorConfirmPass">La confirmation de mot de passe ne correspond pas</string>
+    <string name="errorAccountExisting">Compte déjà existant</string>
+    <string name="warningLogout">Etes-vous sûr de vouloir vous déconnecter ?</string>
+    <string name="yes">oui</string>
+    <string name="no">non</string>
+    <string name="warningDeletePlace">Etes-vous sûr de vouloir supprimer la place</string>
 </resources>

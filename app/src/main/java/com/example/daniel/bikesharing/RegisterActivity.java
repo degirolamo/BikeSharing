@@ -81,11 +81,11 @@ public class RegisterActivity extends AppCompatActivity {
                             i.putExtra("email", txtEmail.getText().toString());
                             startActivity(i);
                         } else
-                            Toast.makeText(getApplicationContext(), "La confirmation de mot de passe ne correspond pas", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), R.string.errorConfirmPass, Toast.LENGTH_SHORT).show();
                     } else
-                        Toast.makeText(getApplicationContext(), "Compte déjà existant", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.errorAccountExisting, Toast.LENGTH_SHORT).show();
                 } else
-                    Toast.makeText(getApplicationContext(), "Certains champs sont vides", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.errorProfilEmptyFields, Toast.LENGTH_SHORT).show();
 
             }
         });

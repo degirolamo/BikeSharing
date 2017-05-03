@@ -51,4 +51,16 @@
     <string name="InfoPlace">Informationen</string>
     <string name="EditPlace">Bearbeiten Platz</string>
     <string name="AddPlace">Füge einen Platz hinzu</string>
+    <string name="confirmer_le_mot_de_passe">Bestätigen Passwort</string>
+    <string name="errorAccountExisting">Bestehende Konto</string>
+    <string name="errorConfirmPass">Die Passwortbestätigung stimmt nicht überein</string>
+    <string name="errorMailExisting">Ein Konto mit dieser E-Mail-Adresse ist bereits vorhanden</string>
+    <string name="errorPassMail">E-Mail und / oder falsches Passwort !</string>
+    <string name="errorPlaceExisting">Ein Platz mit diesem Namen oder die Adresse existiert bereits.</string>
+    <string name="errorProfilEmptyFields">Einige Felder sind leer</string>
+    <string name="icone_de_l_application">App icon</string>
+    <string name="no">Nein</string>
+    <string name="yes">Ja</string>
+    <string name="warningDeletePlace">Sind Sie sicher, dass Sie den Platz löschen</string>
+    <string name="warningLogout">Sind Sie sicher, dass Sie sich abmelden möchten?</string>
 </resources>

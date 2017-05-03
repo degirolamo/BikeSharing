@@ -53,4 +53,14 @@
     <string name="le_type_de_user_ici">The type of user here</string>
     <string name="confirmer_le_mot_de_passe">Password Confirmation</string>
     <string name="icone_de_l_application">App icon</string>
+    <string name="errorAccountExisting">Existing account</string>
+    <string name="errorConfirmPass">Password confirmation does not match</string>
+    <string name="errorMailExisting">An account with this email address already exists</string>
+    <string name="errorPassMail">Email and / or password is incorrect!</string>
+    <string name="errorPlaceExisting">A place with this name or address already exists.</string>
+    <string name="errorProfilEmptyFields">Some fields are empty</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="warningDeletePlace">Are you sure you want to delete the place</string>
+    <string name="warningLogout">Are you sure you want to logout ?</string>
 </resources>

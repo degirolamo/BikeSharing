@@ -77,9 +77,9 @@ public class AddPlaceActivity extends AppCompatActivity {
                     overridePendingTransition(0, 0);
                 }
                 else
-                    Toast.makeText(getApplicationContext(), "Une place avec ce nom ou cette adresse existe déjà.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.errorPlaceExisting, Toast.LENGTH_SHORT).show();
             } else
-                Toast.makeText(getApplicationContext(), "Le nom, le nombre de place et l'adresse ne peuvent pas être vides",
+                Toast.makeText(getApplicationContext(),  R.string.errorProfilEmptyFields,
                         Toast.LENGTH_SHORT).show();
             }
         });

@@ -64,8 +64,8 @@ public class SettingsActivity extends AppCompatActivity {
             case R.id.action_logout:
                 AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
                 builder.setTitle(R.string.action_logout);
-                builder.setMessage("Etes-vous sûr de vouloir vous déconnecter ?");
-                builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                builder.setMessage(R.string.warningLogout);
+                builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         USER_CONNECTED = null;
                         IS_CONNECTED = 0;
@@ -78,7 +78,7 @@ public class SettingsActivity extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                     }
                 });
-                builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                     }
