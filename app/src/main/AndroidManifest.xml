@@ -30,7 +30,6 @@
         <activity android:name=".QRCodeActivity" android:screenOrientation="portrait" />
         <activity android:name=".AdminHomeActivity" android:screenOrientation="portrait"  />
         <activity android:name=".AdminUsersActivity" android:screenOrientation="portrait"  />
-        <activity android:name=".AdminPlacesActivity" android:screenOrientation="portrait"  />
         <activity android:name=".HomeActivity" android:screenOrientation="portrait" />
         <activity android:name=".ProfileActivity" android:screenOrientation="portrait"  />
         <activity android:name=".SettingsActivity" android:screenOrientation="portrait"  />

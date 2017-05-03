@@ -17,12 +17,12 @@ import static android.R.attr.id;
 import static android.R.attr.name;
 
 /**
- * @project BikeSharing
- * @package ActivityDB
- * @class PersonDB.java
- * @date 23.04.2017
- * @authors Daniel De Girolamo & Pedro Gil Ferreira
- * @description Class containing the methods related with the Person object
+ * Project BikeSharing
+ * Package ActivityDB
+ * Class PersonDB.java
+ * Date 22.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Class containing the methods related with the Person object
  */
 
 public class PersonDB {

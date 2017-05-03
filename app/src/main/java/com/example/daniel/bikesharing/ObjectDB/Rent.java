@@ -1,12 +1,12 @@
 package com.example.daniel.bikesharing.ObjectDB;
 
 /**
- * @project BikeSharing
- * @package ObjectDB
- * @class Bike.java
- * @date 23.04.2017
- * @authors Daniel De Girolamo & Pedro Gil Ferreira
- * @description Class containing the Rent object
+ * Project BikeSharing
+ * Package ObjectDB
+ * Class Rent.java
+ * Date 11.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Class containing the Rent object
  */
 
 public class Rent {

@@ -14,12 +14,12 @@ import java.util.List;
 import static android.R.attr.id;
 
 /**
- * @project BikeSharing
- * @package ActivityDB
- * @class CantonDB.java
- * @date 11.04.2017
- * @authors Daniel De Girolamo & Pedro Gil Ferreira
- * @description Class containing the methods related with the Canton object
+ * Project BikeSharing
+ * Package ActivityDB
+ * Class CantonDB.java
+ * Date 11.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Class containing the methods related with the Canton object
  */
 
 public class CantonDB  {

@@ -18,6 +18,15 @@ import java.util.Locale;
 import static com.example.daniel.bikesharing.MainActivity.IS_CONNECTED;
 import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
 
+/**
+ * Project BikeSharing
+ * Package com.example.daniel.bikesharing
+ * Class LanguageActivity.java
+ * Date 29.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Activity used to set the language of the application
+ */
+
 public class LanguageActivity extends AppCompatActivity {
 
     @Override

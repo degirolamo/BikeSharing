@@ -18,12 +18,12 @@ import com.example.daniel.bikesharing.TownActivity;
 import java.util.List;
 
 /**
- * @project BikeSharing
- * @package ObjectDB
- * @class Town.java
- * @date 11.04.2017
- * @authors Daniel De Girolamo & Pedro Gil Ferreira
- * @description Class containing the Town object
+ * Project BikeSharing
+ * Package Objects
+ * Class CantonAdapter.java
+ * Date 20.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Adapter used to display a ListView of cantons
  */
 
 public class CantonAdapter extends BaseAdapter implements AdapterView.OnItemClickListener {

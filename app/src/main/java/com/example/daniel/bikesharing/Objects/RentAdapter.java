@@ -34,7 +34,12 @@ import java.util.Locale;
 import static com.example.daniel.bikesharing.R.id.listRents;
 
 /**
- * Created by pedro on 23.04.2017.
+ * Project BikeSharing
+ * Package Objects
+ * Class RentAdapter.java
+ * Date 23.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Adapter used to display a ListView of rents
  */
 
 public class RentAdapter  extends BaseAdapter implements AdapterView.OnItemClickListener {

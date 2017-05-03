@@ -1,19 +1,12 @@
 package com.example.daniel.bikesharing.ObjectDB;
 
-import android.graphics.Picture;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
-import android.widget.ImageView;
-
-import com.example.daniel.bikesharing.R;
-
 /**
- * @project BikeSharing
- * @package ObjectDB
- * @class Canton.java
- * @date 11.04.2017
- * @authors Daniel De Girolamo & Pedro Gil Ferreira
- * @description Class containing the Canton object
+ * Project BikeSharing
+ * Package ObjectDB
+ * Class Canton.java
+ * Date 11.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Class containing the Canton object
  */
 
 public class Canton {

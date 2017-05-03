@@ -27,7 +27,12 @@ import static com.example.daniel.bikesharing.R.id.imgCanton;
 import static com.example.daniel.bikesharing.R.id.listCantons;
 
 /**
- * Created by pedro on 20.04.2017.
+ * Project BikeSharing
+ * Package Objects
+ * Class TownAdapter.java
+ * Date 20.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Adapter used to display a ListView of towns
  */
 
 public class TownAdapter extends BaseAdapter implements AdapterView.OnItemClickListener {

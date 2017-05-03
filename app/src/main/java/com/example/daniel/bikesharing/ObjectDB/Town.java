@@ -3,12 +3,12 @@ package com.example.daniel.bikesharing.ObjectDB;
 import com.example.daniel.bikesharing.DB.DatabaseHelper;
 
 /**
- * @project BikeSharing
- * @package ObjectDB
- * @class Town.java
- * @date 11.04.2017
- * @authors Daniel De Girolamo & Pedro Gil Ferreira
- * @description Class containing the Town object
+ * Project BikeSharing
+ * Package ObjectDB
+ * Class Town.java
+ * Date 11.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Class containing the Town object
  */
 
 public class Town {

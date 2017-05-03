@@ -18,12 +18,12 @@ import static com.example.daniel.bikesharing.MainActivity.IS_CONNECTED;
 import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
 
 /**
- * @project BikeSharing
- * @package ObjectDB
- * @class AddPlaceActivity.java
- * @date 29.04.2017
- * @authors Daniel De Girolamo & Pedro Gil Ferreira
- * @description Activity used to add places
+ * Project BikeSharing
+ * Package com.example.daniel.bikesharing
+ * Class AdminHomeActivity.java
+ * Date 20.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Activity used display the home of the administration section
  */
 
 public class AdminHomeActivity extends AppCompatActivity {

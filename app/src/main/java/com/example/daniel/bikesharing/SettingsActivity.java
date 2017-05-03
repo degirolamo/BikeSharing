@@ -16,6 +16,15 @@ import android.widget.Button;
 import static com.example.daniel.bikesharing.MainActivity.IS_CONNECTED;
 import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
 
+/**
+ * Project BikeSharing
+ * Package com.example.daniel.bikesharing
+ * Class SettingsActivity.java
+ * Date 29.04.2017
+ * Authors Daniel De Girolamo & Pedro Gil Ferreira
+ * Description Activity to display the settings of the application
+ */
+
 public class SettingsActivity extends AppCompatActivity {
 
     @Override
