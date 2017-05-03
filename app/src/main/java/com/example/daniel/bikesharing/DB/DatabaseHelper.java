@@ -5,7 +5,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Created by Daniel on 04.04.2017.
+ * @project BikeSharing
+ * @package DB
+ * @class DatabaseHelper.java
+ * @date 04.04.2017
+ * @authors Daniel De Girolamo & Pedro Gil Ferreira
+ * @description Class containing the Database Helper of the Bikesharing database
  */
 
 public class DatabaseHelper extends SQLiteOpenHelper {

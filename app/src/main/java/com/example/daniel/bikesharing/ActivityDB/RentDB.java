@@ -14,7 +14,12 @@ import java.util.List;
 import static android.R.attr.id;
 
 /**
- * Created by pedro on 23.04.2017.
+ * @project BikeSharing
+ * @package ActivityDB
+ * @class RentDB.java
+ * @date 23.04.2017
+ * @authors Daniel De Girolamo & Pedro Gil Ferreira
+ * @description Class containing the methods related with the Rent object
  */
 
 public class RentDB {

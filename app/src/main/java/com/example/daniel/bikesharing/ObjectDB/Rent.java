@@ -1,7 +1,12 @@
 package com.example.daniel.bikesharing.ObjectDB;
 
 /**
- * Created by pedro on 23.04.2017.
+ * @project BikeSharing
+ * @package ObjectDB
+ * @class Bike.java
+ * @date 23.04.2017
+ * @authors Daniel De Girolamo & Pedro Gil Ferreira
+ * @description Class containing the Rent object
  */
 
 public class Rent {

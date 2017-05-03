@@ -18,7 +18,12 @@ import static android.R.attr.name;
 import static com.example.daniel.bikesharing.R.string.cantons;
 
 /**
- * Created by pedro on 22.04.2017.
+ * @project BikeSharing
+ * @package ActivityDB
+ * @class BikeDB.java
+ * @date 22.04.2017
+ * @authors Daniel De Girolamo & Pedro Gil Ferreira
+ * @description Class containing the methods related with the Bike object
  */
 
 public class BikeDB {

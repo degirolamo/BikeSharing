@@ -18,7 +18,6 @@ import com.example.daniel.bikesharing.ObjectDB.Person;
 
 import static com.example.daniel.bikesharing.MainActivity.IS_CONNECTED;
 import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
-import static com.example.daniel.bikesharing.R.id.btnLogin;
 
 public class LoginActivity extends AppCompatActivity {
 

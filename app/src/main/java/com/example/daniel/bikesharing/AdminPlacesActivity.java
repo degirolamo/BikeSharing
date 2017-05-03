@@ -16,6 +16,15 @@ import com.example.daniel.bikesharing.Objects.PlaceAdapter;
 
 import java.util.List;
 
+/**
+ * @project BikeSharing
+ * @package ObjectDB
+ * @class AddPlaceActivity.java
+ * @date 29.04.2017
+ * @authors Daniel De Girolamo & Pedro Gil Ferreira
+ * @description Activity used to add places
+ */
+
 public class AdminPlacesActivity extends AppCompatActivity {
 
     DatabaseHelper db;

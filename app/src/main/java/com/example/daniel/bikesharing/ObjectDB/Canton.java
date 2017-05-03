@@ -8,7 +8,12 @@ import android.widget.ImageView;
 import com.example.daniel.bikesharing.R;
 
 /**
- * Created by Daniel on 11.04.2017.
+ * @project BikeSharing
+ * @package ObjectDB
+ * @class Canton.java
+ * @date 11.04.2017
+ * @authors Daniel De Girolamo & Pedro Gil Ferreira
+ * @description Class containing the Canton object
  */
 
 public class Canton {

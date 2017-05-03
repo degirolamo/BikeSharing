@@ -17,7 +17,12 @@ import static android.R.attr.id;
 import static android.R.attr.name;
 
 /**
- * Created by pedro on 23.04.2017.
+ * @project BikeSharing
+ * @package ActivityDB
+ * @class PersonDB.java
+ * @date 23.04.2017
+ * @authors Daniel De Girolamo & Pedro Gil Ferreira
+ * @description Class containing the methods related with the Person object
  */
 
 public class PersonDB {

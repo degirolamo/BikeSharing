@@ -17,12 +17,19 @@ import android.widget.Button;
 import static com.example.daniel.bikesharing.MainActivity.IS_CONNECTED;
 import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
 
+/**
+ * @project BikeSharing
+ * @package ObjectDB
+ * @class AddPlaceActivity.java
+ * @date 29.04.2017
+ * @authors Daniel De Girolamo & Pedro Gil Ferreira
+ * @description Activity used to add places
+ */
+
 public class AdminHomeActivity extends AppCompatActivity {
 
     Button btnSearch;
     Button btnUsers;
-    Button btnPlaces;
-    Button btnStats;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +43,6 @@ public class AdminHomeActivity extends AppCompatActivity {
 
         btnSearch = (Button) findViewById(R.id.btnAdminSearch);
         btnUsers = (Button) findViewById(R.id.btnAdminUsers);
-//        btnPlaces = (Button) findViewById(R.id.btnAdminPlaces);
-//        btnStats = (Button) findViewById(R.id.btnAdminStats);
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,22 +59,6 @@ public class AdminHomeActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-//        btnPlaces.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(getApplicationContext(), AdminPlacesActivity.class);
-//                startActivity(i);
-//            }
-//        });
-//
-//        btnStats.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(getApplicationContext(), SearchActivity.class);
-//                startActivity(i);
-//            }
-//        });
 
     }
 

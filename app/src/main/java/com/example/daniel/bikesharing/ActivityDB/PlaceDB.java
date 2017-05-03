@@ -18,7 +18,12 @@ import static android.R.attr.id;
 import static com.example.daniel.bikesharing.R.string.places;
 
 /**
- * Created by pedro on 19.04.2017.
+ * @project BikeSharing
+ * @package ActivityDB
+ * @class PlaceDB.java
+ * @date 19.04.2017
+ * @authors Daniel De Girolamo & Pedro Gil Ferreira
+ * @description Class containing the methods related with the Place object
  */
 
 public class PlaceDB {
