@@ -62,6 +62,8 @@ public class BikeDB {
         Cursor c = sqlDB.rawQuery(selectQuery, null);
 
         if(c != null) {
+            c.moveToFirst();
+
             nbBikes = c.getInt(c.getColumnIndex("nb"));
 
             c.close();

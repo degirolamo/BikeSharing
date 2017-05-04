@@ -64,6 +64,7 @@ public class PersonAdapter extends BaseAdapter {
         return listPersons.get(position);
     }
 
+    @SuppressWarnings("SuspiciousMethodCalls")
     @Override
     public long getItemId(int position) {
         return listPersons.indexOf(getItem(position));
@@ -86,12 +87,14 @@ public class PersonAdapter extends BaseAdapter {
         btnAdmin = (ImageButton) view.findViewById(R.id.imgAdmin);
         int isAdmin = 0;
         if (listPersons.get(position).isAdmin() == 1) {
+            //noinspection deprecation
             btnAdmin.setColorFilter(view.getResources().getColor(R.color.colorBlack));
-            message = "Voulez-vous vraiment retirer les droits d'administration à " +
+            message = activity.getResources().getString(R.string.warningDeleteAdmin) + " " +
                     listPersons.get(position).getFirstname() + " " + listPersons.get(position).getLastname();
         } else {
+            //noinspection deprecation
             btnAdmin.setColorFilter(view.getResources().getColor(R.color.colorGrey));
-            message = "Voulez-vous vraiment donner les droits d'administration à " +
+            message = activity.getResources().getString(R.string.warningAddAdmin) + " " +
                     listPersons.get(position).getFirstname() + " " + listPersons.get(position).getLastname();
             isAdmin = 1;
         }
@@ -103,11 +106,11 @@ public class PersonAdapter extends BaseAdapter {
         return view;
     }
 
-    public class StartActivity implements View.OnClickListener {
+    private class StartActivity implements View.OnClickListener {
         Class classToDisplay;
         int position;
 
-        public StartActivity(Class classToDisplay, int position) {
+        private StartActivity(Class classToDisplay, int position) {
             this.classToDisplay = classToDisplay;
             this.position = position;
         }
@@ -120,12 +123,12 @@ public class PersonAdapter extends BaseAdapter {
         }
     }
 
-    public class SetAdminRights implements View.OnClickListener {
+    private class SetAdminRights implements View.OnClickListener {
         String message;
         int position;
         int isAdmin;
 
-        public SetAdminRights(String message, int position, int isAdmin) {
+        private SetAdminRights(String message, int position, int isAdmin) {
             this.message = message;
             this.position = position;
             this.isAdmin = isAdmin;
@@ -136,7 +139,7 @@ public class PersonAdapter extends BaseAdapter {
             AlertDialog.Builder builder = new AlertDialog.Builder(activity);
             builder.setTitle(R.string.app_name);
             builder.setMessage(message);
-            builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     personDB.setAdminRights(listPersons.get(position).getId(), isAdmin);
                     dialog.dismiss();
@@ -146,7 +149,7 @@ public class PersonAdapter extends BaseAdapter {
                     activity.overridePendingTransition(0, 0);
                 }
             });
-            builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+            builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     dialog.dismiss();
                 }
@@ -156,10 +159,10 @@ public class PersonAdapter extends BaseAdapter {
         }
     }
 
-    public class DeletePerson implements View.OnClickListener {
+    private class DeletePerson implements View.OnClickListener {
         int position;
 
-        public DeletePerson(int position) {
+        private DeletePerson(int position) {
             this.position = position;
         }
 
@@ -167,9 +170,9 @@ public class PersonAdapter extends BaseAdapter {
         public void onClick(View v) {
             AlertDialog.Builder builder = new AlertDialog.Builder(activity);
             builder.setTitle(R.string.app_name);
-            builder.setMessage("Etes-vous sûr de vouloir supprimer l'utilisateur " +
+            builder.setMessage(activity.getResources().getString(R.string.warningDeleteUser) + " " +
                 listPersons.get(position).getFirstname() + " " + listPersons.get(position).getLastname());
-            builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     personDB.deletePerson(listPersons.get(position).getId());
                     dialog.dismiss();
@@ -179,7 +182,7 @@ public class PersonAdapter extends BaseAdapter {
                     activity.overridePendingTransition(0, 0);
                 }
             });
-            builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+            builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     dialog.dismiss();
                 }

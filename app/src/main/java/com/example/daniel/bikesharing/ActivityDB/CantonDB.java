@@ -91,6 +91,8 @@ public class CantonDB  {
 
         Canton canton = null;
         if(c != null) {
+            c.moveToFirst();
+
             canton = new Canton();
             canton.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
             canton.setName(c.getString(c.getColumnIndex(db.getKEY_CANTON_NAME())));

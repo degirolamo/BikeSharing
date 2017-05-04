@@ -63,4 +63,11 @@
     <string name="yes">Yes</string>
     <string name="warningDeletePlace">Are you sure you want to delete the place</string>
     <string name="warningLogout">Are you sure you want to logout ?</string>
+    <string name="warningAddAdmin">Do you really want to give administrative rights to</string>
+    <string name="warningDeleteAdmin">Are you sure you want to remove the administrative rights to</string>
+    <string name="warningDeleteUser">Are you sure you want to delete the user</string>
+    <string name="namePicture">Name of picture</string>
+    <string name="namePlace">Name of place</string>
+    <string name="nombrePlace">Number of places</string>
+    <string name="adresse">Address</string>
 </resources>

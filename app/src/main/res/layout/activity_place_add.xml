@@ -12,8 +12,10 @@
         android:minHeight="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         android:title="@string/bike_sharing"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp">
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
@@ -26,7 +28,7 @@
         android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolAddPlace"
+        app:layout_constraintTop_toBottomOf="@+id/toolAddPlace"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp">
 
@@ -35,14 +37,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Nom de la place" />
+            android:hint="@string/namePlace" />
 
         <EditText
             android:id="@+id/txtAddPlacePicture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Nom de l'image (sans extension)" />
+            android:hint="@string/namePicture" />
 
         <EditText
             android:id="@+id/txtAddPlaceNbPlaces"
@@ -50,7 +52,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number"
-            android:hint="Nombre de places" />
+            android:hint="@string/nombrePlace" />
 
         <EditText
             android:id="@+id/txtAddPlaceAddress"
@@ -58,7 +60,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:fontFamily="none"
-            android:hint="Adresse" />
+            android:hint="@string/adresse" />
 
     </LinearLayout>
 
@@ -70,7 +72,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Valider"
+        android:text="@string/valider"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

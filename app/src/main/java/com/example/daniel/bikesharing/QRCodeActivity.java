@@ -41,6 +41,7 @@ public class QRCodeActivity extends AppCompatActivity {
     String EditTextValue ;
     Thread thread ;
     public final static int QRCodeWidth = 500 ;
+    public final static int QRCodeHeight = 500 ;
     Bitmap bitmap ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class QRCodeActivity extends AppCompatActivity {
         imgCode = (ImageView)findViewById(R.id.imgCode);
 
         try {
-            bitmap = TextToImageEncode("ID User : 1");
+            bitmap = TextToImageEncode("ID User : " + USER_CONNECTED.getId());
 
             imgCode.setImageBitmap(bitmap);
 
@@ -69,8 +70,8 @@ public class QRCodeActivity extends AppCompatActivity {
         try {
             bitMatrix = new MultiFormatWriter().encode(
                     Value,
-                    BarcodeFormat.DATA_MATRIX.QR_CODE,
-                    QRCodeWidth, QRCodeWidth, null
+                    BarcodeFormat.QR_CODE,
+                    QRCodeWidth, QRCodeHeight, null
             );
 
         } catch (IllegalArgumentException Illegalargumentexception) {
@@ -87,7 +88,7 @@ public class QRCodeActivity extends AppCompatActivity {
             int offset = y * bitMatrixWidth;
 
             for (int x = 0; x < bitMatrixWidth; x++) {
-
+                //noinspection deprecation
                 pixels[offset + x] = bitMatrix.get(x, y) ?
                         getResources().getColor(R.color.colorBlack):getResources().getColor(R.color.colorWhite);
             }

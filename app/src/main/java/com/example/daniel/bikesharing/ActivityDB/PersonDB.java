@@ -126,6 +126,8 @@ public class PersonDB {
         Person person = null;
 
         if(c != null) {
+            c.moveToFirst();
+
             person = new Person();
             person.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
             person.setIdCanton(c.getInt(c.getColumnIndex(db.getKEY_CANTONID())));
@@ -141,9 +143,12 @@ public class PersonDB {
         return person;
     }
 
+    /**
+     * Gets a person by its email address
+     * @param email : the email address of the user
+     * @return The person found
+     */
     public Person getPerson(String email) {
-        String password = "";
-
         String selectQuery = "SELECT * FROM " + db.getTABLE_PERSON()
                 + " WHERE " + db.getKEY_EMAIL() + " = '" + email + "'";
 
@@ -152,7 +157,9 @@ public class PersonDB {
 
         Person person = null;
 
-        if(c != null && c.getCount() >= 1) {
+        if (c != null) {
+            c.moveToFirst();
+
             person = new Person();
             person.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
             person.setIdCanton(c.getInt(c.getColumnIndex(db.getKEY_CANTONID())));

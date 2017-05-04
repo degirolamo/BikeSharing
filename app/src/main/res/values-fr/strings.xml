@@ -63,4 +63,11 @@
     <string name="yes">Oui</string>
     <string name="no">Non</string>
     <string name="warningDeletePlace">Etes-vous sûr de vouloir supprimer la place</string>
+    <string name="warningDeleteAdmin">Voulez-vous vraiment retirer les droits d\'administration à</string>
+    <string name="warningAddAdmin">Voulez-vous vraiment donner les droits d\'administration à</string>
+    <string name="warningDeleteUser">Etes-vous sûr de vouloir supprimer l\'utilisateur</string>
+    <string name="namePlace">Nom de la place</string>
+    <string name="namePicture">Nom de l\'image (sans extension)</string>
+    <string name="nombrePlace">Nombre de places</string>
+    <string name="adresse">Adresse</string>
 </resources>

@@ -51,7 +51,7 @@
     <string name="InfoPlace">Informationen</string>
     <string name="EditPlace">Bearbeiten Platz</string>
     <string name="AddPlace">Füge einen Platz hinzu</string>
-    <string name="confirmer_le_mot_de_passe">Bestätigen Passwort</string>
+    <string name="confirmer_le_mot_de_passe">Kennwort bestätigen</string>
     <string name="errorAccountExisting">Bestehende Konto</string>
     <string name="errorConfirmPass">Die Passwortbestätigung stimmt nicht überein</string>
     <string name="errorMailExisting">Ein Konto mit dieser E-Mail-Adresse ist bereits vorhanden</string>
@@ -63,4 +63,11 @@
     <string name="yes">Ja</string>
     <string name="warningDeletePlace">Sind Sie sicher, dass Sie den Platz löschen</string>
     <string name="warningLogout">Sind Sie sicher, dass Sie sich abmelden möchten?</string>
+    <string name="warningAddAdmin">Wollen Sie wirklich administrative Rechte geben,</string>
+    <string name="warningDeleteAdmin">Wollen Sie wirklich administrative Rechte entfernen</string>
+    <string name="warningDeleteUser">Sind Sie sicher, dass Sie Benutzer löschen</string>
+    <string name="namePicture">Bildname</string>
+    <string name="nombrePlace">Anzhal der Plätze</string>
+    <string name="namePlace">Name der Platz</string>
+    <string name="adresse">Adresse</string>
 </resources>

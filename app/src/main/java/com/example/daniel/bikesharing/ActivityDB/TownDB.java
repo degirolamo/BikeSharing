@@ -98,6 +98,8 @@ public class TownDB {
 
         Town town = null;
         if(c != null) {
+            c.moveToFirst();
+
             town = new Town();
             town.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
             town.setName(c.getString(c.getColumnIndex(db.getKEY_TOWN_NAME())));

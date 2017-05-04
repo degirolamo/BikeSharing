@@ -149,4 +149,12 @@ public class PlaceActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(), TownActivity.class);
+        TownDB townDB = new TownDB(db);
+        i.putExtra("idCanton", townDB.getTown(getIntent().getIntExtra("idTown", 0)).getIdCanton());
+        startActivity(i);
+    }
 }

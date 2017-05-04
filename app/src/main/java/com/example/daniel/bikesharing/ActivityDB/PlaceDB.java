@@ -48,6 +48,8 @@ public class PlaceDB {
         Place place = null;
 
         if(c != null) {
+            c.moveToFirst();
+
             place = new Place();
             place.setId(c.getInt(c.getColumnIndex(db.getKEY_ID())));
             place.setName(c.getString(c.getColumnIndex(db.getKEY_PLACE_NAME())));

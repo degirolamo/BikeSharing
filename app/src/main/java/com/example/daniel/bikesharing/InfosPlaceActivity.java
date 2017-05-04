@@ -64,22 +64,20 @@ public class InfosPlaceActivity extends AppCompatActivity {
             int id = getResources().getIdentifier("com.example.daniel.bikesharing:drawable/" + place.getPicture(), null, null);
             imgPicture.setImageResource(id);
         }
+
         txtAddress.setText(place.getAddress());
         int nbBikes = new BikeDB(db).getNbBikes(place.getId());
         txtDispoBikes.setText(String.valueOf(nbBikes));
         txtDispoSlots.setText(String.valueOf(place.getNbPlaces() - nbBikes));
 
         Button btnRent = (Button) findViewById(R.id.btnRent);
-        btnRent.setOnClickListener(new DisplayQRCode());
-    }
-
-    private class DisplayQRCode implements View.OnClickListener {
-
-        @Override
-        public void onClick(View v) {
-            Intent i = new Intent(getApplicationContext(), QRCodeActivity.class);
-            startActivity(i);
-        }
+        btnRent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), QRCodeActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override
@@ -113,7 +111,7 @@ public class InfosPlaceActivity extends AppCompatActivity {
             case R.id.btnDelete:
                 AlertDialog.Builder builder = new AlertDialog.Builder(InfosPlaceActivity.this);
                 builder.setTitle(R.string.app_name);
-                builder.setMessage(R.string.warningDeletePlace + place.getName());
+                builder.setMessage(getResources().getString(R.string.warningDeletePlace) + " " + place.getName() + " ?");
                 builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         placeDB.deletePlace(place.getId());
@@ -135,6 +133,7 @@ public class InfosPlaceActivity extends AppCompatActivity {
                 });
                 AlertDialog alert = builder.create();
                 alert.show();
+                return true;
             case R.id.action_settings:
                 i = new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivity(i);
@@ -163,6 +162,7 @@ public class InfosPlaceActivity extends AppCompatActivity {
                 });
                 alert = builder.create();
                 alert.show();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
