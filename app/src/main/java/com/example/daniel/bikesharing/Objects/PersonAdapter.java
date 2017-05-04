@@ -82,7 +82,7 @@ public class PersonAdapter extends BaseAdapter {
         txtUserName.setText(listPersons.get(position).getFirstname() + " " + listPersons.get(position).getLastname());
 
         btnProfile = (ImageButton) view.findViewById(R.id.imgProfile);
-        btnProfile.setOnClickListener(new StartActivity(ProfileActivity.class, position));
+        btnProfile.setOnClickListener(new DisplayProfile(ProfileActivity.class, position));
 
         btnAdmin = (ImageButton) view.findViewById(R.id.imgAdmin);
         int isAdmin = 0;
@@ -106,11 +106,11 @@ public class PersonAdapter extends BaseAdapter {
         return view;
     }
 
-    private class StartActivity implements View.OnClickListener {
+    private class DisplayProfile implements View.OnClickListener {
         Class classToDisplay;
         int position;
 
-        private StartActivity(Class classToDisplay, int position) {
+        private DisplayProfile(Class classToDisplay, int position) {
             this.classToDisplay = classToDisplay;
             this.position = position;
         }
@@ -119,6 +119,7 @@ public class PersonAdapter extends BaseAdapter {
         public void onClick(View v) {
             Intent i = new Intent(activity.getApplicationContext(), classToDisplay);
             i.putExtra("idPerson", listPersons.get(position).getId());
+            i.putExtra("parentClass", "AdminUsersActivity");
             activity.startActivity(i);
         }
     }

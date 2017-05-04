@@ -125,10 +125,14 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         finishAffinity();
-        if(USER_CONNECTED.isAdmin() == 1)
-            startActivity(new Intent(getApplicationContext(), AdminHomeActivity.class));
-        else
-            startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+        if(getIntent().getStringExtra("parentClass").equals("AdminUsersActivity")) {
+            Intent i = new Intent(getApplicationContext(), AdminUsersActivity.class);
+        } else {
+            if(USER_CONNECTED.isAdmin() == 1)
+                startActivity(new Intent(getApplicationContext(), AdminHomeActivity.class));
+            else
+                startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+        }
     }
 
     @Override
