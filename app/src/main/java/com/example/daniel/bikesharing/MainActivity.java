@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         rentDB.insertRent(5, 1, "18-04-2017 05:01:00", "18-04-2017 11:12:24");
         rentDB.insertRent(2, 1, "18-04-2017 06:01:00", "19-04-2017 10:12:24");
         rentDB.insertRent(3, 1, "20-04-2017 07:01:00", "20-04-2017 15:12:24");
-        rentDB.insertRent(4, 1, "21-04-2017 08:01:00", "21-04-2017 16:12:24");
+        rentDB.insertRent(4, 3, "21-04-2017 08:01:00", "21-04-2017 16:12:24");
         rentDB.insertRent(6, 1, "22-04-2017 09:01:00", "22-04-2017 17:12:24");
         rentDB.insertRent(6, 1, "22-04-2017 09:01:00", "");
         rentDB.insertRent(6, 3, "22-04-2017 09:01:00", "");

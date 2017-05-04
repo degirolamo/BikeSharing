@@ -69,7 +69,7 @@ public class SearchActivity extends AppCompatActivity {
 
         PlaceDB placeDB = new PlaceDB(db);
         List<Place> places = new ArrayList<>();
-        List<Integer> nbPlaces = placeDB.getNbRentsByPerson(2);
+        List<Integer> nbPlaces = placeDB.getNbRentsByPerson(USER_CONNECTED.getId());
         for (int nbPlace : nbPlaces) {
             places.add(placeDB.getPlace(nbPlace));
         }
