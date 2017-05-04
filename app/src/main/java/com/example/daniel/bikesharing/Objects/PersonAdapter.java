@@ -1,5 +1,6 @@
 package com.example.daniel.bikesharing.Objects;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -70,6 +71,7 @@ public class PersonAdapter extends BaseAdapter {
         return listPersons.indexOf(getItem(position));
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
@@ -121,6 +123,7 @@ public class PersonAdapter extends BaseAdapter {
             i.putExtra("idPerson", listPersons.get(position).getId());
             i.putExtra("parentClass", "AdminUsersActivity");
             activity.startActivity(i);
+            activity.finish();
         }
     }
 
