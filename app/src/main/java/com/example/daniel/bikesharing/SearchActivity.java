@@ -95,7 +95,7 @@ public class SearchActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(USER_CONNECTED.isAdmin() == 0) {
+        if(USER_CONNECTED.getAdmin() == 0) {
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             i.putExtra("EXIT", true);

@@ -5,7 +5,7 @@
     <string name="action_settings">Paramètres</string>
     <string name="administration">Administration</string>
     <string name="adresse_mail">E-mail</string>
-    <string name="authors">auteurs</string>
+    <string name="authors">Créer par Daniel De Girolamo et Pedro Gil Ferreira</string>
     <string name="s_enregistrer">S\'enregistrer</string>
     <string name="adresse_exacte">Adresse exacte</string>
     <string name="ici_le_nom_du_lieu">Ici le nom du lieu</string>
@@ -70,4 +70,7 @@
     <string name="namePicture">Nom de l\'image (sans extension)</string>
     <string name="nombrePlace">Nombre de places</string>
     <string name="adresse">Adresse</string>
+    <string name="synchroniser">Synchroniser</string>
+    <string name="npa_de_la_ville">NPA de la ville</string>
+    <string name="nom_de_la_ville">Nom de la ville</string>
 </resources>

@@ -10,12 +10,18 @@ package com.example.daniel.bikesharing.ObjectDB;
  */
 
 public class Rent {
+    private int id;
     private int idBike;
     private int idPerson;
     private String beginDate;
     private String endDate;
 
-    public Rent(int idBike, int idPerson, String beginDate, String endDate) {
+    public Rent() {
+
+    }
+
+    public Rent(int id, int idBike, int idPerson, String beginDate, String endDate) {
+        this.id = id;
         this.idBike = idBike;
         this.idPerson = idPerson;
         this.beginDate = beginDate;
@@ -23,6 +29,8 @@ public class Rent {
     }
 
     //getters
+
+    public int getId() { return id; }
 
     public int getIdBike() {
         return idBike;
@@ -41,6 +49,8 @@ public class Rent {
     }
 
     //setters
+
+    public void setId(int id) { this.id = id; }
 
     public void setIdBike(int idBike) {
         this.idBike = idBike;

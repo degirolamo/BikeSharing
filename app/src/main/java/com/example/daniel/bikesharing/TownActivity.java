@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.example.daniel.bikesharing.ActivityDB.CantonDB;
 import com.example.daniel.bikesharing.ActivityDB.TownDB;
 import com.example.daniel.bikesharing.DB.DatabaseHelper;
 import com.example.daniel.bikesharing.ObjectDB.Canton;
@@ -45,15 +47,15 @@ public class TownActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_town);
 
+        ListView listViewTowns;
+        DatabaseHelper db = new DatabaseHelper(getApplicationContext());
+        ;
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolTowns);
         toolbar.setTitleTextColor(Color.WHITE);
-        toolbar.setTitle(R.string.villes);
+        CantonDB cantonDB = new CantonDB(db);
+        toolbar.setTitle(cantonDB.getCanton(getIntent().getIntExtra("idCanton", 0)).getName());
         setSupportActionBar(toolbar);
-
-        ListView listViewTowns;
-        DatabaseHelper db;
-
-        db = new DatabaseHelper(getApplicationContext());
 
         TownDB townDB = new TownDB(db);
         List<Town> towns = townDB.getTownsByCanton(getIntent().getIntExtra("idCanton", 0));
@@ -62,6 +64,16 @@ public class TownActivity extends AppCompatActivity {
         TownAdapter adapter = new TownAdapter(this, towns);
         listViewTowns.setAdapter(adapter);
         listViewTowns.setOnItemClickListener(adapter);
+
+        FloatingActionButton fabAdd = (FloatingActionButton) findViewById(R.id.fabTownAdd);
+        fabAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), AddTownActivity.class);
+                i.putExtra("idCanton", getIntent().getIntExtra("idCanton", 0));
+                startActivity(i);
+            }
+        });
 
         Button btnCanton = (Button) findViewById(R.id.btnTownCanton);
         btnCanton.setOnClickListener(new View.OnClickListener() {

@@ -84,7 +84,7 @@ public class InfosPlaceActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         this.menu = menu;
         MenuInflater inflater = getMenuInflater();
-        if(USER_CONNECTED.isAdmin() == 1) {
+        if(USER_CONNECTED.getAdmin() == 1) {
             inflater.inflate(R.menu.edit, menu);
             inflater.inflate(R.menu.delete, menu);
         }

@@ -6,7 +6,7 @@
     <string name="administration">Verwaltung</string>
     <string name="adresse_exacte">Exakte Adresse</string>
     <string name="adresse_mail">E-mail</string>
-    <string name="authors">Autoren</string>
+    <string name="authors">Erstellen von Daniel De Girolamo und Pedro Gil Ferreira</string>
     <string name="bike_sharing">Bike Sharing</string>
     <string name="cantons">Kantone</string>
     <string name="click_here_to_generate_qr_code">Klicken Sie hier, qr Code zu generieren</string>
@@ -70,4 +70,5 @@
     <string name="nombrePlace">Anzhal der Plätze</string>
     <string name="namePlace">Name der Platz</string>
     <string name="adresse">Adresse</string>
+    <string name="synchroniser">Synchronisieren</string>
 </resources>

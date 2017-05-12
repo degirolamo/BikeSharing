@@ -1,6 +1,7 @@
 package com.example.daniel.bikesharing;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,6 +13,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.example.daniel.bikesharing.ActivityDB.BikeDB;
+import com.example.daniel.bikesharing.ActivityDB.CantonDB;
+import com.example.daniel.bikesharing.ActivityDB.PersonDB;
+import com.example.daniel.bikesharing.ActivityDB.PlaceDB;
+import com.example.daniel.bikesharing.ActivityDB.RentDB;
+import com.example.daniel.bikesharing.ActivityDB.TownDB;
+import com.example.daniel.bikesharing.DB.DatabaseHelper;
 
 import static com.example.daniel.bikesharing.MainActivity.IS_CONNECTED;
 import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
@@ -26,6 +36,9 @@ import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
  */
 
 public class SettingsActivity extends AppCompatActivity {
+
+    private DatabaseHelper db;
+    private ProgressDialog progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +57,32 @@ public class SettingsActivity extends AppCompatActivity {
                 displayLanguage(v);
             }
         });
+
+        Button btnSynchronize = (Button) findViewById(R.id.btnSynchronize);
+        btnSynchronize.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progress = new ProgressDialog(SettingsActivity.this);
+                progress.setMessage("Synchronisation avec le cloud...");
+                progress.setCancelable(false);
+                progress.show();
+                cloudToSql();
+            }
+        });
+    }
+
+    public void cloudToSql() {
+        db = new DatabaseHelper(getApplicationContext());
+        TownDB townDB = new TownDB(db);
+        townDB.sqlToCloudTown(SettingsActivity.this);
+        BikeDB bikeDB = new BikeDB(db);
+        bikeDB.sqlToCloudBike(SettingsActivity.this);
+        PersonDB personDB = new PersonDB(db);
+        personDB.sqlToCloudPerson(SettingsActivity.this);
+        PlaceDB placeDB = new PlaceDB(db);
+        placeDB.sqlToCloudPlace(SettingsActivity.this);
+        RentDB rentDB = new RentDB(db);
+        rentDB.sqlToCloudRent(SettingsActivity.this);
     }
 
     public void displayLanguage(View v) {
@@ -102,11 +141,25 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent i;
-        if(USER_CONNECTED.isAdmin() == 1)
+        if(USER_CONNECTED.getAdmin() == 1)
             i = new Intent(getApplicationContext(), AdminHomeActivity.class);
         else
             i = new Intent(getApplicationContext(), SearchActivity.class);
         startActivity(i);
         finish();
+    }
+
+    public boolean bikeOK = false;
+    public boolean cantonOK = false;
+    public boolean personOK = false;
+    public boolean placeOK = false;
+    public boolean rentOK = false;
+    public boolean townOK = false;
+
+    public void check() {
+        if(bikeOK && personOK &&
+                placeOK && rentOK && townOK) {
+            progress.dismiss();
+        }
     }
 }

@@ -16,6 +16,10 @@ public class Bike {
 
     //Contructors
 
+    public Bike() {
+
+    }
+
     public Bike(int id, int idPlace) {
         this.id = id;
         this.idPlace = idPlace;

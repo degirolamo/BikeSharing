@@ -60,13 +60,13 @@ public class ProfileActivity extends AppCompatActivity {
         txtCanton = (TextView) findViewById(R.id.txtProfileCanton);
         txtIsAdmin = (TextView) findViewById(R.id.txtProfileIsAdmin);
 
-        txtName.setText(person.getLastname());
         txtFirstname.setText(person.getFirstname());
+        txtName.setText(person.getLastname());
         txtEmail.setText(person.getEmail());
         CantonDB cantonDB = new CantonDB(db);
         txtCanton.setText(String.valueOf(cantonDB.getCanton(person.getIdCanton()).getName()));
         String role;
-        if(person.isAdmin() == 1)
+        if(person.getAdmin() == 1)
             role = "Administrateur";
         else
             role = "Utilisateur";
@@ -134,7 +134,7 @@ public class ProfileActivity extends AppCompatActivity {
             finish();
         } else {
             finishAffinity();
-            if(USER_CONNECTED.isAdmin() == 1)
+            if(USER_CONNECTED.getAdmin() == 1)
                 startActivity(new Intent(getApplicationContext(), AdminHomeActivity.class));
             else
                 startActivity(new Intent(getApplicationContext(), SearchActivity.class));

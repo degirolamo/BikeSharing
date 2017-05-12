@@ -69,7 +69,7 @@ public class Person {
         return lastname;
     }
 
-    public int isAdmin() {
+    public int getAdmin() {
         return isAdmin;
     }
 

@@ -1,7 +1,5 @@
 package com.example.daniel.bikesharing.ObjectDB;
 
-import com.example.daniel.bikesharing.DB.DatabaseHelper;
-
 /**
  * Project BikeSharing
  * Package ObjectDB

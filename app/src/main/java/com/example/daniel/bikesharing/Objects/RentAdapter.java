@@ -42,7 +42,7 @@ import static com.example.daniel.bikesharing.R.id.listRents;
  * Description Adapter used to display a ListView of rents
  */
 
-public class RentAdapter  extends BaseAdapter implements AdapterView.OnItemClickListener {
+public class RentAdapter extends BaseAdapter implements AdapterView.OnItemClickListener {
     private DatabaseHelper db;
     private List<Place> listPlaces;
     private Activity activity;

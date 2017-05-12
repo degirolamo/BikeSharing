@@ -21,10 +21,21 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:background="@color/colorBackground"
         android:text="@string/language" />
+
+    <Button
+        android:id="@+id/btnSynchronize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/colorBackground"
+        android:text="@string/synchroniser" />
 
 </LinearLayout>

@@ -1,5 +1,9 @@
 package com.example.daniel.bikesharing;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -10,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 import com.example.daniel.bikesharing.ActivityDB.BikeDB;
@@ -20,11 +25,17 @@ import com.example.daniel.bikesharing.ActivityDB.RentDB;
 import com.example.daniel.bikesharing.ActivityDB.TownDB;
 import com.example.daniel.bikesharing.DB.DatabaseHelper;
 import com.example.daniel.bikesharing.ObjectDB.Bike;
+import com.example.daniel.bikesharing.ObjectDB.BikeAsyncTask;
 import com.example.daniel.bikesharing.ObjectDB.Canton;
+import com.example.daniel.bikesharing.ObjectDB.CantonAsyncTask;
 import com.example.daniel.bikesharing.ObjectDB.Person;
+import com.example.daniel.bikesharing.ObjectDB.PersonAsyncTask;
 import com.example.daniel.bikesharing.ObjectDB.Place;
+import com.example.daniel.bikesharing.ObjectDB.PlaceAsyncTask;
 import com.example.daniel.bikesharing.ObjectDB.Rent;
+import com.example.daniel.bikesharing.ObjectDB.RentAsyncTask;
 import com.example.daniel.bikesharing.ObjectDB.Town;
+import com.example.daniel.bikesharing.ObjectDB.TownAsyncTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static int IS_CONNECTED = 0;
     public static Person USER_CONNECTED;
+    private ProgressDialog progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,33 +73,33 @@ public class MainActivity extends AppCompatActivity {
         db = new DatabaseHelper(getApplicationContext());
         db.reloadDatabase();
 
-        CantonDB canton = new CantonDB(db);
-        canton.insertCanton("Argovie", "ag");
-        canton.insertCanton("Appenzell Rhodes-Intérieures", "ai");
-        canton.insertCanton("Appenzell Rhodes-Extérieures", "ar");
-        canton.insertCanton("Berne", "be");
-        canton.insertCanton("Bâle-Campagne", "bl");
-        canton.insertCanton("Bâle-Ville", "bs");
-        canton.insertCanton("Fribourg", "fr");
-        canton.insertCanton("Genève", "ge");
-        canton.insertCanton("Glaris", "gl");
-        canton.insertCanton("Grisons", "gr");
-        canton.insertCanton("Jura", "ju");
-        canton.insertCanton("Lucerne", "lu");
-        canton.insertCanton("Neuchâtel", "ne");
-        canton.insertCanton("Nidwald", "nw");
-        canton.insertCanton("Obwald", "ow");
-        canton.insertCanton("Saint-Gall", "sg");
-        canton.insertCanton("Schaffhouse", "sh");
-        canton.insertCanton("Soleure", "so");
-        canton.insertCanton("Schwytz", "sz");
-        canton.insertCanton("Thurgovie", "tg");
-        canton.insertCanton("Tessin", "ti");
-        canton.insertCanton("Uri", "ur");
-        canton.insertCanton("Valais", "vs");
-        canton.insertCanton("Vaud", "vd");
-        canton.insertCanton("Zoug", "zg");
-        canton.insertCanton("Zurich", "zh");
+        CantonDB cantonDB = new CantonDB(db);
+        cantonDB.insertCanton("Argovie", "ag");
+        cantonDB.insertCanton("Appenzell Rhodes-Intérieures", "ai");
+        cantonDB.insertCanton("Appenzell Rhodes-Extérieures", "ar");
+        cantonDB.insertCanton("Berne", "be");
+        cantonDB.insertCanton("Bâle-Campagne", "bl");
+        cantonDB.insertCanton("Bâle-Ville", "bs");
+        cantonDB.insertCanton("Fribourg", "fr");
+        cantonDB.insertCanton("Genève", "ge");
+        cantonDB.insertCanton("Glaris", "gl");
+        cantonDB.insertCanton("Grisons", "gr");
+        cantonDB.insertCanton("Jura", "ju");
+        cantonDB.insertCanton("Lucerne", "lu");
+        cantonDB.insertCanton("Neuchâtel", "ne");
+        cantonDB.insertCanton("Nidwald", "nw");
+        cantonDB.insertCanton("Obwald", "ow");
+        cantonDB.insertCanton("Saint-Gall", "sg");
+        cantonDB.insertCanton("Schaffhouse", "sh");
+        cantonDB.insertCanton("Soleure", "so");
+        cantonDB.insertCanton("Schwytz", "sz");
+        cantonDB.insertCanton("Thurgovie", "tg");
+        cantonDB.insertCanton("Tessin", "ti");
+        cantonDB.insertCanton("Uri", "ur");
+        cantonDB.insertCanton("Valais", "vs");
+        cantonDB.insertCanton("Vaud", "vd");
+        cantonDB.insertCanton("Zoug", "zg");
+        cantonDB.insertCanton("Zurich", "zh");
 
         TownDB townDB = new TownDB(db);
         townDB.insertTown(23, "Monthey", 1870);
@@ -117,8 +129,8 @@ public class MainActivity extends AppCompatActivity {
         bikeDB.insertBike(4);
 
         PersonDB personDB = new PersonDB(db);
-        personDB.insertPerson(23, "pedro@pedro.com", "pass", "Pedro", "Ferreira", 1);
-        personDB.insertPerson(22, "dan@dan.com", "pass", "Daniel", "De Girolamo", 1);
+        personDB.insertPerson(23, "pedro@pedro.com", "pass", "Pedro", "Pedro", 1);
+        personDB.insertPerson(22, "dan@dan.com", "pass", "Daniel", "Daniel", 1);
         personDB.insertPerson(1, "test@test.com", "pass", "Test", "Test", 0);
 
         RentDB rentDB = new RentDB(db);
@@ -131,46 +143,29 @@ public class MainActivity extends AppCompatActivity {
         rentDB.insertRent(4, 3, "21-04-2017 08:01:00", "21-04-2017 16:12:24");
         rentDB.insertRent(6, 1, "22-04-2017 09:01:00", "22-04-2017 17:12:24");
         rentDB.insertRent(6, 1, "22-04-2017 09:01:00", "");
-        rentDB.insertRent(6, 3, "22-04-2017 09:01:00", "");
-//
-//        List<Canton> cantons = canton.getCantons();
-//        for (Canton c : cantons) {
-//            Log.e("CANTONS", "id = " + c.getId() + ", name = " + c.getName());
-//        }
-//
-//        List<Town> towns = townDB.getTownsByCanton(24);
-//        for (Town town : towns) {
-//            Log.e("VILLES", "id = " + town.getId() + ", name = " + town.getName() + ", npa = " + town.getNpa());
-//        }
-//
-//        List<Place> places = placeDB.getPlacesByTown(1);
-//        for (Place place : places) {
-//            Log.e("PLACES", "id = " + place.getId() + ", name = " + place.getName() + ", idTown = " + place.getIdTown());
-//        }
-//
-//        List<Bike> bikes = bikeDB.getBikesByPlace(1);
-//        for (Bike bike : bikes) {
-//            Log.e("BIKES", "id = " + bike.getId() + ", idPlace = " + bike.getIdPlace());
-//        }
-
-//        List<Person> persons = personDB.getPersons();
-//        for (Person person : persons) {
-//            Log.e("PERSONS", "id = " + person.getId() + ", email = " + person.getEmail() + ", firstname = " + person.getFirstname());
-//        }
-//
-//        List<Rent> rents = rentDB.getRentsByPerson(3);
-//        for (Rent rent : rents) {
-//            Log.e("RENTS", "idBike = " + rent.getIdBike() + ", idPerson = " + rent.getIdPerson() + ", beginDate = " + rent.getBeginDate() + ", endDate = " + rent.getEndDate());
-//        }
+        rentDB.insertRent(7, 3, "22-04-2017 09:01:00", "");
 
         if (getIntent().getBooleanExtra("EXIT", false)) {
             finish();
+        } else {
+            progress = new ProgressDialog(MainActivity.this);
+            progress.setMessage("Synchronisation avec le cloud...");
+            progress.setCancelable(false);
+            progress.show();
+
+            new BikeAsyncTask(db, MainActivity.this).execute();
+            new PersonAsyncTask(db, MainActivity.this).execute();
+            new PlaceAsyncTask(db, MainActivity.this).execute();
+            new RentAsyncTask(db, MainActivity.this).execute();
+            new TownAsyncTask(db, MainActivity.this).execute();
         }
-        else {
-            Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-            startActivity(i);
-            finish();
-        }
+
+//        bikeDB.sqlToCloudBike();
+//        cantonDB.sqlToCloudCanton();
+//        personDB.sqlToCloudPerson();
+//        placeDB.sqlToCloudPlace();
+//        rentDB.sqlToCloudRent();
+//        townDB.sqlToCloudTown();
     }
 
     @Override
@@ -189,6 +184,23 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public boolean bikeOK = false;
+    public boolean cantonOK = false;
+    public boolean personOK = false;
+    public boolean placeOK = false;
+    public boolean rentOK = false;
+    public boolean townOK = false;
+
+    public void check() {
+        if (bikeOK && personOK &&
+                placeOK && rentOK && townOK) {
+            progress.dismiss();
+            Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(i);
+            finish();
         }
     }
 }

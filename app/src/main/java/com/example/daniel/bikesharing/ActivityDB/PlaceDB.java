@@ -9,7 +9,10 @@ import android.util.Log;
 import com.example.daniel.bikesharing.DB.DatabaseHelper;
 import com.example.daniel.bikesharing.ObjectDB.Person;
 import com.example.daniel.bikesharing.ObjectDB.Place;
+import com.example.daniel.bikesharing.ObjectDB.PlaceAsyncTask;
 import com.example.daniel.bikesharing.ObjectDB.Town;
+import com.example.daniel.bikesharing.ObjectDB.TownAsyncTask;
+import com.example.daniel.bikesharing.SettingsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -118,6 +121,7 @@ public class PlaceDB {
 
         //insert row
         sqlDB.insert(db.getTABLE_PLACE(), null, values);
+        sqlToCloudPlace(null);
     }
 
     /**
@@ -141,6 +145,7 @@ public class PlaceDB {
 
 
         sqlDB.update(db.getTABLE_PLACE(), values, db.getKEY_ID() + " = " + id, null);
+        sqlToCloudPlace(null);
     }
 
     /**
@@ -179,6 +184,7 @@ public class PlaceDB {
     public void deletePlace(int idPlace) {
         SQLiteDatabase sqlDB = db.getWritableDatabase();
         sqlDB.delete(db.getTABLE_PLACE(), db.getKEY_ID() + " = " + idPlace, null);
+        sqlToCloudPlace(null);
     }
 
     /**
@@ -234,14 +240,9 @@ public class PlaceDB {
                 String picture = c.getString(c.getColumnIndex(db.getKEY_PLACE_PICTURE()));
                 String name = c.getString(c.getColumnIndex(db.getKEY_PLACE_NAME()));
                 int nbPlace = c.getInt(c.getColumnIndex(db.getKEY_PLACE_NBPLACES()));
-                String address=  c.getString(c.getColumnIndex(db.getKEY_PLACE_ADDRESS()));
+                String address = c.getString(c.getColumnIndex(db.getKEY_PLACE_ADDRESS()));
                 int townId =  c.getInt(c.getColumnIndex(db.getKEY_PLACE_TOWNID()));
                 Place p = new Place(id, name, picture, nbPlace, address, townId);
-
-                for (Place place : places) {
-                    Log.e("PLACE", "djsjwjqj");
-                    Log.e("PLACE", place.getName());
-                }
 
                 // adding to canton list
                 places.add(p);
@@ -251,5 +252,39 @@ public class PlaceDB {
         c.close();
 
         return places;
+    }
+
+    public void sqlToCloudPlace(SettingsActivity settingsActivity){
+        List<Place> places = getPlaces();
+        for (Place p : places) {
+            com.example.pedro.myapplication.backend.placeApi.model.Place place = new com.example.pedro.myapplication.backend.placeApi.model.Place();
+            place.setId((long) p.getId());
+            place.setName(p.getName());
+            place.setPicture(p.getPicture());
+            place.setNbPlaces(p.getNbPlaces());
+            place.setAddress(p.getAddress());
+            place.setIdTown((long) p.getIdTown());
+            new PlaceAsyncTask(place, db, settingsActivity).execute();
+        }
+        Log.e("debugCloud","all place data saved");
+    }
+
+    public void cloudToSqlPlace(List<com.example.pedro.myapplication.backend.placeApi.model.Place> items){
+        SQLiteDatabase sqlDB = db.getReadableDatabase();
+        sqlDB.delete(db.getTABLE_PLACE(), null, null);
+
+        for (com.example.pedro.myapplication.backend.placeApi.model.Place p : items) {
+            ContentValues values = new ContentValues();
+            values.put(db.getKEY_ID(), p.getId());
+            values.put(db.getKEY_PLACE_NAME(), p.getName());
+            values.put(db.getKEY_PLACE_PICTURE(), p.getPicture());
+            values.put(db.getKEY_PLACE_NBPLACES(), p.getNbPlaces());
+            values.put(db.getKEY_PLACE_ADDRESS(), p.getAddress());
+            values.put(db.getKEY_PLACE_TOWNID(), p.getIdTown());
+
+            sqlDB.insert(db.getTABLE_PLACE(), null, values);
+        }
+        sqlDB.close();
+        Log.e("debugCloud","all place data got");
     }
 }

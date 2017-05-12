@@ -93,7 +93,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + KEY_PASSWORD + " TEXT NOT NULL,"
                     + KEY_FIRSTNAME + " TEXT NOT NULL,"
                     + KEY_LASTNAME + " TEXT NOT NULL, "
-                    + KEY_ISADMIN + " TINYINT NOT NULL DEFAULT 0,"
+                    + KEY_ISADMIN + " INT NOT NULL DEFAULT 0,"
                     + KEY_PERSON_CANTONID + " INTEGER NOT NULL, "
                     + "FOREIGN KEY ("+KEY_PERSON_CANTONID+") REFERENCES "+TABLE_TOWN+"("+KEY_ID+ "))";
 
@@ -119,7 +119,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Rent table create statement
     private final String CREATE_TABLE_RENT =
             "CREATE TABLE " + TABLE_RENT
-                    + "(" + KEY_PERSONID + " INTEGER NOT NULL, "
+                    + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + KEY_PERSONID + " INTEGER NOT NULL, "
                     + KEY_BIKEID + " INTEGER NOT NULL, "
                     + KEY_BEGINDATE + " DATETIME NOT NULL,"
                     + KEY_ENDDATE + " DATETIME,"
@@ -276,4 +277,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (db != null && db.isOpen())
             db.close();
     }
+
+
 }

@@ -5,7 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="administration">Administration</string>
     <string name="adresse_mail">E-mail</string>
-    <string name="authors">authors</string>
+    <string name="authors">Created by Daniel De Girolamo and Pedro Gil Ferreira</string>
     <string name="cantons">Cantons</string>
     <string name="login">Login</string>
     <string name="delete">Delete</string>
@@ -70,4 +70,5 @@
     <string name="namePlace">Name of place</string>
     <string name="nombrePlace">Number of places</string>
     <string name="adresse">Address</string>
+    <string name="synchroniser">Synchronize</string>
 </resources>

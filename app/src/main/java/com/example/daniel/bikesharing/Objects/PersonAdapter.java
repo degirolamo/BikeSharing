@@ -88,7 +88,7 @@ public class PersonAdapter extends BaseAdapter {
 
         btnAdmin = (ImageButton) view.findViewById(R.id.imgAdmin);
         int isAdmin = 0;
-        if (listPersons.get(position).isAdmin() == 1) {
+        if (listPersons.get(position).getAdmin() == 1) {
             //noinspection deprecation
             btnAdmin.setColorFilter(view.getResources().getColor(R.color.colorBlack));
             message = activity.getResources().getString(R.string.warningDeleteAdmin) + " " +

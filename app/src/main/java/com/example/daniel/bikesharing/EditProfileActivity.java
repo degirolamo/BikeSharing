@@ -71,7 +71,7 @@ public class EditProfileActivity extends AppCompatActivity implements Serializab
 
         spinCanton = (Spinner) findViewById(R.id.spinEditProfileCanton);
         spinCanton.setAdapter(new ArrayAdapter<>(getApplicationContext(), R.layout.spinner_item, cantonsNames));
-        spinCanton.setSelection(USER_CONNECTED.getIdCanton() - 1);
+        spinCanton.setSelection(((int) USER_CONNECTED.getIdCanton()) - 1);
 
         txtEmail = (EditText) findViewById(R.id.txtEditProfileEmail);
         txtLastname = (EditText) findViewById(R.id.txtEditProfileLastname);

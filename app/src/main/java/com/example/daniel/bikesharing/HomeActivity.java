@@ -41,7 +41,7 @@ public class HomeActivity extends AppCompatActivity {
 
         if(IS_CONNECTED == 1) {
             Intent i;
-            if(USER_CONNECTED.isAdmin() == 1)
+            if(USER_CONNECTED.getAdmin() == 1)
                 i = new Intent(getApplicationContext(), AdminHomeActivity.class);
             else
                 i = new Intent(getApplicationContext(), SearchActivity.class);

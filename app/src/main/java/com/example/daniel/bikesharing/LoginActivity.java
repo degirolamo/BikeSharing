@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if(IS_CONNECTED == 1) {
             Intent i;
-            if(USER_CONNECTED.isAdmin() == 1)
+            if(USER_CONNECTED.getAdmin() == 1)
                 i = new Intent(getApplicationContext(), AdminHomeActivity.class);
             else
                 i = new Intent(getApplicationContext(), SearchActivity.class);
@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                     Person person = personDB.getPerson(email);
                     if(person.getPassword().equals(password)) {
                         Intent i;
-                        if (person.isAdmin() == 1)
+                        if (person.getAdmin() == 1)
                             //The user is administrator
                             i = new Intent(getApplicationContext(), AdminHomeActivity.class);
                         else
@@ -87,10 +87,10 @@ public class LoginActivity extends AppCompatActivity {
                         USER_CONNECTED = person;
                     }
                     else
-                        Toast.makeText(getApplicationContext(), R.string.errorPassMail, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), R.string.errorPassMail, Toast.LENGTH_SHORT).show();
                 }
                 else
-                    Toast.makeText(getApplicationContext(),  R.string.errorPassMail, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),  R.string.errorPassMail, Toast.LENGTH_SHORT).show();
             }
         });
     }

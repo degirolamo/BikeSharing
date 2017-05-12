@@ -69,4 +69,7 @@
     <string name="namePicture">Nom de l\'image (sans extension)</string>
     <string name="nombrePlace">Nombre de places</string>
     <string name="adresse">Adresse</string>
+    <string name="synchroniser">Synchroniser</string>
+    <string name="npa_de_la_ville">NPA de la ville</string>
+    <string name="nom_de_la_ville">Nom de la ville</string>
 </resources>

@@ -44,20 +44,21 @@ import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
 
 public class PlaceActivity extends AppCompatActivity {
 
-    DatabaseHelper db;
+    private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place);
 
+        db = new DatabaseHelper(getApplicationContext());
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolPlaces);
         toolbar.setTitleTextColor(Color.WHITE);
-        toolbar.setTitle(R.string.places);
+        TownDB townDB = new TownDB(db);
+        toolbar.setTitle(townDB.getTown(getIntent().getIntExtra("idTown", 0)).getName());
         setSupportActionBar(toolbar);
         ListView listViewPlaces;
-
-        db = new DatabaseHelper(getApplicationContext());
 
         final PlaceDB placeDB = new PlaceDB(db);
         List<Place> places = placeDB.getPlacesByTown(getIntent().getIntExtra("idTown", 0));
@@ -77,7 +78,7 @@ public class PlaceActivity extends AppCompatActivity {
             }
         });
 
-        if(USER_CONNECTED.isAdmin() == 0)
+        if(USER_CONNECTED.getAdmin() == 0)
             fabAdd.hide();
 
         Button btnCanton = (Button) findViewById(R.id.btnPlaceCanton);

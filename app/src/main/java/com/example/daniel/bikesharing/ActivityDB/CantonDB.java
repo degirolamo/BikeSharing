@@ -4,9 +4,14 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabaseLockedException;
+import android.util.Log;
 
 import com.example.daniel.bikesharing.DB.DatabaseHelper;
 import com.example.daniel.bikesharing.ObjectDB.Canton;
+import com.example.daniel.bikesharing.ObjectDB.CantonAsyncTask;
+import com.example.daniel.bikesharing.ObjectDB.Town;
+import com.example.daniel.bikesharing.ObjectDB.TownAsyncTask;
+import com.example.daniel.bikesharing.SettingsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,5 +107,33 @@ public class CantonDB  {
         }
 
         return canton;
+    }
+
+    public void sqlToCloudCanton(SettingsActivity settingsActivity){
+        List<Canton> cantons = getCantons();
+        for (Canton c : cantons) {
+            com.example.pedro.myapplication.backend.cantonApi.model.Canton canton = new com.example.pedro.myapplication.backend.cantonApi.model.Canton();
+            canton.setId((long) c.getId());
+            canton.setName(c.getName());
+            canton.setPicture(c.getPicture());
+            new CantonAsyncTask(canton, db, settingsActivity).execute();
+        }
+        Log.e("debugCloud","all canton data saved");
+    }
+
+    public void cloudToSqlCanton(List<com.example.pedro.myapplication.backend.cantonApi.model.Canton> items){
+        SQLiteDatabase sqlDB = db.getReadableDatabase();
+        sqlDB.delete(db.getTABLE_CANTON(), null, null);
+
+        for (com.example.pedro.myapplication.backend.cantonApi.model.Canton c : items) {
+            ContentValues values = new ContentValues();
+            values.put(db.getKEY_ID(), c.getId());
+            values.put(db.getKEY_CANTON_NAME(), c.getName());
+            values.put(db.getKEY_CANTON_PICTURE(), c.getPicture());
+
+            sqlDB.insert(db.getTABLE_CANTON(), null, values);
+        }
+        sqlDB.close();
+        Log.e("debugCloud","all canton data got");
     }
 }
