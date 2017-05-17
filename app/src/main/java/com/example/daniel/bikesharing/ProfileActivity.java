@@ -67,9 +67,9 @@ public class ProfileActivity extends AppCompatActivity {
         txtCanton.setText(String.valueOf(cantonDB.getCanton(person.getIdCanton()).getName()));
         String role;
         if(person.getAdmin() == 1)
-            role = "Administrateur";
+            role = String.valueOf(R.string.administrator);
         else
-            role = "Utilisateur";
+            role = String.valueOf(R.string.user);
         txtIsAdmin.setText(role);
     }
 

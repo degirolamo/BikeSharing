@@ -16,7 +16,6 @@
     <string name="nombre_de_places_libres">Nombre de places libres</string>
     <string name="nombre_de_v_los_disponibles">Nombre de vélos disponibles</string>
     <string name="language">Langue</string>
-    <string name="ici_c_est_le_texte_du_spinner">Ici c\'est le texte du spinner</string>
     <string name="bike_sharing">Bike Sharing</string>
     <string name="cantons">Cantons</string>
     <string name="click_here_to_generate_qr_code">Cliquez ici pour générer le qr code</string>
@@ -74,4 +73,10 @@
     <string name="npa_de_la_ville">NPA de la ville</string>
     <string name="nom_de_la_ville">Nom de la ville</string>
     <string name="about">A propos</string>
+    <string name="errorTownExisting">Cette ville existe déjà</string>
+    <string name="addTown">Ajouter une ville</string>
+    <string name="synchronizeCloud">Synchronisation avec le cloud...</string>
+    <string name="warningDeleteTown">Etes-vous sûr de vouloir supprimer la ville</string>
+    <string name="warningDeleteTown2">et toutes ses places ?</string>
+    <string name="administrator">administrateur</string>
 </resources>

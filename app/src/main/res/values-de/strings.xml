@@ -14,7 +14,6 @@
     <string name="edit">Veränderung</string>
     <string name="enter_text_here">Geben Sie den Text hier</string>
     <string name="ici_le_nom_du_lieu">Hier der Name des Ortes</string>
-    <string name="ici_c_est_le_texte_du_spinner">Hier der Text des Spinners</string>
     <string name="ici_le_nombre_de_places_libres">Hier die Anzahl der freien Plätze</string>
     <string name="ici_le_nombre_de_v_los">Hier die Anzahl der Fahrräder</string>
     <string name="l_adresse_ici">Die Adresse hier</string>
@@ -71,4 +70,13 @@
     <string name="namePlace">Name der Platz</string>
     <string name="adresse">Adresse</string>
     <string name="synchroniser">Synchronisieren</string>
+    <string name="about">Über</string>
+    <string name="addTown">Stadt hinzufügen</string>
+    <string name="administrator">Verwalter</string>
+    <string name="nom_de_la_ville">Name der Stadt</string>
+    <string name="errorTownExisting">Diese Stadt ist bereits vorhanden</string>
+    <string name="npa_de_la_ville">Postleitzahl der Stadt</string>
+    <string name="synchronizeCloud">Cloud-Synchronisation</string>
+    <string name="warningDeleteTown">Sind Sie sicher, dass Sie die Stadt entfernen</string>
+    <string name="warningDeleteTown2">und alle Orte?</string>
 </resources>

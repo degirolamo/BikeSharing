@@ -15,7 +15,6 @@
     <string name="click_here_to_generate_qr_code">Click here to generate qr code</string>
     <string name="enter_text_here">Enter Text Here</string>
     <string name="ici_le_nom_du_lieu">Here the text of the spinner</string>
-    <string name="ici_c_est_le_texte_du_spinner">" Here the text of the spinner"</string>
     <string name="ici_le_nombre_de_places_libres">"Here the number of free places "</string>
     <string name="ici_le_nombre_de_v_los">Here the number of bikes</string>
     <string name="l_adresse_ici">The address here</string>
@@ -71,4 +70,13 @@
     <string name="nombrePlace">Number of places</string>
     <string name="adresse">Address</string>
     <string name="synchroniser">Synchronize</string>
+    <string name="about">About</string>
+    <string name="addTown">Add a town</string>
+    <string name="administrator">administrateur</string>
+    <string name="errorTownExisting">This town already exists</string>
+    <string name="nom_de_la_ville">Name of city</string>
+    <string name="npa_de_la_ville">Postal code of the city</string>
+    <string name="synchronizeCloud">Synchronization with the cloud...</string>
+    <string name="warningDeleteTown">Are you sure you want to delete the city</string>
+    <string name="warningDeleteTown2">and all its places ?</string>
 </resources>

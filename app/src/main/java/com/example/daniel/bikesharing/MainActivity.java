@@ -66,35 +66,35 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseHelper db;
         db = new DatabaseHelper(getApplicationContext());
-        db.reloadDatabase();
-
-        CantonDB cantonDB = new CantonDB(db);
-        cantonDB.insertCanton("Argovie", "ag");
-        cantonDB.insertCanton("Appenzell Rhodes-Intérieures", "ai");
-        cantonDB.insertCanton("Appenzell Rhodes-Extérieures", "ar");
-        cantonDB.insertCanton("Berne", "be");
-        cantonDB.insertCanton("Bâle-Campagne", "bl");
-        cantonDB.insertCanton("Bâle-Ville", "bs");
-        cantonDB.insertCanton("Fribourg", "fr");
-        cantonDB.insertCanton("Genève", "ge");
-        cantonDB.insertCanton("Glaris", "gl");
-        cantonDB.insertCanton("Grisons", "gr");
-        cantonDB.insertCanton("Jura", "ju");
-        cantonDB.insertCanton("Lucerne", "lu");
-        cantonDB.insertCanton("Neuchâtel", "ne");
-        cantonDB.insertCanton("Nidwald", "nw");
-        cantonDB.insertCanton("Obwald", "ow");
-        cantonDB.insertCanton("Saint-Gall", "sg");
-        cantonDB.insertCanton("Schaffhouse", "sh");
-        cantonDB.insertCanton("Soleure", "so");
-        cantonDB.insertCanton("Schwytz", "sz");
-        cantonDB.insertCanton("Thurgovie", "tg");
-        cantonDB.insertCanton("Tessin", "ti");
-        cantonDB.insertCanton("Uri", "ur");
-        cantonDB.insertCanton("Valais", "vs");
-        cantonDB.insertCanton("Vaud", "vd");
-        cantonDB.insertCanton("Zoug", "zg");
-        cantonDB.insertCanton("Zurich", "zh");
+//        db.reloadDatabase();
+//
+//        CantonDB cantonDB = new CantonDB(db);
+//        cantonDB.insertCanton("Argovie", "ag");
+//        cantonDB.insertCanton("Appenzell Rhodes-Intérieures", "ai");
+//        cantonDB.insertCanton("Appenzell Rhodes-Extérieures", "ar");
+//        cantonDB.insertCanton("Berne", "be");
+//        cantonDB.insertCanton("Bâle-Campagne", "bl");
+//        cantonDB.insertCanton("Bâle-Ville", "bs");
+//        cantonDB.insertCanton("Fribourg", "fr");
+//        cantonDB.insertCanton("Genève", "ge");
+//        cantonDB.insertCanton("Glaris", "gl");
+//        cantonDB.insertCanton("Grisons", "gr");
+//        cantonDB.insertCanton("Jura", "ju");
+//        cantonDB.insertCanton("Lucerne", "lu");
+//        cantonDB.insertCanton("Neuchâtel", "ne");
+//        cantonDB.insertCanton("Nidwald", "nw");
+//        cantonDB.insertCanton("Obwald", "ow");
+//        cantonDB.insertCanton("Saint-Gall", "sg");
+//        cantonDB.insertCanton("Schaffhouse", "sh");
+//        cantonDB.insertCanton("Soleure", "so");
+//        cantonDB.insertCanton("Schwytz", "sz");
+//        cantonDB.insertCanton("Thurgovie", "tg");
+//        cantonDB.insertCanton("Tessin", "ti");
+//        cantonDB.insertCanton("Uri", "ur");
+//        cantonDB.insertCanton("Valais", "vs");
+//        cantonDB.insertCanton("Vaud", "vd");
+//        cantonDB.insertCanton("Zoug", "zg");
+//        cantonDB.insertCanton("Zurich", "zh");
 
 //        TownDB townDB = new TownDB(db);
 //        townDB.insertTown(23, "Monthey", 1870);
@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
         } else {
             progress = new ProgressDialog(MainActivity.this);
-            progress.setMessage("Synchronisation avec le cloud...");
+            progress.setMessage(String.valueOf(R.string.synchronizeCloud));
             progress.setCancelable(false);
             progress.show();
 
@@ -154,13 +154,6 @@ public class MainActivity extends AppCompatActivity {
             new RentAsyncTask(db, MainActivity.this).execute();
             new TownAsyncTask(db, MainActivity.this).execute();
         }
-
-//        bikeDB.sqlToCloudBike();
-//        cantonDB.sqlToCloudCanton();
-//        personDB.sqlToCloudPerson();
-//        placeDB.sqlToCloudPlace();
-//        rentDB.sqlToCloudRent();
-//        townDB.sqlToCloudTown();
     }
 
     @Override

@@ -131,7 +131,7 @@ public class PlaceActivity extends AppCompatActivity {
             case R.id.btnDelete:
                 AlertDialog.Builder builder = new AlertDialog.Builder(PlaceActivity.this);
                 builder.setTitle(R.string.app_name);
-                builder.setMessage("Êtes-vous sûr de vouloir supprimer cette ville et toutes ses places ?");
+                builder.setMessage(R.string.warningDeleteTown + " " + town.getName() + " " + R.string.warningDeleteTown2);
                 builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         PlaceDB placeDB = new PlaceDB(db);

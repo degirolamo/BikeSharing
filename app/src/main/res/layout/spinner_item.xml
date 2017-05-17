@@ -9,5 +9,4 @@
     android:paddingTop="4dp"
     android:paddingBottom="4dp"
     android:gravity="start"
-    android:text="@string/ici_c_est_le_texte_du_spinner"
     tools:ignore="RtlSymmetry" />

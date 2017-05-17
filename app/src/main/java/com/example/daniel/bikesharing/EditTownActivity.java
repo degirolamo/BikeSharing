@@ -37,7 +37,7 @@ public class EditTownActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolAddTown);
         toolbar.setTitleTextColor(Color.WHITE);
-        toolbar.setTitle("Editer la ville");
+        toolbar.setTitle(R.string.edit);
         setSupportActionBar(toolbar);
 
         txtName = (EditText) findViewById(R.id.txtAddTownName);
@@ -65,9 +65,9 @@ public class EditTownActivity extends AppCompatActivity {
                         startActivity(i);
                         overridePendingTransition(0, 0);
                     } else
-                        Toast.makeText(getApplicationContext(), "Cette ville existe déjà.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.errorTownExisting, Toast.LENGTH_SHORT).show();
                 } else
-                    Toast.makeText(getApplicationContext(), "Un ou plusieurs champs sont vides.",
+                    Toast.makeText(getApplicationContext(), R.string.errorProfilEmptyFields,
                             Toast.LENGTH_SHORT).show();
             }
         });
