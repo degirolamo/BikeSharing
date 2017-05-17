@@ -66,7 +66,7 @@ public class InfosPlaceActivity extends AppCompatActivity {
         }
 
         txtAddress.setText(place.getAddress());
-        int nbBikes = new BikeDB(db).getNbBikes(place.getId());
+        int nbBikes = new BikeDB(db).getBikesByPlace(place.getId()).size();
         txtDispoBikes.setText(String.valueOf(nbBikes));
         txtDispoSlots.setText(String.valueOf(place.getNbPlaces() - nbBikes));
 
@@ -74,8 +74,7 @@ public class InfosPlaceActivity extends AppCompatActivity {
         btnRent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), QRCodeActivity.class);
-                startActivity(i);
+            startActivity(new Intent(getApplicationContext(), QRCodeActivity.class));
             }
         });
     }

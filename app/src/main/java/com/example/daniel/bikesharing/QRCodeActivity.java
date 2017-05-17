@@ -35,14 +35,11 @@ import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
 
 public class QRCodeActivity extends AppCompatActivity {
 
-    ImageView imgCode;
-    Button btnGenerate;
-    EditText editText;
-    String EditTextValue ;
-    Thread thread ;
-    public final static int QRCodeWidth = 500 ;
-    public final static int QRCodeHeight = 500 ;
-    Bitmap bitmap ;
+    private ImageView imgCode;
+    private final static int QRCodeWidth = 500 ;
+    private final static int QRCodeHeight = 500 ;
+    private Bitmap bitmap;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

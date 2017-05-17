@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.daniel.bikesharing.ActivityDB.BikeDB;
 import com.example.daniel.bikesharing.ActivityDB.PlaceDB;
 import com.example.daniel.bikesharing.DB.DatabaseHelper;
 import com.example.daniel.bikesharing.ObjectDB.Place;
@@ -40,6 +41,7 @@ public class AddPlaceActivity extends AppCompatActivity {
     private EditText txtNbPlaces;
     private EditText txtAddress;
     private int idTown;
+    private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +59,7 @@ public class AddPlaceActivity extends AppCompatActivity {
         txtAddress = (EditText) findViewById(R.id.txtAddPlaceAddress);
         idTown = getIntent().getIntExtra("idTown", 0);
 
-        DatabaseHelper db = new DatabaseHelper(getApplicationContext());
+        db = new DatabaseHelper(getApplicationContext());
         placeDB = new PlaceDB(db);
 
         Button btnValidate = (Button) findViewById(R.id.btnAddPlaceValidate);
@@ -67,8 +69,11 @@ public class AddPlaceActivity extends AppCompatActivity {
             if(!txtName.getText().toString().equals("") && !txtNbPlaces.getText().toString().equals("")
                     && !txtAddress.getText().toString().equals("")) {
                 if(!placeDB.isExistingPlace(0, txtName.getText().toString(), txtAddress.getText().toString())) {
-                    placeDB.insertPlace(txtName.getText().toString(), txtPicture.getText().toString(),
+                    int idPlace = placeDB.insertPlace(txtName.getText().toString(), txtPicture.getText().toString(),
                             Integer.parseInt(txtNbPlaces.getText().toString()), txtAddress.getText().toString(), idTown);
+                    BikeDB bikeDB = new BikeDB(db);
+                    for (int i = 0; i < Integer.parseInt(txtNbPlaces.getText().toString()); i++)
+                        bikeDB.insertBike(idPlace);
                     finish();
                     overridePendingTransition(0, 0);
                     Intent i = new Intent(getApplicationContext(), PlaceActivity.class);

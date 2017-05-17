@@ -45,6 +45,11 @@ import static com.example.daniel.bikesharing.MainActivity.USER_CONNECTED;
 public class PlaceActivity extends AppCompatActivity {
 
     private DatabaseHelper db;
+    private PlaceDB placeDB;
+    private List<Place> places;
+    private TownDB townDB;
+    private Town town;
+    private int idTown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,16 +57,18 @@ public class PlaceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_place);
 
         db = new DatabaseHelper(getApplicationContext());
+        idTown = getIntent().getIntExtra("idTown", 0);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolPlaces);
         toolbar.setTitleTextColor(Color.WHITE);
-        TownDB townDB = new TownDB(db);
-        toolbar.setTitle(townDB.getTown(getIntent().getIntExtra("idTown", 0)).getName());
+        townDB = new TownDB(db);
+        town = townDB.getTown(idTown);
+        toolbar.setTitle(town.getName());
         setSupportActionBar(toolbar);
         ListView listViewPlaces;
 
-        final PlaceDB placeDB = new PlaceDB(db);
-        List<Place> places = placeDB.getPlacesByTown(getIntent().getIntExtra("idTown", 0));
+        placeDB = new PlaceDB(db);
+        places = placeDB.getPlacesByTown(idTown);
         listViewPlaces = (ListView) findViewById(R.id.listPlaces);
 
         PlaceAdapter adapter = new PlaceAdapter(this, places);
@@ -73,7 +80,7 @@ public class PlaceActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), AddPlaceActivity.class);
-                i.putExtra("idTown", getIntent().getIntExtra("idTown", 0));
+                i.putExtra("idTown", idTown);
                 startActivity(i);
             }
         });
@@ -95,8 +102,7 @@ public class PlaceActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), TownActivity.class);
-                TownDB townDB = new TownDB(db);
-                i.putExtra("idCanton", townDB.getTown(getIntent().getIntExtra("idTown", 0)).getIdCanton());
+                i.putExtra("idCanton", town.getIdCanton());
                 startActivity(i);
             }
         });
@@ -105,6 +111,10 @@ public class PlaceActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
+        if(USER_CONNECTED.getAdmin() == 1) {
+            inflater.inflate(R.menu.edit, menu);
+            inflater.inflate(R.menu.delete, menu);
+        }
         inflater.inflate(R.menu.settings, menu);
         return true;
     }
@@ -112,8 +122,44 @@ public class PlaceActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.btnEdit:
+                Intent i = new Intent(getApplicationContext(), EditTownActivity.class);
+                i.putExtra("idTown", idTown);
+                startActivity(i);
+                finish();
+                return true;
+            case R.id.btnDelete:
+                AlertDialog.Builder builder = new AlertDialog.Builder(PlaceActivity.this);
+                builder.setTitle(R.string.app_name);
+                builder.setMessage("Êtes-vous sûr de vouloir supprimer cette ville et toutes ses places ?");
+                builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        PlaceDB placeDB = new PlaceDB(db);
+                        for (Place place : places) {
+                            placeDB.deletePlace(place.getId());
+                        }
+                        townDB.deleteTown(idTown);
+                        dialog.dismiss();
+                        finishAffinity();
+                        finish();
+                        overridePendingTransition(0, 0);
+                        TownActivity townActivity = new TownActivity();
+                        Intent i = new Intent(getApplicationContext(), townActivity.getClass());
+                        i.putExtra("idCanton", town.getIdCanton());
+                        startActivity(i);
+                        overridePendingTransition(0, 0);
+                    }
+                });
+                builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+                return true;
             case R.id.action_settings:
-                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
+                i = new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivity(i);
                 return true;
             case R.id.action_profile:
@@ -123,7 +169,7 @@ public class PlaceActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.action_logout:
-                AlertDialog.Builder builder = new AlertDialog.Builder(PlaceActivity.this);
+                builder = new AlertDialog.Builder(PlaceActivity.this);
                 builder.setTitle(R.string.action_logout);
                 builder.setMessage(R.string.warningLogout);
                 builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
@@ -144,7 +190,7 @@ public class PlaceActivity extends AppCompatActivity {
                         dialog.dismiss();
                     }
                 });
-                AlertDialog alert = builder.create();
+                alert = builder.create();
                 alert.show();
             default:
                 return super.onOptionsItemSelected(item);
@@ -155,7 +201,7 @@ public class PlaceActivity extends AppCompatActivity {
     public void onBackPressed() {
         Intent i = new Intent(getApplicationContext(), TownActivity.class);
         TownDB townDB = new TownDB(db);
-        i.putExtra("idCanton", townDB.getTown(getIntent().getIntExtra("idTown", 0)).getIdCanton());
+        i.putExtra("idCanton", townDB.getTown(idTown).getIdCanton());
         startActivity(i);
     }
 }

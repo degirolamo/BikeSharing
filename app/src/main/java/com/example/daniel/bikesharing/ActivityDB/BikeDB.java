@@ -9,6 +9,7 @@ import android.util.Log;
 import com.example.daniel.bikesharing.DB.DatabaseHelper;
 import com.example.daniel.bikesharing.ObjectDB.Bike;
 import com.example.daniel.bikesharing.ObjectDB.BikeAsyncTask;
+import com.example.daniel.bikesharing.ObjectDB.BikeDeleteAsyncTask;
 import com.example.daniel.bikesharing.ObjectDB.Canton;
 import com.example.daniel.bikesharing.ObjectDB.Place;
 import com.example.daniel.bikesharing.ObjectDB.PlaceAsyncTask;
@@ -76,6 +77,7 @@ public class BikeDB {
 
         //insert row
         sqlDB.insert(db.getTABLE_BIKE(), null, values);
+        sqlToCloudBike(null);
     }
 
     /**
@@ -83,24 +85,26 @@ public class BikeDB {
      * @param idPlace : Id of the place
      * @return int : The number of bikes
      */
-    public int getNbBikes(int idPlace) {
-        int nbBikes = 0;
+    public List<Bike> getBikesByPlace(int idPlace) {
+        List<Bike> bikes = new ArrayList<>();
 
-        String selectQuery = "SELECT COUNT(*) nb FROM " + db.getTABLE_BIKE()
+        String selectQuery = "SELECT * FROM " + db.getTABLE_BIKE()
                 + " WHERE " + db.getKEY_PLACEID() + " = " + idPlace;
 
         SQLiteDatabase sqlDB = db.getReadableDatabase();
         Cursor c = sqlDB.rawQuery(selectQuery, null);
 
-        if(c != null) {
-            c.moveToFirst();
+        if (c.moveToFirst()) {
+            do {
+                int id = c.getInt(c.getColumnIndex(db.getKEY_ID()));
+                Bike bike = new Bike(id, idPlace);
 
-            nbBikes = c.getInt(c.getColumnIndex("nb"));
-
-            c.close();
+                // adding to canton list
+                bikes.add(bike);
+            } while (c.moveToNext());
         }
 
-        return nbBikes;
+        return bikes;
     }
 
     public void sqlToCloudBike(SettingsActivity settingsActivity){
@@ -126,5 +130,9 @@ public class BikeDB {
         }
         sqlDB.close();
         Log.e("debugCloud","all bike data got");
+    }
+
+    public void deleteFromCloudBike(int id) {
+        new BikeDeleteAsyncTask(id).execute();
     }
 }

@@ -6,10 +6,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.daniel.bikesharing.DB.DatabaseHelper;
+import com.example.daniel.bikesharing.ObjectDB.Bike;
 import com.example.daniel.bikesharing.ObjectDB.Canton;
 import com.example.daniel.bikesharing.ObjectDB.Place;
+import com.example.daniel.bikesharing.ObjectDB.PlaceDeleteAsyncTask;
 import com.example.daniel.bikesharing.ObjectDB.Town;
 import com.example.daniel.bikesharing.ObjectDB.TownAsyncTask;
+import com.example.daniel.bikesharing.ObjectDB.TownDeleteAsyncTask;
 import com.example.daniel.bikesharing.SettingsActivity;
 
 import java.util.ArrayList;
@@ -54,6 +57,24 @@ public class TownDB {
         //insert row
         sqlDB.insert(db.getTABLE_TOWN(), null, values);
         sqlToCloudTown(null);
+    }
+
+    public void updateTown(int id, String name, int npa) {
+
+        SQLiteDatabase sqlDB = db.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(db.getKEY_TOWN_NAME(), name);
+        values.put(db.getKEY_NPA(), npa);
+
+        sqlDB.update(db.getTABLE_TOWN(), values, db.getKEY_ID() + " = " + id, null);
+        sqlToCloudTown(null);
+    }
+
+    public void deleteTown(int idTown) {
+        SQLiteDatabase sqlDB = db.getWritableDatabase();
+        sqlDB.delete(db.getTABLE_TOWN(), db.getKEY_ID() + " = " + idTown, null);
+        deleteFromCloudTown(idTown);
     }
 
     public boolean isExistingTown(int id, String name, int npa) {
@@ -169,28 +190,6 @@ public class TownDB {
         return town;
     }
 
-    public boolean isExistingPlace(int id, String name, String address) {
-        boolean existing = false;
-        String selectQuery = "SELECT " + db.getKEY_PLACE_NAME() + ", " + db.getKEY_PLACE_ADDRESS()
-                + " FROM " + db.getTABLE_PLACE() + " WHERE id != " + id;
-
-        SQLiteDatabase sqlDB = db.getReadableDatabase();
-        Cursor c = sqlDB.rawQuery(selectQuery, null);
-
-        // looping through all rows and adding to list
-        if (c.moveToFirst()) {
-            do {
-                if(c.getString(c.getColumnIndex(db.getKEY_PLACE_NAME())).equals(name)
-                        || c.getString(c.getColumnIndex(db.getKEY_PLACE_ADDRESS())).equals(address))
-                    existing = true;
-            } while (c.moveToNext());
-        }
-
-        c.close();
-
-        return existing;
-    }
-
     public void sqlToCloudTown(SettingsActivity settingsActivity){
         List<Town> towns = getTowns();
         for (Town t : towns) {
@@ -219,5 +218,19 @@ public class TownDB {
         }
         sqlDB.close();
         Log.e("debugCloud","all town data got");
+    }
+
+    public void deleteFromCloudTown(int id) {
+        PlaceDB placeDB = new PlaceDB(db);
+        List<Place> places = placeDB.getPlacesByTown(id);
+
+        //Delete the bikes
+        for(Place place : places)
+        {
+            placeDB.deleteFromCloudPlace(place.getId());
+        }
+
+        //Delete the place
+        new TownDeleteAsyncTask(id).execute();
     }
 }

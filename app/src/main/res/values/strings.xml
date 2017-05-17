@@ -72,4 +72,5 @@
     <string name="synchroniser">Synchroniser</string>
     <string name="npa_de_la_ville">NPA de la ville</string>
     <string name="nom_de_la_ville">Nom de la ville</string>
+    <string name="about">A propos</string>
 </resources>

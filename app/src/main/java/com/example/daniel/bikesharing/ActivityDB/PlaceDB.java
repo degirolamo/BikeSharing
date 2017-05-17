@@ -10,8 +10,8 @@ import com.example.daniel.bikesharing.DB.DatabaseHelper;
 import com.example.daniel.bikesharing.ObjectDB.Person;
 import com.example.daniel.bikesharing.ObjectDB.Place;
 import com.example.daniel.bikesharing.ObjectDB.PlaceAsyncTask;
-import com.example.daniel.bikesharing.ObjectDB.Town;
-import com.example.daniel.bikesharing.ObjectDB.TownAsyncTask;
+import com.example.daniel.bikesharing.ObjectDB.Bike;
+import com.example.daniel.bikesharing.ObjectDB.PlaceDeleteAsyncTask;
 import com.example.daniel.bikesharing.SettingsActivity;
 
 import java.util.ArrayList;
@@ -109,7 +109,8 @@ public class PlaceDB {
      * @param address : Address of the place
      * @param idTown : Town id of the place
      */
-    public void insertPlace(String name, String picture, int nbPlaces, String address, int idTown) {
+    public int insertPlace(String name, String picture, int nbPlaces, String address, int idTown) {
+        int id;
         SQLiteDatabase sqlDB = db.getReadableDatabase();
 
         ContentValues values = new ContentValues();
@@ -120,8 +121,10 @@ public class PlaceDB {
         values.put(db.getKEY_PLACE_TOWNID(), idTown);
 
         //insert row
-        sqlDB.insert(db.getTABLE_PLACE(), null, values);
+        id = (int) sqlDB.insert(db.getTABLE_PLACE(), null, values);
         sqlToCloudPlace(null);
+
+        return id;
     }
 
     /**
@@ -184,7 +187,7 @@ public class PlaceDB {
     public void deletePlace(int idPlace) {
         SQLiteDatabase sqlDB = db.getWritableDatabase();
         sqlDB.delete(db.getTABLE_PLACE(), db.getKEY_ID() + " = " + idPlace, null);
-        sqlToCloudPlace(null);
+        deleteFromCloudPlace(idPlace);
     }
 
     /**
@@ -286,5 +289,19 @@ public class PlaceDB {
         }
         sqlDB.close();
         Log.e("debugCloud","all place data got");
+    }
+
+    public void deleteFromCloudPlace(int id) {
+        BikeDB bikeDB = new BikeDB(db);
+        List<Bike> bikes = bikeDB.getBikesByPlace(id);
+
+        //Delete the bikes
+        for(Bike bike : bikes)
+        {
+            bikeDB.deleteFromCloudBike(bike.getId());
+        }
+
+        //Delete the place
+        new PlaceDeleteAsyncTask(id).execute();
     }
 }

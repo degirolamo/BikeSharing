@@ -49,7 +49,6 @@ public class TownActivity extends AppCompatActivity {
 
         ListView listViewTowns;
         DatabaseHelper db = new DatabaseHelper(getApplicationContext());
-        ;
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolTowns);
         toolbar.setTitleTextColor(Color.WHITE);

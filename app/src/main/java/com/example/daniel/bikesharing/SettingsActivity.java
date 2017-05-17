@@ -13,10 +13,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.daniel.bikesharing.ActivityDB.BikeDB;
-import com.example.daniel.bikesharing.ActivityDB.CantonDB;
 import com.example.daniel.bikesharing.ActivityDB.PersonDB;
 import com.example.daniel.bikesharing.ActivityDB.PlaceDB;
 import com.example.daniel.bikesharing.ActivityDB.RentDB;
@@ -67,6 +65,14 @@ public class SettingsActivity extends AppCompatActivity {
                 progress.setCancelable(false);
                 progress.show();
                 cloudToSql();
+            }
+        });
+
+        Button btnAbout = (Button) findViewById(R.id.btnAbout);
+        btnAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), AboutActivity.class));
             }
         });
     }

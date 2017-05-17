@@ -92,19 +92,4 @@ public class EditPlaceActivity extends AppCompatActivity {
         startActivity(i);
         finish();
     }
-
-    public boolean canContinue(String name, String address) {
-        boolean nameExists = false;
-        boolean addressExists = false;
-        boolean canContinue = true;
-
-        if(place.getName().equals(name))
-            nameExists = true;
-        if(place.getAddress().equals(address))
-            addressExists = true;
-        if(nameExists && addressExists)
-            canContinue = true;
-
-        return canContinue;
-    }
 }

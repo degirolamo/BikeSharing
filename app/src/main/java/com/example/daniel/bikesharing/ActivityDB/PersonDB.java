@@ -10,6 +10,7 @@ import com.example.daniel.bikesharing.ObjectDB.Canton;
 import com.example.daniel.bikesharing.ObjectDB.CantonAsyncTask;
 import com.example.daniel.bikesharing.ObjectDB.Person;
 import com.example.daniel.bikesharing.ObjectDB.PersonAsyncTask;
+import com.example.daniel.bikesharing.ObjectDB.PersonDeleteAsyncTask;
 import com.example.daniel.bikesharing.ObjectDB.Place;
 import com.example.daniel.bikesharing.SettingsActivity;
 
@@ -194,7 +195,6 @@ public class PersonDB {
         // looping through all rows and adding to list
         if (c.moveToFirst()) {
             do {
-                Log.e("LOGIN", c.getString(c.getColumnIndex(db.getKEY_EMAIL())));
                 if(c.getString(c.getColumnIndex(db.getKEY_EMAIL())).equals(email))
                     existing = true;
             } while (c.moveToNext());
@@ -219,7 +219,7 @@ public class PersonDB {
     public void deletePerson(int idPerson) {
         SQLiteDatabase sqlDB = db.getWritableDatabase();
         sqlDB.delete(db.getTABLE_PERSON(), db.getKEY_ID() + " = " + idPerson, null);
-        sqlToCloudPerson(null);
+        new PersonDeleteAsyncTask(idPerson).execute();
     }
 
     public void sqlToCloudPerson(SettingsActivity settingsActivity){
@@ -256,5 +256,8 @@ public class PersonDB {
         }
         sqlDB.close();
         Log.e("debugCloud","all person data got");
+    }
+
+    public void deleteFromCloudPerson(int id) {
     }
 }
